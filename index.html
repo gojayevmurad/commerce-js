@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style/style.css" />
+  <link rel="icon" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <title>DNP || Main</title>
+</head>
+
+<body>
+  <ul class="notifications"></ul>
+  <header class="header">
+    <div class="hamburger--menu"></div>
+
+    <nav class="header--navigation">
+      <ul>
+        <li class="active">
+          <a href="#">Əsas</a>
+        </li>
+        <li><a href="pages/products/products.html">Məhsullar</a></li>
+        <li><a href="./pages/support/support.html">FAQ</a></li>
+        <li><a href="./pages/cart/cart.html">Səbət</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="actions">
+    <div class="container">
+      <div class="actions__content">
+        <div class="actions--logo">
+          <p><span>D</span>NP</p>
+        </div>
+        <div class="actions--search">
+          <input type="text" placeholder="Enter your product name...">
+          <i class="fa-brands fa-searchengin"></i>
+          <div class="actions--search__products">
+            <div class="actions--search__products--item">
+              <img src="https://m.media-amazon.com/images/I/61n+vIfzOKL._AC_UL480_FMwebp_QL65_.jpg" alt="item">
+
+              <div class="content">
+                <div class="content__top">
+                  <p>Geyim</p>
+                  <div class="stars">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star unchecked"></span>
+                  </div>
+                </div>
+
+                <p class="content__name">
+                  Hanes Men's Sweatshirt, EcoSmart Fleece Hoodie
+                </p>
+              </div>
+
+
+
+
+            </div>
+            <div class="line"></div>
+            <div class="actions--search__products--item">
+              <img src="https://m.media-amazon.com/images/I/61n+vIfzOKL._AC_UL480_FMwebp_QL65_.jpg" alt="item">
+
+              <div class="content">
+                <div class="content__top">
+                  <p>Geyim</p>
+                  <div class="stars">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star unchecked"></span>
+                  </div>
+                </div>
+
+                <p class="content__name">
+                  Hanes Men's Sweatshirt, EcoSmart Fleece Hoodie
+                </p>
+              </div>
+
+
+
+
+            </div>
+          </div>
+        </div>
+        <div class="actions--events">
+          <div class="actions--person">
+            <i class="fa-regular fa-user"></i>
+          </div>
+          <div class="actions--wish">
+            <i class="fa-regular fa-heart"></i>
+          </div>
+          <div class="actions--cart">
+            <i class="fa-brands fa-opencart"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="products">
+    <div class="container">
+      <div class="products--header">
+        <h1>Ən çox satılanlar</h1>
+      </div>
+      <div class="products--list"></div>
+    </div>
+  </div>
+
+  <div class="categories">
+    <div class="container">
+      <p class="categories__header">Kateqoriyalar</p>
+      <div class="categories--list">
+        <div class="categories--list__category clothing">
+          <button>Geyim</button>
+        </div>
+        <div class="categories--list__category shoes">
+          <button>Ayaqqabı</button>
+        </div>
+        <div class="categories--list__category watches">
+          <button>Saat</button>
+        </div>
+        <div class="categories--list__category accessories">
+          <button>Aksessuar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer--content">
+        <div class="footer--content__logo">
+          <p><span>Demain</span> n'existe pas</p>
+        </div>
+        <div class="footer--content__nav">
+          <ul>
+            <h3>Naviqasiya</h3>
+            <li><a href="#">Əsas</a></li>
+            <li><a href="#">Məhsullar</a></li>
+            <li><a href="#">Kateqoriyalar</a></li>
+            <li><a href="#">Dəstək</a></li>
+          </ul>
+        </div>
+        <div class="footer--content__subscription">
+          <h2>Yeniliklərdən xəbər alın</h2>
+          <form>
+            <input type="text" name="name" placeholder="Ad" />
+            <input type="emal" name="email" placeholder="Email" />
+            <button type="submit">Göndər</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="global/global.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>

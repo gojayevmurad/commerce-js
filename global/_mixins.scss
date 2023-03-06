@@ -1,0 +1,38 @@
+@mixin desktop {
+  @media only screen and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (max-width: 991px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media only screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin extra-small {
+  @media only screen and (max-width: 575px) {
+    @content;
+  }
+}
+
+@mixin extra-extra-small {
+  @media only screen and (max-width: 400px) {
+    @content;
+  }
+}
+
+// D-FLEX
+
+@mixin d-flex($justify: center, $align: center, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}

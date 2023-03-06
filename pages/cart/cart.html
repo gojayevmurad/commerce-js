@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style/cart.css" />
+  <link rel="icon" href="../../assets/favicon.svg" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>DNP || Cart</title>
+</head>
+
+<body>
+  <ul class="notifications"></ul>
+  <header class="header">
+    <div class="hamburger--menu"></div>
+
+    <nav class="header--navigation">
+      <ul>
+        <li><a href="../../index.html">Əsas</a></li>
+        <li><a href="../products/products.html">Məhsullar</a></li>
+        <li><a href="../support/support.html">FAQ</a></li>
+        <li class="active"><a href="#">Səbət</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="cart">
+    <div class="container">
+      <div class="cart--content">
+        <div class="cart--content__list">
+          <div class="arrow">
+            <i class="fa-solid fa-arrow-down"></i>
+          </div>
+          <div class="cart--content__list--header">
+            <h3>Məhsul Siyahısı</h3>
+            <h5 class="product--count">Say : <span>4</span></h5>
+          </div>
+          <table>
+            <tr>
+              <th>Detallar</th>
+              <th>Say</th>
+              <th>Qiymət</th>
+              <th>Ümumi</th>
+            </tr>
+          </table>
+
+          <div class="cart--content__countine--shopping">
+            <p>
+              <a href="../products/products.html"><i class="fa-solid fa-arrow-left-long"></i> Alışverişə davam
+                et</a>
+            </p>
+          </div>
+        </div>
+        <div class="cart--content__order">
+          <div class="cart--content__order--header">
+            <h3>Sifariş Qəbzi</h3>
+          </div>
+          <div class="cart--content__order--count">
+            <p>Məhsul sayı: <span>4</span></p>
+            <p>
+              $<span class="cart--content__order--count__pricee"> 43.20</span>
+            </p>
+          </div>
+          <div class="cart--content__order--shipping">
+            <h4>Çatdırılma</h4>
+            <select name="shipping" id="shipping">
+              <option value="1">METHOD 1</option>
+              <option value="2">METHOD 2</option>
+              <option value="3">METHOD 3</option>
+            </select>
+          </div>
+          <div class="cart--content__order--special__note">
+            <h4>Xüsusi Qeyd</h4>
+            <textarea type="text" placeholder="Qeydinizi daxil edin..."></textarea>
+          </div>
+          <div class="cart--content__order--checkout">
+            <div class="cart--content__order--checkout--det">
+              <h4>Yekun məbləğ</h4>
+              <p>
+                $<span class="cart--content__checkout--price">45.20</span>
+              </p>
+            </div>
+            <button>Satın Al</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="empty--cart hide">
+    <img src="../../assets/empty-cart.png" alt="Empty Cart">
+  </div>
+
+
+  <script src="../../global/global.js"></script>
+  <script src="cart.js"></script>
+</body>
+
+</html>

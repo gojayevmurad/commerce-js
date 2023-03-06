@@ -1,0 +1,357 @@
+// GOOGLE FONTS WORK SANS
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600;800&display=swap");
+// GOOGLE FONTS MUSEOMODERNO
+@import url("https://fonts.googleapis.com/css2?family=MuseoModerno:wght@200;300;400;500;600&display=swap");
+@import "../../../global/global";
+
+// #region main
+
+.main {
+  margin-top: 30px;
+  fieldset {
+    padding: 10px;
+  }
+  &--content {
+    @include d-flex(start, flex-start, column);
+    gap: 30px;
+    position: relative;
+
+    &__filter {
+      width: 100%;
+      @include d-flex(space-between);
+      &--view {
+        @include d-flex;
+        gap: 15px;
+        button {
+          border: none;
+          outline: none;
+          height: 50px;
+          width: 50px;
+          cursor: pointer;
+          background-color: var(--clr-light);
+          border: 1px solid var(--clr-primary);
+          @include d-flex;
+          transition: 0.3s;
+          i {
+            color: var(--clr-primary);
+            font-size: 1rem;
+            transition: 0.3s;
+          }
+
+          &:hover {
+            background-color: var(--clr-primary);
+            i {
+              color: var(--clr-light);
+            }
+          }
+        }
+      }
+
+      &--sort {
+        form {
+          @include d-flex;
+          gap: 20px;
+          select {
+            outline: none;
+            padding: 10px 5px;
+          }
+          button {
+            padding: 10px;
+            cursor: pointer;
+            outline: none;
+            background-color: var(--clr-light);
+            color: var(--clr-primary);
+            border: 1px solid var(--clr-primary);
+            transition: 0.3s;
+
+            &:hover {
+              background-color: var(--clr-primary);
+              border: 1px solid transparent;
+              color: var(--clr-light);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// #endregion main
+
+::placeholder {
+  color: var(--clr--light--gray);
+}
+
+// #region Products
+.products {
+  margin-top: 10px;
+  width: 100%;
+  background-color: var(--clr-light);
+  padding-bottom: 15px;
+  &--header {
+    margin: 20px 0;
+    overflow: hidden;
+    h1 {
+      display: inline-block;
+      position: relative;
+      animation: productsHeader 8s linear infinite;
+      color: var(--clr-primary);
+      user-select: none;
+      transition: 0.3s;
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+    @include mobile {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @include extra-small {
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  &--list {
+    @include d-flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+    &__product {
+      overflow: hidden;
+      background-color: #fff;
+      width: calc(90% / 4);
+      border: 1px solid var(--clr--light--gray);
+      padding: 10px 20px;
+      transition: 0.3s;
+      @include d-flex(center, center, column);
+      gap: 30px;
+      border-radius: 5px;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px 2px var(--clr--light--gray);
+      }
+
+      .product--title {
+        @include d-flex(space-between);
+        width: 100%;
+        min-height: 50px;
+        p {
+          font-weight: 600;
+          user-select: none;
+        }
+        i {
+          cursor: pointer;
+          transition: 0.3s;
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+      }
+      .product--image {
+        img {
+          height: 100px;
+          object-fit: contain;
+          max-width: 100%;
+          transition: 0.3s;
+          &.shoes:hover {
+            transform: scale(1.2);
+          }
+          &.clothing:hover {
+            transform: scale(1.6);
+          }
+          &.accessories:hover {
+            transform: scale(1.2);
+          }
+          @include tablet {
+            &:hover {
+              transform: scale(1) !important;
+            }
+          }
+        }
+      }
+
+      .product--content {
+        @include d-flex(center, center, column);
+        gap: 20px;
+        &__name {
+          font-weight: 600;
+          font-size: 0.9rem;
+          user-select: none;
+          overflow: hidden;
+          height: 50px;
+        }
+
+        &__details {
+          @include d-flex(space-between);
+          width: 100%;
+          p {
+            font-weight: 500;
+            font-size: 1.5rem;
+            user-select: none;
+          }
+          button {
+            height: 2rem;
+            position: relative;
+            padding: 0 10px;
+            text-align: center;
+            line-height: 1;
+            cursor: pointer;
+            border: 2px solid transparent;
+            outline: none;
+            font-size: 15px;
+            transition: 0.3s;
+            &:hover {
+              transform: scale(1.1);
+              color: var(--clr-light);
+              background-color: var(--clr-primary);
+            }
+          }
+
+          &--changecount {
+            input,
+            button {
+              width: 30px;
+              height: 30px;
+              text-align: center;
+              border: none;
+              outline: none;
+              user-select: none;
+            }
+            input {
+              background-color: var(--clr-primary);
+              color: var(--clr-light);
+            }
+          }
+        }
+      }
+
+      @include desktop {
+        width: calc(90% / 3);
+      }
+
+      @include tablet {
+        width: 300px;
+      }
+      @include mobile {
+        width: 300px;
+        height: 300px;
+        gap: 10px;
+        padding: 5px 10px;
+      }
+      @include extra-small {
+        width: 280px;
+      }
+    }
+
+    &.list {
+      display: block;
+      display: flex;
+      justify-content: center;
+      img:hover{
+        transform: scale(1);
+      }
+      .products--list__product {
+        width: 50%;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        border: .2px solid #ddd;
+        height: 180px;
+        overflow: hidden;
+        position: relative;
+        border-radius: 20px;
+        box-sizing: 0 1.2rem 3.6rem rgba(0,0,0,.2)!important;
+
+        &:hover{
+          transform: scale(1);
+        }
+
+        .product--title {
+          display: none;
+        }
+
+        .product--image {
+          width: 200px;
+          height: 100%;
+          overflow: hidden;
+
+          
+
+          img {
+            width: 200px;
+            height: 100%;
+
+            object-fit: contain;
+            &:hover{
+              transform: scale(1)!important;
+            }
+          }
+        }
+
+        .product--content {
+          width: 400px;
+        }
+      }
+    }
+    margin-bottom: 50px;
+  }
+}
+
+.fa-solid:not(.fa-x, .fa-list, .fa-table-cells-large) {
+  font-size: 1.2rem;
+  animation: heart 1s linear infinite;
+}
+
+// #endregion PRODUCTS
+// #region Paginate
+
+.paginate {
+  width: 300px;
+  margin: 0 auto;
+  @include d-flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  &--el {
+    transition: 0.15s;
+    width: 40px;
+    height: 40px;
+    background-color: var(--clr--light--gray);
+    @include d-flex;
+    color: var(--clr-light);
+    cursor: pointer;
+    border: 2px solid transparent;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  &--current {
+    background-color: var(--clr-primary);
+    border: 2px solid var(--clr--light--gray);
+  }
+}
+
+// #endregion Paginate
+
+// #region ANIMATIONS
+
+@keyframes heart {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+
+// #endregion ANIMATIONS
+
+
+

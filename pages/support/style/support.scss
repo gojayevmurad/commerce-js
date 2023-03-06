@@ -1,0 +1,60 @@
+@import "../../../global/global";
+
+.faq {
+  &--header {
+    @include d-flex(center, center, column);
+    p {
+      width: 400px;
+      text-align: center;
+    }
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 3px solid var(--clr--gray);
+  }
+
+  &--list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    h4 {
+      position: relative;
+
+      i {
+        color: var(--clr-primary);
+        margin-right: 5px;
+      }
+    }
+    p {
+      padding: 5px 20px;
+      color: var(--clr--light--gray);
+    }
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 3px solid var(--clr--gray);
+  }
+
+  &--contact {
+    @include d-flex;
+    p {
+      user-select: none;
+      color: var(--clr-primary);
+      button {
+        margin-left: 20px;
+        padding: 8px 16px;
+        border: 1px solid var(--clr-primary);
+        cursor: pointer;
+        transition: 0.3s;
+        background-color: var(--clr-light);
+        color: var(--clr-primary);
+        outline: none;
+
+        &:hover {
+          background-color: var(--clr-primary);
+          color: var(--clr-light);
+        }
+      }
+    }
+    margin-bottom: 40px;
+  }
+}

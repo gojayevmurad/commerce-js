@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      form {
+        width: 600px;
+      }
+      .component {
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+      }
+      .component input {
+        height: 30px;
+        width: 400px;
+      }
+      .component p {
+        text-transform: uppercase;
+        font-size: 1.5rem;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+      button {
+        width: 100%;
+        height: 36px;
+        margin-top: 5px;
+      }
+    </style>
+    <title>Add product</title>
+  </head>
+  <body>
+    <form>
+      <h1 style="text-align: center; margin-bottom: 50px">
+        <a href="../../index.html" target="_blank">Main</a>
+      </h1>
+      <div class="component id--comp">
+        <p>id</p>
+        <input type="text" class="id" disabled />
+      </div>
+      <div class="component title--comp">
+        <p>title</p>
+        <input type="text" class="title" />
+      </div>
+      <div class="component img--comp">
+        <p>img</p>
+        <input type="text" class="img" />
+      </div>
+      <div class="component price--comp">
+        <p>price</p>
+        <input type="text" class="price" />
+      </div>
+      <div class="component category--id--comp">
+        <p>category id</p>
+        <input type="text" class="category--id" />
+      </div>
+
+      <button id="submit" type="submit">Göndər</button>
+    </form>
+    <script src="./fetch.js"></script>
+  </body>
+</html>

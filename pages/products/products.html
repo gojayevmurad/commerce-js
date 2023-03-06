@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../../assets/favicon.svg" />
+  <link rel="stylesheet" href="style/products.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>DNP || Products</title>
+</head>
+
+<body>
+  <ul class="notifications"></ul>
+  <header class="header">
+
+    <div class="hamburger--menu"></div>
+    <nav class="header--navigation">
+      <ul>
+        <li><a href="../../index.html">Əsas</a></li>
+        <li class="active"><a href="#">Məhsullar</a></li>
+        <li><a href="../support/support.html">FAQ</a></li>
+        <li><a href="../cart/cart.html">Səbət</a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+  <div class="actions">
+    <div class="container">
+      <div class="actions__content">
+        <div class="actions--logo">
+          <p><span>D</span>NP</p>
+        </div>
+        <div class="actions--search">
+          <input type="text" placeholder="Enter your product name...">
+          <i class="fa-brands fa-searchengin"></i>
+        </div>
+        <div class="actions--events">
+          <div class="actions--person">
+            <i class="fa-regular fa-user"></i>
+          </div>
+          <div class="actions--wish">
+            <i class="fa-regular fa-heart"></i>
+          </div>
+          <div class="actions--cart">
+            <i class="fa-brands fa-opencart"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="main--content">
+        <div class="main--content__filter">
+          <div class="main--content__filter--showing">
+            <p>Showing all <span class="count--showing">12</span> results</p>
+          </div>
+          <div class="main--content__filter--view">
+            <div class="products--decoration__list" data-val="list">
+              <button><i class="fa-solid fa-list"></i></button>
+            </div>
+            <div class="products--decoration__table" data-val="table">
+              <button><i class="fa-solid fa-table-cells-large"></i></button>
+            </div>
+          </div>
+          <div class="main--content__filter--sort">
+            <form>
+              <select name="sort" id="sort">
+                <option value="popularity">POPULYARLIQ</option>
+                <option value="priceFromCheap">
+                  QİYMƏT (UCUZDAN BAHAYA)
+                </option>
+                <option value="priceFromExpensive">
+                  QİYMƏT (BAHADAN UCUZA)
+                </option>
+              </select>
+              <button id="filter-submit">Filter</button>
+            </form>
+          </div>
+        </div>
+        <div class="products--list">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="paginate">
+      <input type="submit" class="paginate--el paginate--previous" value="0" />
+      <input type="submit" class="paginate--el paginate--current" value="1" />
+      <input type="submit" class="paginate--el paginate--next" value="2" />
+    </div> -->
+
+  <script src="../../global/global.js"></script>
+  <script src="./products.js"></script>
+</body>
+
+</html>
