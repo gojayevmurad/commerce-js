@@ -202,9 +202,6 @@ body {
   border: 1px solid hsl(0, 0%, 93%);
   box-shadow: 0 1rem 6rem rgba(85, 85, 85, 0.5176470588);
 }
-.actions--search__products.hide {
-  display: none;
-}
 .actions--search__products--item {
   display: flex;
   cursor: pointer;
@@ -228,7 +225,7 @@ body {
   justify-content: space-between;
 }
 .actions--search__products--item:hover {
-  transform: scale(0.9);
+  transform: scale(0.99);
 }
 .actions--events {
   display: flex;

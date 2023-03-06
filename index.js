@@ -11,6 +11,8 @@ function getRandomProducts() {
     });
   });
 
+  
+
   randomNums.forEach((num) => {
     let obj = productList[num];
     let product = document.createElement("div");
