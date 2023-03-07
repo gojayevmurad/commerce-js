@@ -1,6 +1,13 @@
+let $ = (data) => document.querySelector(data);
 let productList = [];
 let cartItemsList = [];
 let preloader = document.createElement("div");
+let searchInput = $(".actions--search__input");
+let searchList = $(".actions--search__products");
+let filteredArr = [];
+let viewMore = false;
+let countPr = 0;
+let overlay = $(".overlay");
 
 //! get products & cart items from json server
 async function onloadFunction() {
@@ -188,6 +195,67 @@ const createNotification = (id, msg) => {
   }, 5000);
 };
 
+searchInput.addEventListener("input", (e) => {
+  filteredArr = [];
+  productList.forEach((product) => {
+    if (
+      e.target.value.trim() != "" &&
+      product.title.toLowerCase().includes(e.target.value.toLowerCase().trim())
+    ) {
+      filteredArr.push(product);
+    }
+  });
+
+  if (filteredArr.length >= 5) {
+    countPr = 5;
+    viewMore = true;
+  } else {
+    countPr = filteredArr.length;
+  }
+
+  searchList.innerHTML = "";
+  $(".actions--search").classList.remove("hide");
+  overlay.classList.remove("hide");
+  overlay.addEventListener("click", (e) => {
+    $(".actions--search").classList.add("hide");
+    overlay.classList.add("hide");
+  });
+
+  window.addEventListener("scroll", () => {
+    $(".actions--search").classList.add("hide");
+    overlay.classList.add("hide");
+  });
+
+  for (let i = 0; i < countPr; i++) {
+    let el = filteredArr[i];
+    let searchItem = document.createElement("div");
+    searchItem.classList = "actions--search__products--item";
+    searchItem.innerHTML = `
+      <img src="${el.img}" alt="item">
+  
+      <div class="content">
+        <div class="content__top">
+          <p>Geyim</p>
+          <div class="stars">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star unchecked"></span>
+          </div>
+        </div>
+  
+        <p class="content__name">
+          ${el.title}
+        </p>
+      </div>
+      `;
+    let line = document.createElement("div");
+    line.classList = "line";
+    searchList.append(searchItem, line);
+  }
+});
+
 //! delete cart item
 
 function deleteCartItem(e) {
@@ -200,7 +268,6 @@ function deleteCartItem(e) {
   }).catch((data) => console.log(data));
 }
 
-
 //! end loading
 
 function endLoading() {
@@ -211,7 +278,6 @@ function endLoading() {
     preloader.remove();
   }, 700);
 }
-
 
 //! start loading
 

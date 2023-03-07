@@ -177,6 +177,7 @@ body {
 
   &--search {
     position: relative;
+    z-index: 999999999999;
     input {
       // height: 45px;
       outline: none;
@@ -194,8 +195,17 @@ body {
       cursor: pointer;
     }
 
-    &__products {
+    &.hide {
       z-index: 999;
+      .actions--search__products{
+        height: 0;
+        z-index: 999;
+      }
+    }
+    
+    &__products {
+      
+      z-index: 99999999999999;
       position: absolute;
       width: 100%;
       background-color: #fff;
@@ -206,34 +216,32 @@ body {
       border-bottom-right-radius: 10px;
       border-bottom-left-radius: 10px;
       border: 1px solid hsl(0, 0%, 93%);
-      box-shadow: 0  1rem 6rem #55555584;
-      
-
+      box-shadow: 0 1rem 6rem #55555584;
       &--item {
         display: flex;
         cursor: pointer;
         gap: 40px;
         padding: 5px;
-        transition: .3s;
+        transition: 0.3s;
         img {
           height: 90px;
           width: 90px;
+          object-fit: contain;
         }
-        
-        .content{
+
+        .content {
           width: 100%;
           display: flex;
           justify-content: center;
           gap: 20px;
           flex-direction: column;
-          &__top{
+          &__top {
             display: flex;
             justify-content: space-between;
-            
           }
         }
-        &:hover{
-          transform: scale(.99)
+        &:hover {
+          transform: scale(0.99);
         }
       }
     }
@@ -447,8 +455,22 @@ html {
   border-radius: 20px;
 }
 
-.line{
+.line {
   width: 100%;
   height: 1px;
   background-color: hsl(0, 0%, 93%);
+}
+
+.overlay{
+  &.hide{
+    display: none;
+  }
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-color: #dddddd68;
+  backdrop-filter: blur(1px);
+  z-index: 999999999;
 }

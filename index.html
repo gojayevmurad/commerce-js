@@ -15,6 +15,7 @@
 </head>
 
 <body>
+  <div class="overlay hide"></div>
   <ul class="notifications"></ul>
   <header class="header">
     <div class="hamburger--menu"></div>
@@ -36,59 +37,10 @@
         <div class="actions--logo">
           <p><span>D</span>NP</p>
         </div>
-        <div class="actions--search">
-          <input type="text" placeholder="Enter your product name...">
-          <i class="fa-brands fa-searchengin"></i>
-          <div class="actions--search__products">
-            <div class="actions--search__products--item">
-              <img src="https://m.media-amazon.com/images/I/61n+vIfzOKL._AC_UL480_FMwebp_QL65_.jpg" alt="item">
-
-              <div class="content">
-                <div class="content__top">
-                  <p>Geyim</p>
-                  <div class="stars">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star unchecked"></span>
-                  </div>
-                </div>
-
-                <p class="content__name">
-                  Hanes Men's Sweatshirt, EcoSmart Fleece Hoodie
-                </p>
-              </div>
-
-
-
-
-            </div>
-            <div class="line"></div>
-            <div class="actions--search__products--item">
-              <img src="https://m.media-amazon.com/images/I/61n+vIfzOKL._AC_UL480_FMwebp_QL65_.jpg" alt="item">
-
-              <div class="content">
-                <div class="content__top">
-                  <p>Geyim</p>
-                  <div class="stars">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star unchecked"></span>
-                  </div>
-                </div>
-
-                <p class="content__name">
-                  Hanes Men's Sweatshirt, EcoSmart Fleece Hoodie
-                </p>
-              </div>
-
-
-
-
-            </div>
+        <div class="actions--search hide">
+          <input class="actions--search__input" type="text" placeholder="Enter your product name...">
+          <div class="actions--search__products ">
+            
           </div>
         </div>
         <div class="actions--events">
