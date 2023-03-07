@@ -15,6 +15,8 @@
 
 <body>
   <ul class="notifications"></ul>
+  <div class="overlay hide"></div>
+
   <header class="header">
 
     <div class="hamburger--menu"></div>
@@ -35,9 +37,11 @@
         <div class="actions--logo">
           <p><span>D</span>NP</p>
         </div>
-        <div class="actions--search">
-          <input type="text" placeholder="Enter your product name...">
-          <i class="fa-brands fa-searchengin"></i>
+        <div class="actions--search hide">
+          <input class="actions--search__input" type="text" placeholder="Enter your product name...">
+          <div class="actions--search__products ">
+            
+          </div>
         </div>
         <div class="actions--events">
           <div class="actions--person">
@@ -89,11 +93,6 @@
       </div>
     </div>
   </div>
-  <!-- <div class="paginate">
-      <input type="submit" class="paginate--el paginate--previous" value="0" />
-      <input type="submit" class="paginate--el paginate--current" value="1" />
-      <input type="submit" class="paginate--el paginate--next" value="2" />
-    </div> -->
 
   <script src="../../global/global.js"></script>
   <script src="./products.js"></script>

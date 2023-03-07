@@ -1,3 +1,4 @@
+console.clear();
 let $ = (data) => document.querySelector(data);
 let productList = [];
 let cartItemsList = [];
@@ -206,6 +207,13 @@ searchInput.addEventListener("input", (e) => {
     }
   });
 
+  if (e.target.value.trim() == "") {
+    $(".actions--search").classList.add("hide");
+    overlay.classList.add("hide");
+    searchInput.value = "";
+    return;
+  }
+
   if (filteredArr.length >= 5) {
     countPr = 5;
     viewMore = true;
@@ -219,11 +227,13 @@ searchInput.addEventListener("input", (e) => {
   overlay.addEventListener("click", (e) => {
     $(".actions--search").classList.add("hide");
     overlay.classList.add("hide");
+    searchInput.value = "";
   });
 
   window.addEventListener("scroll", () => {
     $(".actions--search").classList.add("hide");
     overlay.classList.add("hide");
+    searchInput.value = "";
   });
 
   for (let i = 0; i < countPr; i++) {
@@ -253,6 +263,9 @@ searchInput.addEventListener("input", (e) => {
     let line = document.createElement("div");
     line.classList = "line";
     searchList.append(searchItem, line);
+    searchItem.addEventListener("click", (e) => {
+      window.location.href = `/pages/singleProduct/singleProduct.html?id=${el.id}`
+    });
   }
 });
 
