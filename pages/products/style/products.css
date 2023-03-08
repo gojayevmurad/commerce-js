@@ -611,7 +611,6 @@ html {
   height: 440px;
   width: 240px;
   position: relative;
-  border-radius: 5px;
   overflow: hidden;
   margin-bottom: 10px;
 }
@@ -677,6 +676,14 @@ html {
   color: var(--clr-primary);
   border: 1px solid var(--clr-primary);
 }
+.products--list__product .product--content__details button.increase:hover {
+  background-color: green;
+  color: #fff;
+}
+.products--list__product .product--content__details button.decrease:hover {
+  background-color: #e24d4c;
+  color: #fff;
+}
 .products--list__product input {
   background-color: var(--clr-light);
   text-align: center;
@@ -735,37 +742,6 @@ html {
 .fa-solid:not(.fa-x, .fa-list, .fa-table-cells-large) {
   font-size: 1.2rem;
   animation: heart 1s linear infinite;
-}
-
-.paginate {
-  width: 300px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  gap: 10px;
-  margin-bottom: 30px;
-}
-.paginate--el {
-  transition: 0.15s;
-  width: 40px;
-  height: 40px;
-  background-color: var(--clr--light--gray);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  color: var(--clr-light);
-  cursor: pointer;
-  border: 2px solid transparent;
-}
-.paginate--el:hover {
-  transform: scale(1.1);
-}
-.paginate--current {
-  background-color: var(--clr-primary);
-  border: 2px solid var(--clr--light--gray);
 }
 
 @keyframes heart {

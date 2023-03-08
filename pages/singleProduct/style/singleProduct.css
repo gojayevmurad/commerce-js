@@ -475,6 +475,107 @@ html {
   transform-origin: bottom left;
 }
 
-body, header {
+body,
+header {
   background-color: #f3f3f3 !important;
+}
+
+.product {
+  padding: 30px 0;
+}
+.product--location {
+  margin-top: 10px;
+  color: #555 !important;
+  padding: 0 20px;
+  font-size: 16px;
+}
+.product--location a {
+  color: #555 !important;
+}
+.product--location a::after {
+  height: 1px;
+}
+.product--main {
+  display: flex;
+  justify-content: space-between;
+}
+.product--main__slider {
+  height: 700px;
+  display: flex;
+}
+.product--main__slider img {
+  height: 100%;
+}
+.product--main__slider--slide {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.product--main__slider--slide img {
+  height: 100px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.product--main__slider--slide img:hover {
+  transform: scale(1.04);
+}
+.product--main__desc {
+  width: 600px;
+}
+.product--main__desc--top {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+.product--main__desc--top .desc--name {
+  text-align: left;
+  font-weight: 400;
+}
+.product--main__desc--top p:nth-of-type(1) {
+  font-weight: 600;
+  font-size: 30px;
+}
+.product--main__desc--top .desc--stock {
+  color: green;
+  font-weight: 500;
+  margin-left: 5px;
+}
+.product--main__desc--top p:nth-last-of-type(1) {
+  font-weight: 300;
+  color: #555;
+}
+.product--main__desc--bot {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.product--main__desc--bot button {
+  cursor: pointer;
+  background-color: var(--clr-primary);
+  border: 1px solid transparent;
+  outline: none;
+  padding: 30px 10px;
+  margin-right: 5px;
+  transition: 0.1s;
+  color: var(--clr-light);
+  width: 200px;
+}
+.product--main__desc--bot button:hover {
+  transform: scale(1.05);
+  background-color: var(--clr-light);
+  color: var(--clr-primary);
+  border: 1px solid var(--clr-primary);
+}
+.product--main__desc--bot button.increase:hover {
+  background-color: green;
+  color: #fff;
+}
+.product--main__desc--bot button.decrease:hover {
+  background-color: #e24d4c;
+  color: #fff;
 }/*# sourceMappingURL=singleProduct.css.map */

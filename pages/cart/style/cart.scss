@@ -7,6 +7,10 @@ body {
   min-height: 100vh;
 }
 
+.header{
+  box-shadow: none!important;
+}
+
 .cart {
   margin-top: 50px;
   &.hide {

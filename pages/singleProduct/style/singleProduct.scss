@@ -1,8 +1,116 @@
 @import "../../../global/global";
 
-
-body,header{
-  background-color: #f3f3f3!important;
+body,
+header {
+  background-color: #f3f3f3 !important;
 }
 
+.product {
+  padding: 30px 0;
 
+  &--location {
+    margin-top: 10px;
+    color: #555 !important;
+    padding: 0 20px;
+    font-size: 16px;
+    a {
+      color: #555 !important;
+      &::after {
+        height: 1px;
+      }
+    }
+  }
+
+  &--main {
+    display: flex;
+    justify-content: space-between;
+
+    &__slider {
+      height: 700px;
+      display: flex;
+      img {
+        height: 100%;
+      }
+
+      &--slide {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+        img {
+          height: 100px;
+          border: 1px solid #ddd;
+          cursor: pointer;
+          transition: 0.3s;
+          &:hover {
+            transform: scale(1.04);
+          }
+        }
+      }
+    }
+
+    &__desc {
+      width: 600px;
+      &--top {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 30px;
+        margin-bottom: 30px;
+        .desc--name {
+          text-align: left;
+          font-weight: 400;
+        }
+
+        p:nth-of-type(1) {
+          font-weight: 600;
+          font-size: 30px;
+        }
+        .desc--stock {
+          color: green;
+          font-weight: 500;
+          margin-left: 5px;
+        }
+
+        p:nth-last-of-type(1) {
+          font-weight: 300;
+          color: #555;
+        }
+      }
+
+      &--bot {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        button {
+          cursor: pointer;
+          background-color: var(--clr-primary);
+          border: 1px solid transparent;
+          outline: none;
+          padding: 30px 10px;
+          margin-right: 5px;
+          transition: 0.1s;
+          color: var(--clr-light);
+          width: 200px;
+
+          &:hover {
+            transform: scale(1.05);
+            background-color: var(--clr-light);
+            color: var(--clr-primary);
+            border: 1px solid var(--clr-primary);
+          }
+          &.increase:hover {
+            background-color: green;
+            color: #fff;
+          }
+          &.decrease:hover {
+            background-color: #e24d4c;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
