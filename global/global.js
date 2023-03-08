@@ -2,7 +2,7 @@
 let $ = (data) => document.querySelector(data);
 let productList = [];
 let cartItemsList = [];
-let preloader = document.createElement("div");
+let preloader = $(".preloader");
 let searchInput = $(".actions--search__input");
 let searchList = $(".actions--search__products");
 let filteredArr = [];
@@ -37,9 +37,10 @@ function addToCartAndThenChangeButton(id, target) {
     headers: {
       "Content-type": "application/json; charset=UTF-8",
     },
+  }).finally((data) => {
+    createNotification("success", "Səbətə əlavə olundu");
+    changeToCountable(target);
   });
-  changeToCountable(target);
-  createNotification("success", "Səbətə əlavə olundu");
 }
 
 //! change add to cart btn
@@ -93,7 +94,6 @@ function changeCount(e) {
   }
   if (changeCountInput.value == 0) {
     changeToBtn(e.target);
-    createNotification("warning", "Səbətdən silindi");
   }
   cartItemsList.map((el) => {
     if (el.id == e.target.id) {
@@ -286,7 +286,11 @@ function deleteCartItem(e) {
       Accept: "application/json",
       "Content-type": "application/json; charset=UTF-8",
     },
-  }).catch((data) => console.log(data));
+  })
+    .catch((data) => console.log(data))
+    .finally((data) => {
+      createNotification("error", "Səbətdən silindi");
+    });
 }
 
 //! change image
@@ -311,9 +315,3 @@ function endLoading() {
 }
 
 //! start loading
-
-function startLoading() {
-  preloader.className = "preloader";
-  preloader.innerHTML = `<div class="b-ico-preloader"></div><div class="spinner"></div>`;
-  document.body.appendChild(preloader);
-}

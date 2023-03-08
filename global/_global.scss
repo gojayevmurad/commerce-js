@@ -129,21 +129,21 @@ body {
           }
         }
 
-        &::before {
-          content: "";
-          position: absolute;
-          background-color: var(--clr-primary);
-          bottom: 0;
-          transform: scaleX(0);
-          height: 2px;
-          width: 100%;
-          transition: 0.1s linear;
-          transform-origin: center;
-        }
+        // &::before {
+        //   content: "";
+        //   position: absolute;
+        //   background-color: var(--clr-primary);
+        //   bottom: 0;
+        //   transform: scaleX(0);
+        //   height: 2px;
+        //   width: 100%;
+        //   transition: 0.1s linear;
+        //   transform-origin: center;
+        // }
 
-        &:hover::before {
-          transform: scaleX(1);
-        }
+        // &:hover::before {
+        //   transform: scaleX(1);
+        // }
       }
     }
     @include mobile {
@@ -478,4 +478,33 @@ html {
   height: 100%;
   background-color: #dddddd68;
   z-index: 999999999;
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #0087ca;
+}
+
+.hover-underline-animation::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--clr-primary);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.hover-underline-animation.active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }

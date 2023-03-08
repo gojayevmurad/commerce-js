@@ -128,20 +128,6 @@ body {
 .header--navigation ul li.active::before {
   transform: scale(1);
 }
-.header--navigation ul li::before {
-  content: "";
-  position: absolute;
-  background-color: var(--clr-primary);
-  bottom: 0;
-  transform: scaleX(0);
-  height: 2px;
-  width: 100%;
-  transition: 0.1s linear;
-  transform-origin: center;
-}
-.header--navigation ul li:hover::before {
-  transform: scaleX(1);
-}
 @media only screen and (max-width: 767px) {
   .header--navigation {
     height: 0;
@@ -458,6 +444,35 @@ html {
 }
 .overlay.hide {
   display: none;
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #0087ca;
+}
+
+.hover-underline-animation::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--clr-primary);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.hover-underline-animation.active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
 .products {

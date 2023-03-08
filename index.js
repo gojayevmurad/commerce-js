@@ -58,6 +58,6 @@ window.addEventListener("load", async () => {
   // startLoading();
   await onloadFunction();
   getRandomProducts(); //! call the  squentially functions with order when window load
-  // endLoading();
+  endLoading();
   changeButtonsAfterLoad();
 });

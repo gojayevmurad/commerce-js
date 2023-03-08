@@ -38,7 +38,7 @@ function createCartItemsTable() {
                           }" disabled />
                           <button id="${
                             cartItem.id
-                          }" class="increase increase$cartItem.i}" value="+">+</button>
+                          }" class="increase increase${cartItem.id}" value="+">+</button>
                         </div>
                       </td>
                       <td class="product--price">
@@ -86,4 +86,5 @@ function addEventsToButtons() {
 window.addEventListener("load", async () => {
   await onloadFunction();
   createCartItemsTable();
+  endLoading();
 });

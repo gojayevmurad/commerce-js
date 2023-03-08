@@ -86,7 +86,6 @@ function displayProducts(list) {
 }
 
 window.addEventListener("load", async () => {
-  startLoading(); //!!!!!!!!!!!!!!!!!!!!!!
   await onloadFunction();
   displayProducts(productList);
   changeButtonsAfterLoad();
