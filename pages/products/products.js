@@ -3,7 +3,6 @@ const tableView = document.querySelector(".products--decoration__table");
 const listView = document.querySelector(".products--decoration__list");
 const buttons = [tableView, listView];
 const productCount = document.querySelector(".count--showing");
-// const filteredArr = [...productList];
 
 //! products view
 buttons.forEach((button) => {
@@ -87,9 +86,9 @@ function displayProducts(list) {
 }
 
 window.addEventListener("load", async () => {
-  // startLoading();//!!!!!!!!!!!!!!!!!!!!!!
+  startLoading(); //!!!!!!!!!!!!!!!!!!!!!!
   await onloadFunction();
   displayProducts(productList);
   changeButtonsAfterLoad();
-  // endLoading();//!!!!!!!!!!!!!!!!!!!!!!
+  endLoading(); //!!!!!!!!!!!!!!!!!!!!!!
 });

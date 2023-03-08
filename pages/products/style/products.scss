@@ -144,10 +144,11 @@
       img {
         height: 360px;
         width: 240px;
-        transition: 0.3s;
+        transition: .5s;
         &.frontimage {
           &:hover {
             opacity: 0;
+            filter: blur(15px);
           }
         }
 
@@ -166,11 +167,12 @@
         padding: 0 5px;
         background-color: #dddddd63;
         bottom: 80px;
-        z-index: 1;
+        z-index: -1;
       }
 
       .product--content__name {
         font-size: 14px;
+        cursor: pointer;
       }
       .product--content__details {
         margin-top: 10px;
@@ -194,6 +196,18 @@
             border: 1px solid var(--clr-primary);
           }
         }
+      }
+
+      input {
+        background-color: var(--clr-light);
+        text-align: center;
+        border: 1px solid var(--clr-primary);
+        outline: none;
+        padding: 5px 10px;
+        margin-right: 5px;
+        width: 50px;
+        transition: 0.1s;
+        color: var(--clr-primary);
       }
     }
 

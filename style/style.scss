@@ -55,12 +55,29 @@
         justify-content: space-between;
         align-items: center;
         background-color: #dddddd7c;
+        z-index: 3;
       }
 
       img {
         height: 360px;
         width: 240px;
-        cursor: pointer;
+        transition: 0.5s;
+        z-index: 2;
+        &.frontimage {
+        }
+
+        &.backimage {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 360px !important;
+          width: 240px !important;
+          z-index: 1;
+          &:hover {
+            opacity: 0;
+            filter: blur(10px);
+          }
+        }
       }
       .stars {
         position: absolute;
@@ -68,6 +85,7 @@
         padding: 0 5px;
         background-color: #dddddd63;
         bottom: 80px;
+        z-index: 1;
       }
 
       .product--content__name {
@@ -95,6 +113,17 @@
             color: var(--clr-primary);
             border: 1px solid var(--clr-primary);
           }
+        }
+        input {
+          background-color: var(--clr-light);
+          text-align: center;
+          border: 1px solid var(--clr-primary);
+          outline: none;
+          padding: 5px 10px;
+          margin-right: 5px;
+          width: 50px;
+          transition: 0.1s;
+          color: var(--clr-primary);
         }
       }
     }

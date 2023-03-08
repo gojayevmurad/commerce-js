@@ -211,6 +211,7 @@ searchInput.addEventListener("input", (e) => {
     $(".actions--search").classList.add("hide");
     overlay.classList.add("hide");
     searchInput.value = "";
+    searchList.innerHTML = "";
     return;
   }
 
@@ -240,18 +241,25 @@ searchInput.addEventListener("input", (e) => {
     let el = filteredArr[i];
     let searchItem = document.createElement("div");
     searchItem.classList = "actions--search__products--item";
+    let popularity = Math.ceil(el.popularity);
+    let stars = "";
+    (() => {
+      for (let i = 0; i <= 5; i++) {
+        if (i <= popularity) {
+          stars += '<span class="fa fa-star checked"></span>';
+        } else {
+          stars += '<span class="fa fa-star unchecked"></span>';
+        }
+      }
+    })();
     searchItem.innerHTML = `
-      <img src="${el.img}" alt="item">
+      <img src="${el.img[0]}" alt="item">
   
       <div class="content">
         <div class="content__top">
-          <p>Geyim</p>
+          <p>${el.categoryName}</p>
           <div class="stars">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star unchecked"></span>
+            ${stars}
           </div>
         </div>
   

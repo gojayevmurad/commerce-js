@@ -3,6 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=MuseoModerno:wght@200;300;400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -10,10 +11,13 @@
   text-decoration: none;
   list-style: none;
   font-family: var(--font--primary);
+  font-family: "Golos Text", sans-serif;
+  font-family: "Golos Text", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 body {
-  --clr-primary: #ffb301;
+  --clr-primary: #555;
   --clr-light: #fff;
   --clr--gray: #555555;
   --clr--light--gray: #a0a0a0;
@@ -180,8 +184,12 @@ body {
   outline: none;
   border: none;
   padding: 1rem 3rem 1rem 1rem;
-  width: 600px;
+  width: 300px;
   border: 1px solid hsl(0, 0%, 93%);
+  transition: 0.3s;
+}
+.actions--search input:focus {
+  width: 600px;
 }
 .actions--search i {
   position: absolute;
@@ -448,8 +456,6 @@ html {
   top: 0;
   height: 100%;
   background-color: rgba(221, 221, 221, 0.4078431373);
-  -webkit-backdrop-filter: blur(1px);
-          backdrop-filter: blur(1px);
   z-index: 999999999;
 }
 .overlay.hide {
@@ -608,10 +614,11 @@ html {
 .products--list__product img {
   height: 360px;
   width: 240px;
-  transition: 0.3s;
+  transition: 0.5s;
 }
 .products--list__product img.frontimage:hover {
   opacity: 0;
+  filter: blur(15px);
 }
 .products--list__product img.backimage {
   position: absolute;
@@ -627,10 +634,11 @@ html {
   padding: 0 5px;
   background-color: rgba(221, 221, 221, 0.3882352941);
   bottom: 80px;
-  z-index: 1;
+  z-index: -1;
 }
 .products--list__product .product--content__name {
   font-size: 14px;
+  cursor: pointer;
 }
 .products--list__product .product--content__details {
   margin-top: 10px;
@@ -653,6 +661,17 @@ html {
   background-color: var(--clr-light);
   color: var(--clr-primary);
   border: 1px solid var(--clr-primary);
+}
+.products--list__product input {
+  background-color: var(--clr-light);
+  text-align: center;
+  border: 1px solid var(--clr-primary);
+  outline: none;
+  padding: 5px 10px;
+  margin-right: 5px;
+  width: 50px;
+  transition: 0.1s;
+  color: var(--clr-primary);
 }
 .products--list.list {
   display: block;

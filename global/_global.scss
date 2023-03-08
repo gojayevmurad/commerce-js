@@ -5,6 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 @import "mixins";
 
+@import url("https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -12,10 +13,13 @@
   text-decoration: none;
   list-style: none;
   font-family: var(--font--primary);
+  font-family: "Golos Text", sans-serif;
+  font-family: "Golos Text", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 body {
-  --clr-primary: #ffb301;
+  --clr-primary: #555;
   --clr-light: #fff;
   --clr--gray: #555555;
   --clr--light--gray: #a0a0a0;
@@ -179,12 +183,15 @@ body {
     position: relative;
     z-index: 999999999999;
     input {
-      // height: 45px;
       outline: none;
       border: none;
       padding: 1rem 3rem 1rem 1rem;
-      width: 600px;
+      width: 300px;
       border: 1px solid hsl(0, 0%, 93%);
+      transition: 0.3s;
+      &:focus {
+        width: 600px;
+      }
     }
     i {
       position: absolute;
@@ -197,14 +204,13 @@ body {
 
     &.hide {
       z-index: 999;
-      .actions--search__products{
+      .actions--search__products {
         height: 0;
         z-index: 999;
       }
     }
-    
+
     &__products {
-      
       z-index: 99999999999999;
       position: absolute;
       width: 100%;
@@ -461,8 +467,8 @@ html {
   background-color: hsl(0, 0%, 93%);
 }
 
-.overlay{
-  &.hide{
+.overlay {
+  &.hide {
     display: none;
   }
   position: absolute;
@@ -471,6 +477,5 @@ html {
   top: 0;
   height: 100%;
   background-color: #dddddd68;
-  backdrop-filter: blur(1px);
   z-index: 999999999;
 }

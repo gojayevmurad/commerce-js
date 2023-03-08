@@ -11,8 +11,6 @@ function getRandomProducts() {
     });
   });
 
-  
-
   randomNums.forEach((num) => {
     let obj = productList[num];
     let product = document.createElement("div");
@@ -27,7 +25,7 @@ function getRandomProducts() {
         }
       }
     })();
-    console.log(stars)
+    console.log(stars);
     product.classList = "products--list__product";
     product.innerHTML = `
                     <div class="product--title">
@@ -35,10 +33,8 @@ function getRandomProducts() {
                       <i class="fa-regular fa-heart" onclick="addWishList(this)"></i>
                     </div>
                     <div class="product--image">
-                      <img
-                        src="${obj.img}"
-                        alt="glass"
-                      />
+                    <img class="frontimage" src="${obj.img[0]}" alt="glass" />
+                    <img class="backimage" src=${obj.img[1]} alt="backimage"/>
                     </div>
                     <div class="stars"
                     ${stars}

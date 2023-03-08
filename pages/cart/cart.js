@@ -15,10 +15,9 @@ function createCartItemsTable() {
         if (cartItem.id == product.id) {
           const listItem = document.createElement("tr");
           listItem.innerHTML = `
-          
           <td class="product--details">
                         <img
-                          src="${product.img}"
+                          src="${product.img[0]}"
                           alt="asdf"
                         />
                         <div>
@@ -33,15 +32,13 @@ function createCartItemsTable() {
                       </td>
                       <td class="product--count">
                         <div class="product--count__content">
-                          <button id="${cartItem.id}" class="decrease decrease${
-            cartItem.id
-          }" value="-">-</button>
+                          <button id="${cartItem.id}" class="decrease decrease${cartItem.id}" value="-">-</button>
                           <input class="cartItemCount" type="text"  value="${
                             cartItem.count
                           }" disabled />
-                          <button id="${cartItem.id}" class="increase increase${
-            cartItem.id
-          }" value="+">+</button>
+                          <button id="${
+                            cartItem.id
+                          }" class="increase increase$cartItem.i}" value="+">+</button>
                         </div>
                       </td>
                       <td class="product--price">
@@ -50,12 +47,11 @@ function createCartItemsTable() {
                         }</span></p>
                       </td>
                       <td class="product--total__price">
-                        <p>$ <span class="total--price__detail">${
+                        <p>$ <span class="total--price__detail">${(
                           product.price * cartItem.count
-                        }</span></p>
+                        ).toFixed(2)}</span></p>
                       </td>
-          
-          `;
+`;
 
           table.appendChild(listItem);
           let buttons = [`decrease${cartItem.id}`, `increase${cartItem.id}`];
