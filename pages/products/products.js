@@ -5,11 +5,10 @@ const buttons = [tableView, listView];
 const productCount = document.querySelector(".count--showing");
 // const filteredArr = [...productList];
 
-
 //! products view
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    startLoading();//!!!!!!!!!!!!!!!!!!!!!!
+    startLoading(); //!!!!!!!!!!!!!!!!!!!!!!
     if (button.dataset.val == "list") {
       productListEl.classList.add("list");
     } else {
@@ -62,10 +61,11 @@ function displayProducts(list) {
   </div>
   <div class="product--image">
     <img
-    class="${scaleClassName}"
-      src="${productObj.img}"
+    class="frontimage"
+      src="${productObj.img[0]}"
       alt="glass"
     />
+    <img class="backimage" src=${productObj.img[1]} alt="backimage"/>
   </div>
   <div class="stars"
   ${stars}

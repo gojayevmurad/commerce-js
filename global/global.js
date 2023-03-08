@@ -1,4 +1,4 @@
-console.clear();
+// console.clear();
 let $ = (data) => document.querySelector(data);
 let productList = [];
 let cartItemsList = [];
@@ -264,7 +264,7 @@ searchInput.addEventListener("input", (e) => {
     line.classList = "line";
     searchList.append(searchItem, line);
     searchItem.addEventListener("click", (e) => {
-      window.location.href = `/pages/singleProduct/singleProduct.html?id=${el.id}`
+      window.location.href = `/pages/singleProduct/singleProduct.html?id=${el.id}`;
     });
   }
 });
@@ -279,6 +279,16 @@ function deleteCartItem(e) {
       "Content-type": "application/json; charset=UTF-8",
     },
   }).catch((data) => console.log(data));
+}
+
+//! change image
+
+function changeImage(e, imgArr) {
+  if (e.target.src == imgArr[0]) {
+    e.target.src = imgArr[1];
+  } else {
+    e.target.src = imgArr[0];
+  }
 }
 
 //! end loading
