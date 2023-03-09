@@ -42,7 +42,6 @@
       height: 440px;
       width: 240px;
       position: relative;
-      border-radius: 5px;
       overflow: hidden;
       margin-bottom: 10px;
 
@@ -63,8 +62,7 @@
         width: 240px;
         transition: 0.5s;
         z-index: 2;
-        &.frontimage {
-        }
+
 
         &.backimage {
           position: absolute;

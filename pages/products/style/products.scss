@@ -142,11 +142,14 @@
       img {
         height: 360px;
         width: 240px;
-        transition: 0.5s;
+        transition: 0.2s;
         &.frontimage {
           &:hover {
             opacity: 0;
-            filter: blur(15px);
+
+            &~.backimage{
+              opacity: 1;
+            }
           }
         }
 
@@ -157,6 +160,8 @@
           height: 360px;
           width: 240px;
           z-index: -1;
+          transition: .5s;
+          opacity: 0;
         }
       }
       .stars {
@@ -258,7 +263,6 @@
           img {
             width: 200px;
             height: 100%;
-
             object-fit: contain;
             &:hover {
               transform: scale(1) !important;

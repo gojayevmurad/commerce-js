@@ -589,11 +589,13 @@ html {
 .products--list__product img {
   height: 360px;
   width: 240px;
-  transition: 0.5s;
+  transition: 0.2s;
 }
 .products--list__product img.frontimage:hover {
   opacity: 0;
-  filter: blur(15px);
+}
+.products--list__product img.frontimage:hover ~ .backimage {
+  opacity: 1;
 }
 .products--list__product img.backimage {
   position: absolute;
@@ -602,6 +604,8 @@ html {
   height: 360px;
   width: 240px;
   z-index: -1;
+  transition: 0.5s;
+  opacity: 0;
 }
 .products--list__product .stars {
   position: absolute;
