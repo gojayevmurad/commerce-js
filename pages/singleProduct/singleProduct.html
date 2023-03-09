@@ -22,10 +22,10 @@
         <div class="hamburger--menu"></div>
         <nav class="header--navigation">
             <ul>
-                <li><a href="../../index.html">Əsas</a></li>
-                <li><a href="../products/products.html">Məhsullar</a></li>
-                <li><a href="../support/support.html">FAQ</a></li>
-                <li><a href="../cart/cart.html">Səbət</a></li>
+                <li class="hover-underline-animation"><a href="../../index.html">Əsas</a></li>
+                <li class="hover-underline-animation"><a href="../products/products.html">Məhsullar</a></li>
+                <li class="hover-underline-animation"><a href="../support/support.html">FAQ</a></li>
+                <li class="hover-underline-animation"><a href="../cart/cart.html">Səbət</a></li>
             </ul>
         </nav>
 
@@ -39,9 +39,7 @@
                 </div>
                 <div class="actions--search hide">
                     <input class="actions--search__input" type="text" placeholder="Enter your product name...">
-                    <div class="actions--search__products ">
-
-                    </div>
+                    <div class="actions--search__products "></div>
                 </div>
                 <div class="actions--events">
                     <div class="actions--person">
@@ -71,7 +69,8 @@
                 </div>
                 <div class="product--main">
                     <div class="product--main__slider">
-                        <img src="https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fac%2F76%2Fac768b478d60840f2ae002b81cf81fa7f3ef3902.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]"
+                        <img class="main-image"
+                            src="https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fac%2F76%2Fac768b478d60840f2ae002b81cf81fa7f3ef3902.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]"
                             alt="">
                         <div class="product--main__slider--slide">
                             <img src="https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fac%2F76%2Fac768b478d60840f2ae002b81cf81fa7f3ef3902.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]"
@@ -106,27 +105,75 @@
                         </div>
                         <div class="product--main__desc--bot">
                             <button id="" value="" onclick="" class="addToCart">Səbətə at</button>
-                            <button><i class="fa-regular fa-heart"></i></button>
+                            <button class="wish-btn"><i class="fa-regular fa-heart"></i></button>
                             <div class="sociall">
-                                <i class="fa-brands fa-facebook-f"></i>
-                                <i class="fa-brands fa-twitter"></i>
-                                <i class="fa-brands fa-pinterest-p"></i>
-                                <i class="fa-brands fa-linkedin-in"></i>
+                                <button> <i class="fa-brands fa-facebook-f"></i></button>
+                                <button><i class="fa-brands fa-twitter"></i></button>
+                                <button><i class="fa-brands fa-pinterest-p"></i></button>
+                                <button><i class="fa-brands fa-linkedin-in"></i></button>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <div class="product--desrev">
+                    <div class="container">
+                        <div class="product--desrev__description">
+                            <div class="product--desrev__description--text">
+                                <h3>Təsvir</h3>
+                                <p>
+                                    Designed by Hans J. Wegner in 1949 as one of the first models created especially for
+                                    Carl
+                                    Hansen & Son, and produced since 1950. The last of a series of chairs Wegner
+                                    designed
+                                    based
+                                    on inspiration from antique Chinese armchairs. The gently rounded top together with
+                                    the
+                                    back
+                                    and seat offers a variety of comfortable seating positions, ideal for both long
+                                    visits
+                                    to
+                                    the dining table and relaxed lounging.
+
+                                    The top that goes with everything. Sleek and simple, this sleeveless shell has a
+                                    relaxed
+                                    fit
+                                    and classic round neckline. Plus—it’s made of our eco-conscious Clean Silk, for more
+                                    beauty
+                                    and less waste. Here’s how.
+                                </p>
+                                <h3>Technical Info:</h3>
+                                <p>
+                                    Technical Info:
+                                    Measurement: 56 x 52 x 80 cm high. The seat height is 44 cm. Armrest height 65.8 cm.
+
+                                    Manufacturer: Normann Copenhagen
+
+                                    Designer: Simon Legald.
+
+                                    The characteristic “Y” provides comfortable back support and stability to the
+                                    steam-bent
+                                    top, also inspiring the chair’s names An excellent example of Wegner’s constant
+                                    striving
+                                    towards organic simplicity to create sculptural beauty, comfort and outstanding
+                                    stability. The gently rounded top together with the back and seat offers a variety
+                                    of
+                                    comfortable seating positions, ideal for both long visits to the dining table and
+                                    relaxed lounging. A light chair, easy to move around the dining table and about the
+                                    room.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    
+
 
 
     <script src="../../global/global.js"></script>
-    <script>
-        onloadFunction();
-    </script>
+    <script src="singleProduct.js"></script>
 </body>
 
 </html>

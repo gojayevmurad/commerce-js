@@ -32,6 +32,7 @@ header {
         height: 100%;
       }
 
+
       &--slide {
         display: flex;
         justify-content: start;
@@ -89,11 +90,14 @@ header {
           background-color: var(--clr-primary);
           border: 1px solid transparent;
           outline: none;
-          padding: 30px 10px;
+          height: 60px;
           margin-right: 5px;
           transition: 0.1s;
           color: var(--clr-light);
           width: 200px;
+          &.wish-btn{
+            font-size: 30px;
+          }
 
           &:hover {
             transform: scale(1.05);
@@ -110,6 +114,29 @@ header {
             color: #fff;
           }
         }
+
+        .sociall{
+          margin-top: 40px;
+          button{
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;           
+          }
+        }
+      }
+    }
+  }
+
+  &--desrev{
+    &__description{
+      padding: 30px 0;
+      h3{
+        font-weight: 300!important;
+        font-size: 20px;
+      }
+      p{
+        font-weight: 200;
+        margin-bottom: 20px;
       }
     }
   }

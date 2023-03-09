@@ -72,52 +72,12 @@ body {
       gap: 20px;
       font-size: 1.1rem;
       line-height: 1.4;
-      font-weight: 600;
+      font-weight: 300;
       transition: 1s height;
       top: 0;
       li {
         transition: 1s;
         position: relative;
-
-        // DROPDOWNMENU START
-
-        .dropdownmenu {
-          @include d-flex(center, center, column);
-          position: absolute;
-          top: 25px;
-          left: 50%;
-          display: block;
-          display: none;
-          height: 0 !important;
-          width: 150%;
-          transform: translateX(-50%);
-          li {
-            background-color: var(--clr-primary);
-            height: 35px;
-            text-align: center;
-            padding: 20px 0;
-            transition: 0.1s;
-            border: 1px solid var(--clr--gray);
-            @include d-flex;
-            a {
-              color: var(--clr-light);
-            }
-            &::before {
-              display: none;
-            }
-
-            &:hover {
-              transform: scale(1.1);
-              z-index: 99;
-            }
-          }
-        }
-
-        &:hover .dropdownmenu {
-          display: block;
-        }
-
-        // DROPDOWNMENU END
 
         a {
           color: var(--clr-primary);
@@ -128,22 +88,6 @@ body {
             transform: scale(1);
           }
         }
-
-        // &::before {
-        //   content: "";
-        //   position: absolute;
-        //   background-color: var(--clr-primary);
-        //   bottom: 0;
-        //   transform: scaleX(0);
-        //   height: 2px;
-        //   width: 100%;
-        //   transition: 0.1s linear;
-        //   transform-origin: center;
-        // }
-
-        // &:hover::before {
-        //   transform: scaleX(1);
-        // }
       }
     }
     @include mobile {
@@ -491,7 +435,7 @@ html {
   position: absolute;
   width: 100%;
   transform: scaleX(0);
-  height: 2px;
+  height: 1px;
   bottom: 0;
   left: 0;
   background-color: var(--clr-primary);
