@@ -100,4 +100,4 @@ window.addEventListener("load", async () => {
   endLoading(); //!!!!!!!!!!!!!!!!!!!!!!
 });
 
-console.log("Regular Fit Double-breasted Jack...".length)
+
