@@ -171,6 +171,7 @@
       .product--content__name {
         font-size: 14px;
         cursor: pointer;
+        color: var(--clr-primary);
       }
       .product--content__details {
         margin-top: 10px;
@@ -187,17 +188,22 @@
           transition: 0.1s;
           color: var(--clr-light);
 
-          &:hover {
+          &[disabled] {
+            background-color: var(--clr-primary);
+            opacity: 0.4;
+          }
+
+          &:hover:not(&[disabled]) {
             transform: scale(1.05);
             background-color: var(--clr-light);
             color: var(--clr-primary);
             border: 1px solid var(--clr-primary);
           }
-          &.increase:hover{
+          &.increase:hover {
             background-color: green;
             color: #fff;
           }
-          &.decrease:hover{
+          &.decrease:hover {
             background-color: #e24d4c;
             color: #fff;
           }
@@ -275,7 +281,6 @@
 }
 
 // #endregion PRODUCTS
-
 
 // #region ANIMATIONS
 

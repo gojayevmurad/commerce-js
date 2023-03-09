@@ -40,24 +40,35 @@ function getRandomProducts() {
                     ${stars}
                     </div>
                     <div class="product--content">
-                      <p class="product--content__name">
-                        ${obj.title}
-                      </p>
+                      <a href="/pages/singleProduct/singleProduct.html?id=${
+                        obj.id
+                      }" class="product--content__name">
+                      ${
+                        obj.title.length > 32
+                          ? obj.title.slice(0, 29) + "..."
+                          : obj.title
+                      }
+                      </a>
                       <div class="product--content__details">
                         <p>₼<span class="amount">${obj.price}</span></p>
-                        <button id="load${obj.id}" value="${obj.id}" onclick="" class="addToCart">Səbətə at</button>
+                        <button id="load${obj.id}" value="${obj.id}" ${
+      obj.inStock ? "" : "disabled"
+    } onclick="" class="addToCart">${
+      obj.inStock ? "Səbətə at" : "Stokda yoxdur"
+    }</button>
                       </div>
                     </div>
         `;
     document.querySelector(".products--list").appendChild(product);
   });
+
   addEventToButtons();
 }
 
 window.addEventListener("load", async () => {
-  // startLoading();
   await onloadFunction();
   getRandomProducts(); //! call the  squentially functions with order when window load
   endLoading();
   changeButtonsAfterLoad();
 });
+

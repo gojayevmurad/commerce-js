@@ -113,12 +113,12 @@ body {
   height: 100%;
 }
 .actions--logo {
-  font-weight: 500;
+  font-weight: 400;
   font-size: 2rem;
   width: 30px;
 }
 .actions--logo p {
-  color: var(--clr-primary);
+  color: red;
 }
 .actions--logo p span {
   color: var(--clr--gray) !important;
@@ -614,6 +614,7 @@ html {
 .products--list__product .product--content__name {
   font-size: 14px;
   cursor: pointer;
+  color: var(--clr-primary);
 }
 .products--list__product .product--content__details {
   margin-top: 10px;
@@ -631,7 +632,11 @@ html {
   transition: 0.1s;
   color: var(--clr-light);
 }
-.products--list__product .product--content__details button:hover {
+.products--list__product .product--content__details button[disabled] {
+  background-color: var(--clr-primary);
+  opacity: 0.4;
+}
+.products--list__product .product--content__details button:hover:not(.products--list__product .product--content__details button[disabled]) {
   transform: scale(1.05);
   background-color: var(--clr-light);
   color: var(--clr-primary);

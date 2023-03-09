@@ -112,11 +112,13 @@ body {
     height: 100%;
   }
   &--logo {
-    font-weight: 500;
+    font-weight: 400;
+    
     font-size: 2rem;
     width: 30px;
+    
     p {
-      color: var(--clr-primary);
+      color: red;
       span {
         color: var(--clr--gray) !important;
       }

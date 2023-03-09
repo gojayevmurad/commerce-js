@@ -111,12 +111,12 @@ body {
   height: 100%;
 }
 .actions--logo {
-  font-weight: 500;
+  font-weight: 400;
   font-size: 2rem;
   width: 30px;
 }
 .actions--logo p {
-  color: var(--clr-primary);
+  color: red;
 }
 .actions--logo p span {
   color: var(--clr--gray) !important;
@@ -525,6 +525,7 @@ html {
 }
 .products--list__product .product--content__name {
   font-size: 14px;
+  color: var(--clr-primary);
   cursor: pointer;
 }
 .products--list__product .product--content__details {

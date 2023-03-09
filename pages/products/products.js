@@ -70,12 +70,20 @@ function displayProducts(list) {
   ${stars}
   </div>
   <div class="product--content">
-    <p class="product--content__name">
-      ${productObj.title}
-    </p>
+    <a href="../singleProduct/singleProduct.html?id=${productObj.id}" class="product--content__name">
+      ${
+        productObj.title.length > 32
+          ? productObj.title.slice(0, 29) + "..."
+          : productObj.title
+      }
+    </a>
     <div class="product--content__details">
       <p>₼<span class="amount">${productObj.price}</span></p>
-      <button id="load${productObj.id}" value="${productObj.id}" class="addToCart">Səbətə at</button>
+      <button id="load${productObj.id}" value="${productObj.id}" ${
+      productObj.inStock ? "" : "disabled"
+    } class="addToCart">${
+      productObj.inStock ? "Səbətə at" : "Stokda yoxdur"
+    }</button>
     </div>
   </div>
 `;
@@ -91,3 +99,5 @@ window.addEventListener("load", async () => {
   changeButtonsAfterLoad();
   endLoading(); //!!!!!!!!!!!!!!!!!!!!!!
 });
+
+console.log("Regular Fit Double-breasted Jack...".length)
