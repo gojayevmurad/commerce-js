@@ -27,7 +27,7 @@ function displayProducts(list) {
     let popularity = Math.ceil(productObj.popularity);
     let stars = "";
     (() => {
-      for (let i = 0; i <= 5; i++) {
+      for (let i = 0; i < 5; i++) {
         if (i <= popularity) {
           stars += '<span class="fa fa-star checked"></span>';
         } else {
@@ -54,6 +54,9 @@ function displayProducts(list) {
         break;
     }
     product.innerHTML = `
+  <div class="products--list__product--quickview" data-id="${productObj.id}">
+    Cəld Baxış
+  </div>
   <div class="product--title">
     <p>${productObj.categoryName}</p>
     <i class="fa-regular fa-heart" onclick="addWishList(this)"></i>
@@ -66,17 +69,21 @@ function displayProducts(list) {
     />
     <img class="backimage" src=${productObj.img[1]} alt="backimage"/>
   </div>
-  <div class="stars"
-  ${stars}
-  </div>
+
   <div class="product--content">
-    <a href="../singleProduct/singleProduct.html?id=${productObj.id}" class="product--content__name">
+    <a href="../singleProduct/singleProduct.html?id=${
+      productObj.id
+    }" class="product--content__name">
+
       ${
         productObj.title.length > 32
           ? productObj.title.slice(0, 29) + "..."
           : productObj.title
       }
     </a>
+    <div class="stars">
+    ${stars}
+    </div>
     <div class="product--content__details">
       <p>₼<span class="amount">${productObj.price}</span></p>
       <button id="load${productObj.id}" value="${productObj.id}" ${
@@ -97,7 +104,6 @@ window.addEventListener("load", async () => {
   await onloadFunction();
   displayProducts(productList);
   changeButtonsAfterLoad();
+  quickviewModal();
   endLoading(); //!!!!!!!!!!!!!!!!!!!!!!
 });
-
-

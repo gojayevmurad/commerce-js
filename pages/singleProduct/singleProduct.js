@@ -7,6 +7,7 @@ let price = $(".desc--price");
 let orderCount = $(".desc--order");
 let stockDetail = $(".desc--stock");
 let productNames = [productName, productName2];
+let addToCartBtnSingle = $(".single-product__addcart");
 
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
@@ -35,10 +36,24 @@ function createSingleProduct() {
     image.src = src;
     productMainSlider.append(image);
   });
+
+  if (!obj.inStock) {
+    addToCartBtnSingle.disabled = true;
+    addToCartBtnSingle.classList += "disabled";
+    addToCartBtnSingle.innerText = "Stokda Yoxdur";
+  }
+
+  addToCartBtnSingle.id = `load${id}`;
+  addToCartBtnSingle.value = id;
+
+  addToCartBtnSingle.addEventListener("click", () => {
+    addToCartAndThenChangeButton(id, addToCartBtnSingle);
+  });
 }
 
 window.onload = async function () {
   await onloadFunction();
   createSingleProduct();
   endLoading();
+  changeButtonsAfterLoad(id);
 };

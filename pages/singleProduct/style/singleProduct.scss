@@ -33,7 +33,6 @@ header {
         height: 100%;
       }
 
-
       &--slide {
         display: flex;
         justify-content: start;
@@ -96,7 +95,7 @@ header {
           transition: 0.1s;
           color: var(--clr-light);
           width: 200px;
-          &.wish-btn{
+          &.wish-btn {
             font-size: 30px;
           }
 
@@ -114,28 +113,38 @@ header {
             background-color: #e24d4c;
             color: #fff;
           }
+
+          &[disabled] {
+            background-color: var(--clr-primary);
+            opacity: 0.4;
+
+            &:hover {
+              transform: scale(1);
+              color: var(--clr-light);
+            }
+          }
         }
 
-        .sociall{
+        .sociall {
           margin-top: 40px;
-          button{
+          button {
             height: 50px;
             width: 50px;
-            border-radius: 50%;           
+            border-radius: 50%;
           }
         }
       }
     }
   }
 
-  &--desrev{
-    &__description{
+  &--desrev {
+    &__description {
       padding: 30px 0;
-      h3{
-        font-weight: 300!important;
+      h3 {
+        font-weight: 300 !important;
         font-size: 20px;
       }
-      p{
+      p {
         font-weight: 200;
         margin-bottom: 20px;
       }

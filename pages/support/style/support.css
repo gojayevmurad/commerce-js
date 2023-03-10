@@ -400,8 +400,8 @@ html {
   left: 0;
   top: 0;
   height: 100%;
-  background-color: rgba(221, 221, 221, 0.4078431373);
-  z-index: 999999999;
+  background-color: rgba(86, 86, 86, 0.4078431373);
+  z-index: 99999;
 }
 .overlay.hide {
   display: none;

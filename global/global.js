@@ -119,19 +119,29 @@ function changeCount(e) {
   }
 }
 
-function changeButtonsAfterLoad() {
+function changeButtonsAfterLoad(id) {
   if (cartItemsList.length > 0) {
     cartItemsList.forEach((item) => {
       productList.forEach((product) => {
         if (item.id == product.id) {
-          let btn = document.querySelector(`#load${item.id}`);
-          changeToCountable(btn, +item.count);
+          let btn = document.querySelector(`#load${id ? id : item.id}`);
+          if (btn) {
+            changeToCountable(btn, +item.count);
+          }
         }
       });
     });
   } else {
     return;
   }
+}
+
+//! add modal to quickview
+
+function quickviewModal() {
+  let quickviewItems = document.querySelectorAll(
+    ".products--list__product--quickview"
+  );
 }
 
 //! add event to buttons

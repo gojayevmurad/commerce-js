@@ -400,8 +400,8 @@ html {
   left: 0;
   top: 0;
   height: 100%;
-  background-color: rgba(221, 221, 221, 0.4078431373);
-  z-index: 999999999;
+  background-color: rgba(86, 86, 86, 0.4078431373);
+  z-index: 99999;
 }
 .overlay.hide {
   display: none;
@@ -543,6 +543,14 @@ header {
 .product--main__desc--bot button.decrease:hover {
   background-color: #e24d4c;
   color: #fff;
+}
+.product--main__desc--bot button[disabled] {
+  background-color: var(--clr-primary);
+  opacity: 0.4;
+}
+.product--main__desc--bot button[disabled]:hover {
+  transform: scale(1);
+  color: var(--clr-light);
 }
 .product--main__desc--bot .sociall {
   margin-top: 40px;
