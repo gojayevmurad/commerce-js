@@ -1,1 +1,122 @@
 @import "../../../global/global";
+
+.blog--header {
+  height: 350px;
+  width: 100%;
+  background-image: url("https://fullkit.moxcreative.com/mascoolin/wp-content/uploads/sites/6/2022/04/two-fashion-black-men.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: .3s;
+  filter: grayscale(1);
+  &:hover {
+    filter: grayscale(0);
+  }
+}
+
+.blog--list {
+  width: 100%;
+  overflow: hidden;
+  margin: 40px 0;
+  background-color: #fff;
+  margin-bottom: 240px;
+  padding: 40px 0;
+  border-bottom: 1px solid hsl(0, 0, 90%);
+  box-shadow: 0 1.2rem 3rem #ddd;
+
+  &__content {
+    display: grid;
+    padding: 0 55px;
+    grid-template-columns: 2fr 2fr 2fr 1fr;
+    gap: 20px;
+  }
+
+  &__item {
+    background-color: #f5f5f5;
+    &--image {
+      overflow: hidden;
+      height: 220px;
+
+      &:hover img {
+        transform: scale(1.2);
+      }
+
+      img {
+        transition: 0.3s;
+        width: 100%;
+      }
+    }
+
+    &--text {
+      @include d-flex(space-between, start, column);
+      gap: 15px;
+      padding: 10px 20px;
+
+      &__title {
+        font-weight: 600;
+        a {
+          color: #666666;
+          transition: 0.3s;
+          &:hover {
+            color: #d1a280;
+          }
+        }
+      }
+
+      &__desc {
+        color: #77778b;
+        margin-bottom: 20px;
+      }
+      &__foot {
+        color: #6a5a6c;
+        @include d-flex(space-between, center);
+        gap: 10px;
+      }
+    }
+  }
+
+  &__product {
+    &--content {
+      position: sticky;
+      top: 0;
+    }
+
+    &--img {
+      overflow: hidden;
+
+      height: 240px;
+      &:hover img {
+        transform: scale(1.2);
+      }
+      img {
+        transition: 0.3s;
+        width: 100%;
+      }
+    }
+
+    &--title {
+      h2 {
+        font-size: 14px;
+        font-weight: 300;
+        a {
+          color: #77778b;
+        }
+      }
+    }
+
+    &--price {
+      font-size: 12px;
+      .price {
+        font-size: 15px;
+      }
+    }
+
+    .stars {
+      font-size: 12px;
+    }
+  }
+}
+
+img {
+}

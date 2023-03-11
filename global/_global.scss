@@ -16,6 +16,7 @@
   font-family: "Golos Text", sans-serif;
   font-family: "Golos Text", sans-serif;
   font-family: "Montserrat", sans-serif;
+  user-select: none;
 }
 
 body {
@@ -322,6 +323,136 @@ body {
 }
 
 // #endregion Notifications
+
+// #region FOOTER
+
+.footer {
+  position: fixed;
+  z-index: -1;
+  margin: 20px auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  padding: 0 15px;
+  @include extra-small {
+    position: static;
+    height: auto;
+  }
+
+  &--content {
+    width: 100%;
+    @include d-flex(space-between, flex-start);
+    @include extra-small {
+      gap: 15px;
+      align-items: center;
+      gap: 15px;
+      flex-direction: column;
+      button {
+        width: 100%;
+      }
+    }
+    @include extra-extra-small {
+      align-items: center;
+    }
+    &_logo,
+    &__nav,
+    &__subscription {
+      @include mobile {
+        width: calc(100% / 3);
+      }
+      @include extra-extra-small {
+        width: 100%;
+      }
+    }
+    &__logo {
+      user-select: none;
+      p {
+        font-size: 1.5rem;
+        color: var(--clr-primary);
+        text-transform: capitalize;
+        span {
+          color: var(--clr--gray);
+        }
+        @include mobile {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    &__nav {
+      h3 {
+        font-size: 1.5rem;
+        user-select: none;
+        @include mobile {
+          font-size: 1.1rem;
+        }
+        @include extra-small {
+          font-size: 1.3rem;
+        }
+      }
+
+      li {
+        a {
+          color: var(--clr-primary);
+          border-bottom: 1px solid transparent;
+          position: relative;
+        }
+      }
+
+      @include extra-small {
+        text-align: center;
+      }
+    }
+
+    &__subscription {
+      form {
+        @include d-flex(center, center, column);
+        margin-top: 5px;
+        gap: 20px;
+        input,
+        button {
+          height: 30px;
+          outline: none;
+          font-size: 1rem;
+        }
+        input {
+          width: 100%;
+          border: 1px solid var(--clr--gray);
+          padding: 10px 5px;
+          position: relative;
+        }
+        button {
+          align-self: flex-end;
+          background-color: var(--clr-primary);
+          color: var(--clr-light);
+          padding: 10px 20px;
+          @include d-flex;
+          font-size: 1rem;
+          border: 1px solid transparent;
+          cursor: pointer;
+
+          &:hover {
+            background-color: var(--clr-light);
+            color: var(--clr-primary);
+            border: 1px solid var(--clr-primary);
+          }
+        }
+      }
+
+      @include mobile {
+        h2 {
+          font-size: 1rem !important;
+        }
+        input {
+          font-size: 13px !important;
+        }
+      }
+    }
+  }
+}
+
+// #endregion FOOTER
 
 // #region loading
 .preloader {

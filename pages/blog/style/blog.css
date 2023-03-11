@@ -12,6 +12,9 @@
   font-family: "Golos Text", sans-serif;
   font-family: "Golos Text", sans-serif;
   font-family: "Montserrat", sans-serif;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 body {
@@ -309,6 +312,146 @@ body {
   background-color: #e9bd0c;
 }
 
+.footer {
+  position: fixed;
+  z-index: -1;
+  margin: 20px auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  padding: 0 15px;
+}
+@media only screen and (max-width: 575px) {
+  .footer {
+    position: static;
+    height: auto;
+  }
+}
+.footer--content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row;
+}
+@media only screen and (max-width: 575px) {
+  .footer--content {
+    gap: 15px;
+    align-items: center;
+    gap: 15px;
+    flex-direction: column;
+  }
+  .footer--content button {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .footer--content {
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .footer--content_logo, .footer--content__nav, .footer--content__subscription {
+    width: 33.3333333333%;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .footer--content_logo, .footer--content__nav, .footer--content__subscription {
+    width: 100%;
+  }
+}
+.footer--content__logo {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.footer--content__logo p {
+  font-size: 1.5rem;
+  color: var(--clr-primary);
+  text-transform: capitalize;
+}
+.footer--content__logo p span {
+  color: var(--clr--gray);
+}
+@media only screen and (max-width: 767px) {
+  .footer--content__logo p {
+    font-size: 1.2rem;
+  }
+}
+.footer--content__nav h3 {
+  font-size: 1.5rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+@media only screen and (max-width: 767px) {
+  .footer--content__nav h3 {
+    font-size: 1.1rem;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .footer--content__nav h3 {
+    font-size: 1.3rem;
+  }
+}
+.footer--content__nav li a {
+  color: var(--clr-primary);
+  border-bottom: 1px solid transparent;
+  position: relative;
+}
+@media only screen and (max-width: 575px) {
+  .footer--content__nav {
+    text-align: center;
+  }
+}
+.footer--content__subscription form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5px;
+  gap: 20px;
+}
+.footer--content__subscription form input,
+.footer--content__subscription form button {
+  height: 30px;
+  outline: none;
+  font-size: 1rem;
+}
+.footer--content__subscription form input {
+  width: 100%;
+  border: 1px solid var(--clr--gray);
+  padding: 10px 5px;
+  position: relative;
+}
+.footer--content__subscription form button {
+  align-self: flex-end;
+  background-color: var(--clr-primary);
+  color: var(--clr-light);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.footer--content__subscription form button:hover {
+  background-color: var(--clr-light);
+  color: var(--clr-primary);
+  border: 1px solid var(--clr-primary);
+}
+@media only screen and (max-width: 767px) {
+  .footer--content__subscription h2 {
+    font-size: 1rem !important;
+  }
+  .footer--content__subscription input {
+    font-size: 13px !important;
+  }
+}
+
 .preloader {
   height: 100%;
   width: 100%;
@@ -435,4 +578,111 @@ html {
 .hover-underline-animation.active::after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+.blog--header {
+  height: 350px;
+  width: 100%;
+  background-image: url("https://fullkit.moxcreative.com/mascoolin/wp-content/uploads/sites/6/2022/04/two-fashion-black-men.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: 0.3s;
+  filter: grayscale(1);
+}
+.blog--header:hover {
+  filter: grayscale(0);
+}
+
+.blog--list {
+  width: 100%;
+  overflow: hidden;
+  margin: 40px 0;
+  background-color: #fff;
+  margin-bottom: 240px;
+  padding: 40px 0;
+  border-bottom: 1px solid hsl(0, 0%, 90%);
+  box-shadow: 0 1.2rem 3rem #ddd;
+}
+.blog--list__content {
+  display: grid;
+  padding: 0 55px;
+  grid-template-columns: 2fr 2fr 2fr 1fr;
+  gap: 20px;
+}
+.blog--list__item {
+  background-color: #f5f5f5;
+}
+.blog--list__item--image {
+  overflow: hidden;
+  height: 220px;
+}
+.blog--list__item--image:hover img {
+  transform: scale(1.2);
+}
+.blog--list__item--image img {
+  transition: 0.3s;
+  width: 100%;
+}
+.blog--list__item--text {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px 20px;
+}
+.blog--list__item--text__title {
+  font-weight: 600;
+}
+.blog--list__item--text__title a {
+  color: #666666;
+  transition: 0.3s;
+}
+.blog--list__item--text__title a:hover {
+  color: #d1a280;
+}
+.blog--list__item--text__desc {
+  color: #77778b;
+  margin-bottom: 20px;
+}
+.blog--list__item--text__foot {
+  color: #6a5a6c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
+.blog--list__product--content {
+  position: sticky;
+  top: 0;
+}
+.blog--list__product--img {
+  overflow: hidden;
+  height: 240px;
+}
+.blog--list__product--img:hover img {
+  transform: scale(1.2);
+}
+.blog--list__product--img img {
+  transition: 0.3s;
+  width: 100%;
+}
+.blog--list__product--title h2 {
+  font-size: 14px;
+  font-weight: 300;
+}
+.blog--list__product--title h2 a {
+  color: #77778b;
+}
+.blog--list__product--price {
+  font-size: 12px;
+}
+.blog--list__product--price .price {
+  font-size: 15px;
+}
+.blog--list__product .stars {
+  font-size: 12px;
 }/*# sourceMappingURL=blog.css.map */
