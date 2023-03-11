@@ -119,12 +119,12 @@ function changeCount(e) {
   }
 }
 
-function changeButtonsAfterLoad(id) {
+function changeButtonsAfterLoad() {
   if (cartItemsList.length > 0) {
     cartItemsList.forEach((item) => {
       productList.forEach((product) => {
         if (item.id == product.id) {
-          let btn = document.querySelector(`#load${id ? id : item.id}`);
+          let btn = document.querySelector(`#load${item.id}`);
           if (btn) {
             changeToCountable(btn, +item.count);
           }
@@ -303,16 +303,6 @@ function deleteCartItem(e) {
     });
 }
 
-//! change image
-
-function changeImage(e, imgArr) {
-  if (e.target.src == imgArr[0]) {
-    e.target.src = imgArr[1];
-  } else {
-    e.target.src = imgArr[0];
-  }
-}
-
 //! end loading
 
 function endLoading() {
@@ -324,4 +314,96 @@ function endLoading() {
   }, 700);
 }
 
-//! start loading
+//! quickview slider
+
+function quickViewSlider() {
+  let prevBtn = $(".quickview--prevBtn");
+  let nextBtn = $(".quickview--nextBtn");
+  let quickviewSliders = document.querySelectorAll(
+    ".quickview--modal__slider--slide"
+  );
+  let currentIndex = 0;
+  let lastIndex = quickviewSliders.length - 1;
+
+  quickviewSliders.forEach((slide, index) => {
+    slide.style.transform = `translateX(${index * 100}%)`;
+  });
+
+  nextBtn.addEventListener("click", () => {
+    if (currentIndex == lastIndex) {
+      currentIndex = 0;
+    } else {
+      currentIndex++;
+    }
+    quickviewSliders.forEach((slide, index) => {
+      let percent = (index - currentIndex) * 100;
+      slide.style.transform = `translateX(${percent}%)`;
+    });
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex == 0) {
+      currentIndex = lastIndex;
+    } else {
+      currentIndex--;
+    }
+
+    quickviewSliders.forEach((slide, index) => {
+      let percent = (index - currentIndex) * 100;
+      slide.style.transform = `translateX(${percent}%)`;
+    });
+  });
+}
+
+function displayQuickView(id) {
+  let item = productList[id - 1];
+  let quickview = $(".quickview--modal");
+  let quickviewModalSlider = $(".quickview--modal__slider");
+  let quickviewProductName = $(".quickview-name");
+  let quickviewPrice = $(".quickview-price");
+  let quickviewStars = $(".quickview-stars");
+  let popularity = Math.ceil(item.popularity);
+  let stars = "";
+
+  for (let i = 0; i < item.img.length; i++) {
+    let slide = document.createElement("div");
+    slide.classList = "quickview--modal__slider--slide";
+    slide.innerHTML = `
+    <img
+    src="${item.img[i]}"
+    alt="item ">
+    `;
+    quickviewModalSlider.appendChild(slide);
+  }
+  quickviewProductName.innerText = item.title;
+  quickviewPrice.innerText = item.price;
+
+  for (let i = 0; i < 5; i++) {
+    if (i <= popularity) {
+      stars += '<span class="fa fa-star checked"></span>';
+    } else {
+      stars += '<span class="fa fa-star unchecked"></span>';
+    }
+  }
+  quickviewStars.innerHTML = stars;
+  quickViewSlider();
+
+  quickview.classList.remove("hide");
+  overlay.classList.remove("hide");
+  overlay.addEventListener("click", () => quickviewReset());
+
+  window.addEventListener("scroll", () => quickviewReset());
+  window.addEventListener("keydown", (e) => {
+    if (e.key == "Escape") quickviewReset();
+  });
+
+  function quickviewReset() {
+    document
+      .querySelectorAll(".quickview--modal__slider--slide")
+      .forEach((img) => {
+        img.remove();
+      });
+    overlay.classList.add("hide");
+    quickview.classList.add("hide");
+  }
+}

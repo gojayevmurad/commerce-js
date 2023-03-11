@@ -96,6 +96,11 @@ function displayProducts(list) {
 `;
 
     productListEl.appendChild(product);
+    product
+      .querySelector(".products--list__product--quickview")
+      .addEventListener("click", () => {
+        displayQuickView(productObj.id);
+      });
   });
   addEventToButtons();
 }

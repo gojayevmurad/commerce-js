@@ -121,7 +121,7 @@
     flex-wrap: wrap;
     width: 100%;
     &__product {
-      height: 440px;
+      height: 445px;
       width: 240px;
       position: relative;
       overflow: hidden;
@@ -298,11 +298,6 @@
   }
 }
 
-.fa-solid:not(.fa-x, .fa-list, .fa-table-cells-large) {
-  font-size: 1.2rem;
-  animation: heart 1s linear infinite;
-}
-
 // #endregion PRODUCTS
 
 // #region ANIMATIONS
@@ -324,7 +319,13 @@
 // #region quickview
 
 .quickview--modal {
-  position: absolute;
+  &.hide {
+    transform: translate(-100%, -50%);
+    z-index: -99;
+    opacity: 0;
+  }
+
+  position: fixed;
   z-index: 99999;
   height: 600px;
   width: 1000px;
@@ -334,26 +335,80 @@
   transform: translate(-50%, -50%);
   background-color: var(--clr-light);
   padding: 30px 20px;
+  background-color: #f6f7f9;
   display: flex;
   justify-content: space-between;
-
-  img {
-    width: 100px;
-  }
+  transition: 0.4s;
 
   &__slider {
     width: 400px;
     height: 600px;
     display: flex;
     overflow: hidden;
+    position: relative;
     &--slide {
       height: 450px;
       width: 400px;
+      align-self: center;
+      position: absolute;
+      transition: 0.2s;
       img {
         height: 100%;
         width: 400px;
         object-fit: cover;
       }
+    }
+    .quickview--prevBtn,
+    .quickview--nextBtn {
+      position: absolute;
+      z-index: 99999;
+      background-color: var(--clr-primary);
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    &:hover {
+      .quickview--nextBtn,
+      .quickview--prevBtn {
+        opacity: 1;
+      }
+      .quickview--prevBtn {
+        left: 10px;
+      }
+
+      .quickview--nextBtn {
+        right: 10px;
+      }
+    }
+    .quickview--prevBtn,
+    .quickview--nextBtn {
+      opacity: 0;
+      transition: 0.4s;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 1px solid var(--clr-primary);
+      &:hover {
+        background-color: var(--clr-light);
+        color: var(--clr-primary);
+      }
+    }
+
+    .quickview--prevBtn {
+      left: 30px;
+      opacity: 0;
+      top: 50%;
+      transition: 0.4s;
+    }
+    .quickview--nextBtn {
+      right: 30px;
+      opacity: 0;
+      top: 50%;
+      transition: 0.4s;
     }
   }
 
@@ -375,6 +430,79 @@
     }
     .addtocart {
       button {
+        cursor: pointer;
+        background-color: var(--clr-primary);
+        border: 1px solid transparent;
+        outline: none;
+        padding: 5px 10px;
+        margin-right: 5px;
+        transition: 0.1s;
+        color: var(--clr-light);
+
+        &[disabled] {
+          background-color: var(--clr-primary);
+          opacity: 0.4;
+        }
+
+        &:hover:not(&[disabled]) {
+          transform: scale(1.05);
+          background-color: var(--clr-light);
+          color: var(--clr-primary);
+          border: 1px solid var(--clr-primary);
+        }
+        &.increase:hover {
+          background-color: green;
+          color: #fff;
+        }
+        &.decrease:hover {
+          background-color: #e24d4c;
+          color: #fff;
+        }
+      }
+    }
+
+    .sociall {
+      p {
+        margin-bottom: 20px;
+      }
+      .icons {
+        display: flex;
+        justify-content: start;
+        flex-direction: row;
+        gap: 15px;
+        i {
+          color: #fff;
+          height: 30px;
+          width: 30px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          border-radius: 50%;
+          transition: 0.2s;
+          cursor: pointer;
+          &:hover {
+            transform: scale(1.3);
+          }
+          &.fa-facebook-f {
+            background-color: #3c5b9b;
+          }
+          &.fa-twitter {
+            background-color: #1da1f2;
+          }
+
+          &.fa-pinterest-p {
+            background-color: #bd081b;
+          }
+
+          &.fa-google-plus-g {
+            background-color: #dc5043;
+          }
+
+          &.fa-linkedin-in {
+            background-color: #010103;
+          }
+        }
       }
     }
   }

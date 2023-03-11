@@ -26,6 +26,7 @@ body {
   --font--primary: "MuseoModerno", cursive;
   --font--secondary: "Work Sans", sans-serif;
   --font--third: "Roboto", sans-serif;
+  background-color: #fff;
 }
 
 .container {
@@ -113,10 +114,10 @@ body {
   }
   &--logo {
     font-weight: 400;
-    
+
     font-size: 2rem;
     width: 30px;
-    
+
     p {
       color: red;
       span {
@@ -417,7 +418,7 @@ html {
   &.hide {
     display: none;
   }
-  position: absolute;
+  position: fixed;
   width: 100%;
   left: 0;
   top: 0;

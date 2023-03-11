@@ -5,18 +5,9 @@ let lastIndex = imgs.length - 1;
 let nextSlide = $(".nextBtn");
 let prevSlide = $(".prevBtn");
 let designCircles = document.querySelectorAll(".design--circle");
+let interval = "";
 
-nextSlide.addEventListener("click", nextSlideFunc);
-
-prevSlide.addEventListener("click", () => {
-  if (currentIndex == 0) {
-    currentIndex = lastIndex;
-  } else {
-    currentIndex--;
-  }
-
-  changeSlider();
-});
+nextSlide.addEventListener("click", () => nextSlideFunc());
 
 function nextSlideFunc() {
   if (currentIndex == lastIndex) {
@@ -27,6 +18,15 @@ function nextSlideFunc() {
 
   changeSlider();
 }
+
+prevSlide.addEventListener("click", () => {
+  if (currentIndex == 0) {
+    currentIndex = lastIndex;
+  } else {
+    currentIndex--;
+  }
+  changeSlider();
+});
 
 //! get random products for display like top sales
 function getRandomProducts() {
@@ -47,7 +47,7 @@ function getRandomProducts() {
     let popularity = Math.ceil(obj.popularity);
     let stars = "";
     (() => {
-      for (let i = 0; i <= 5; i++) {
+      for (let i = 0; i < 5; i++) {
         if (i <= popularity) {
           stars += '<span class="fa fa-star checked"></span>';
         } else {
@@ -55,7 +55,6 @@ function getRandomProducts() {
         }
       }
     })();
-    console.log(stars);
     product.classList = "products--list__product";
     product.innerHTML = `
                     <div class="products--list__product--quickview" data-id="${
@@ -82,20 +81,21 @@ function getRandomProducts() {
                           : obj.title
                       }
                       </a>
-                      <div class="stars"
+                      <div class="stars">
                       ${stars}
                       </div>
                       <div class="product--content__details">
                         <p>₼<span class="amount">${obj.price}</span></p>
-                        <button id="load${obj.id}" value="${obj.id}" ${
-      obj.inStock ? "" : "disabled"
-    } onclick="" class="addToCart">${
-      obj.inStock ? "Səbətə at" : "Stokda yoxdur"
-    }</button>
+                        <button id="load${obj.id}" value="${obj.id}" ${obj.inStock ? "" : "disabled"} onclick="" class="addToCart">${obj.inStock ? "Səbətə at" : "Stokda yoxdur"}</button>
                       </div>
                     </div>
         `;
     document.querySelector(".products--list").appendChild(product);
+    product
+      .querySelector(".products--list__product--quickview")
+      .addEventListener("click", () => {
+        displayQuickView(obj.id);
+      });
   });
 
   addEventToButtons();
@@ -126,7 +126,13 @@ function setLandingSwiper() {
     });
   });
 
-  setInterval(() => {
+  createInterval();
+}
+
+function createInterval() {
+  clearInterval(interval);
+
+  interval = setInterval(() => {
     nextSlideFunc();
   }, 4000);
 }
@@ -141,6 +147,7 @@ function changeSlider() {
   });
   dots[currentIndex].classList.add("active");
   imgs[currentIndex].parentNode.classList.remove("hide");
+  createInterval();
 }
 
 setLandingSwiper();
@@ -148,6 +155,6 @@ setLandingSwiper();
 window.addEventListener("load", async () => {
   await onloadFunction();
   getRandomProducts(); //! call the  squentially functions with order when window load
-  endLoading();
   changeButtonsAfterLoad();
+  endLoading();
 });

@@ -22,6 +22,7 @@ body {
   --font--primary: "MuseoModerno", cursive;
   --font--secondary: "Work Sans", sans-serif;
   --font--third: "Roboto", sans-serif;
+  background-color: #fff;
 }
 
 .container {
@@ -395,7 +396,7 @@ html {
 }
 
 .overlay {
-  position: absolute;
+  position: fixed;
   width: 100%;
   left: 0;
   top: 0;
