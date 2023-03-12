@@ -1,9 +1,119 @@
 const productListEl = document.querySelector(".products--list");
-
 const productCount = document.querySelector(".count--showing");
 
-//! display all products in list
+//#region pagination
+
+//* pagination elements
+let paginationPagesParent = $(".pagination--pages");
+let paginationCurrentPage = 1;
+let paginationItemsCount = 20;
+let paginationPagesCount;
+// let paginatePrevBtn = $(".pagination--prev");
+// let paginateNextBtn = $(".pagination--next");
+
+function setPagination(PagesCount, data) {
+  paginationPagesParent.innerHTML = "";
+  for (let i = 1; i <= PagesCount; i++) {
+    let paginationEl = document.createElement("div");
+    paginationEl.classList = "pagination--page";
+    paginationCurrentPage == i && (paginationEl.classList += " active");
+    paginationEl.innerText = i;
+    paginationPagesParent.appendChild(paginationEl);
+    paginationEl.dataset.index = i;
+  }
+
+  // paginatePrevBtn.dataset.index = paginationCurrentPage;
+  // paginatePrevBtn.classList.add("disabled");
+
+  if (PagesCount == 1) {
+    paginationPagesParent.style.display = "none";
+    // paginateNextBtn.style.display = "none";
+    // paginatePrevBtn.style.display = "none";
+  } else {
+    paginationPagesParent.style.display = "flex";
+    // paginateNextBtn.style.display = "grid";
+    // paginatePrevBtn.style.display = "grid";
+  }
+
+  displayProducts(
+    data.slice((paginationCurrentPage - 1) * 20, paginationCurrentPage * 20)
+  );
+}
+
+function addEventPaginationButtons(data = productList) {
+  let paginateButtons = document.querySelectorAll(".pagination--page");
+
+  paginateButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      paginateButtons[paginationCurrentPage - 1].classList.remove("active"); //remove active class from prev btn
+      paginationCurrentPage = btn.dataset.index; // set current page index
+      btn.classList.add("active"); // add active class to current btn
+      // if (paginationCurrentPage == paginationPagesCount) {
+      //   paginateNextBtn.classList.add("disabled");
+      // } else {
+      //   paginateNextBtn.classList.remove("disabled");
+      //   paginateNextBtn.dataset.index = +paginationCurrentPage + 1;
+      // }
+      // if (paginationCurrentPage == 1) {
+      //   paginatePrevBtn.classList.add("disabled");
+      // } else {
+      //   paginatePrevBtn.classList.remove("disabled");
+      //   paginatePrevBtn.dataset.index = paginationCurrentPage - 1;
+      // }
+
+      displayProducts(
+        data.slice((paginationCurrentPage - 1) * 20, paginationCurrentPage * 20)
+      );
+    });
+  });
+
+  // paginateNextBtn.addEventListener("click", () => {
+  //   let prevPageIndex = paginationCurrentPage;
+  //   paginatePrevBtn.classList.remove("disabled");
+  //   paginateButtons[paginationCurrentPage - 1].classList.remove("active"); //remove active class from prev btn
+  //   paginationCurrentPage = Number(paginateNextBtn.dataset.index);
+  //   paginateButtons[paginationCurrentPage - 1].classList.add("active");
+  //   if (paginationCurrentPage == paginationPagesCount) {
+  //     paginateNextBtn.classList.add("disabled");
+  //     paginatePrevBtn.dataset.index = paginationPagesCount - 1;
+  //   } else {
+  //     paginateNextBtn.dataset.index = +paginationCurrentPage + 1;
+  //     paginateNextBtn.classList.remove("disabled");
+  //     paginatePrevBtn.dataset.index = prevPageIndex;
+  //   }
+
+  //   displayProducts(
+  //     data.slice((paginationCurrentPage - 1) * 20, paginationCurrentPage * 20)
+  //   );
+  // });
+
+  // paginatePrevBtn.addEventListener("click", () => {
+  //   let prevPageIndex = paginationCurrentPage;
+  //   paginateNextBtn.classList.remove("disabled");
+  //   paginateButtons[paginationCurrentPage - 1].classList.remove("active"); //remove active class from prev btn
+  //   paginationCurrentPage = Number(paginatePrevBtn.dataset.index);
+  //   paginateButtons[paginationCurrentPage - 1].classList.add("active");
+  //   if (paginationCurrentPage == 1) {
+  //     paginatePrevBtn.classList.add("disabled");
+  //     paginateNextBtn.dataset.index = 2;
+  //   } else {
+  //     paginatePrevBtn.classList.remove("disabled");
+  //     paginatePrevBtn.dataset.index = paginationCurrentPage - 1;
+  //     paginateNextBtn.dataset.index = prevPageIndex;
+  //   }
+
+  //   displayProducts(
+  //     data.slice((paginationCurrentPage - 1) * 20, paginationCurrentPage * 20)
+  //   );
+  // });
+}
+
+//#endregion pagination
+
+// #region display all products in list
 function displayProducts(list) {
+  productListEl.innerHTML = "";
+
   list.forEach((productObj) => {
     let product = document.createElement("div");
     product.classList = "products--list__product";
@@ -87,7 +197,9 @@ function displayProducts(list) {
       });
   });
   addEventToButtons();
+  window.scrollTo(0, 0);
 }
+// #endregion display all products in list
 
 //#region Price range
 const rangeInput = document.querySelectorAll(".range-input input"),
@@ -148,8 +260,6 @@ priceMaxRange.addEventListener("input", () => (isPriceChanged = true));
 priceMinInput.addEventListener("input", () => (isPriceChanged = true));
 priceMaxInput.addEventListener("input", () => (isPriceChanged = true));
 
-
-
 function getFilterData(e) {
   e.preventDefault();
   let categoryData = e.target.category.value;
@@ -188,24 +298,25 @@ function getFilterData(e) {
   fetch(filterFetchUrl)
     .then((res) => res.json())
     .then((data) => {
-      $(".products--list").innerHTML = "";
-      displayProducts(data);
+      paginationCurrentPage = 1;
+      paginationPagesCount = Math.ceil(data.length / paginationItemsCount);
+      setPagination(paginationPagesCount, data);
+      addEventPaginationButtons(data);
       alreadyActive = false;
       isPriceChanged = false;
       filterFetchUrl = fethcUrl + "/products";
     });
 }
 
-
-
-
 // #endregion filter
 
 window.addEventListener("load", async () => {
   await onloadFunction();
-  displayProducts(productList);
   changeButtonsAfterLoad();
   quickviewModal();
+  paginationPagesCount = Math.ceil(productList.length / paginationItemsCount);
+  setPagination(paginationPagesCount, productList);
+  addEventPaginationButtons();
   endLoading(); //!!!!!!!!!!!!!!!!!!!!!!
 });
 
@@ -214,11 +325,8 @@ document.addEventListener("mousemove", (e) => {
   if (e.clientX < 20) {
     filterItem.classList.remove("hide");
     overlay.classList.remove("hide");
-  } else if (!filterItem.classList.contains("hide")) {
-    //!görünür hal hazırda
-    if (e.clientX > 350) {
-      filterItem.classList.add("hide");
-      overlay.classList.add("hide");
-    }
+  } else if (!filterItem.classList.contains("hide") && e.clientX > 350) {
+    filterItem.classList.add("hide");
+    overlay.classList.add("hide");
   }
 });

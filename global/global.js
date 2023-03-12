@@ -307,6 +307,7 @@ function deleteCartItem(e) {
 //! end loading
 
 function endLoading() {
+  let preloader = $(".preloader");
   setTimeout(() => {
     preloader.className += " fade";
   }, 500);
@@ -409,7 +410,6 @@ function displayQuickView(id) {
   }
 }
 
-
-window.addEventListener('error',()=>{
-  document.body.innerHTML = "error"
-})
+window.addEventListener("error", () => {
+  document.body.innerHTML = "error";
+});

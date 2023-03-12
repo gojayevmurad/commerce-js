@@ -604,6 +604,7 @@ html {
 }
 
 .main {
+  background-color: #fff;
   margin-top: 30px;
 }
 .main fieldset {
@@ -799,7 +800,7 @@ html {
   width: 240px;
   transition: 0.5s;
   opacity: 0;
-  z-index: -1;
+  z-index: 1;
 }
 .products--list__product .product--content__name {
   font-size: 14px;
@@ -1269,4 +1270,44 @@ html {
 }
 .filter--body button[type=submit]:hover {
   transform: scale(1.05);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 240px;
+  border-bottom: 1px solid hsl(0, 0%, 93%);
+  padding-bottom: 40px;
+  background-color: #fff;
+}
+.pagination div:not(.pagination--pages) {
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+  display: grid;
+  place-items: center;
+  background-color: #303030;
+  color: #dbe0e9;
+  transition: 0.2s;
+}
+.pagination div:not(.pagination--pages):hover {
+  transform: scale(1.05);
+}
+.pagination div:not(.pagination--pages).active {
+  background-color: #409eff;
+  transform: scale(1.05);
+}
+.pagination div:not(.pagination--pages).disabled {
+  background-color: #555;
+  opacity: 0.7;
+}
+.pagination div:not(.pagination--pages).disabled:hover {
+  transform: scale(1);
+}
+.pagination--pages {
+  display: flex;
+  gap: 5px;
 }/*# sourceMappingURL=products.css.map */
