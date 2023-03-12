@@ -51,14 +51,14 @@ function createBlogProduct() {
     blogProductChildEl.classList = "blog--list__product--content";
     blogProductChildEl.innerHTML = `
         <div class="blog--list__product--img">
-            <a href="#"><img
+            <a href="../singleProduct/singleProduct.html?id=${obj.id}"><img
                     src="${obj.img[0]}"
                     alt="product"></a>
         </div>
         <div class="blog--list__product--title">
-            <h2><a href="#">${
-              obj.title.length > 18 ? obj.title.slice(0, 15) + "..." : obj.title
-            }</a></h2>
+            <h2><a href="../singleProduct/singleProduct.html?id=${obj.id}">${
+      obj.title.length > 18 ? obj.title.slice(0, 15) + "..." : obj.title
+    }</a></h2>
         </div>
         <p class="blog--list__product--price">
             ₼<span class="price">${obj.price}</span>

@@ -8,7 +8,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  transition: .3s;
+  transition: 0.3s;
   filter: grayscale(1);
   &:hover {
     filter: grayscale(0);
@@ -18,7 +18,6 @@
 .blog--list {
   width: 100%;
   overflow: hidden;
-  margin: 40px 0;
   background-color: #fff;
   margin-bottom: 240px;
   padding: 40px 0;
@@ -117,4 +116,3 @@
     }
   }
 }
-

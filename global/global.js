@@ -408,3 +408,8 @@ function displayQuickView(id) {
     quickview.classList.add("hide");
   }
 }
+
+
+window.addEventListener('error',()=>{
+  document.body.innerHTML = "error"
+})
