@@ -14,12 +14,81 @@
 </head>
 
 <body>
+
+
   <div class="preloader">
     <div class="b-ico-preloader"></div>
     <div class="spinner"></div>
   </div>
   <ul class="notifications"></ul>
   <div class="overlay hide"></div>
+  <div class="filter hide">
+    <div class="filter--head">
+      <h2>Məhsul Filtri</h2>
+      <button>Clear</button>
+    </div>
+    <form class="filter--body">
+      <div class="filter--body__category">
+        <p>Kateqoriya</p>
+        <label for="cateogry1">
+          <input type="radio" name="category" value="1" id="cateogry1">
+          Geyim
+        </label>
+        <label for="category2">
+          <input type="radio" name="category" value="2" id="category2">
+          Ayaqqabı
+        </label>
+        <label for="category3">
+          <input type="radio" name="category" value="3" id="category3">
+          Aksessuar
+        </label>
+      </div>
+      <div class="filter--body__rating">
+        <p>Reytİnq</p>
+        <label for="exceptional">
+          <input type="radio" value="4.5" name="rating" id="exceptional">
+          Qeyri-adi! 4.5/5
+        </label>
+        <label for="verygood">
+          <input type="radio" value="3.5" name="rating" id="verygood">
+          Əla! 3.5 & yuxarı
+        </label>
+        <label for="good">
+          <input type="radio" value="2.5" name="rating" id="good">
+          Yaxşı! 2.5 & yuxarı
+        </label>
+      </div>
+      <div class="filter--body__price">
+        <div class="price-input">
+          <div class="field">
+            <span>Min</span>
+            <input type="number" class="input-min" value="100">
+          </div>
+          <div class="separator">-</div>
+          <div class="field">
+            <span>Max</span>
+            <input type="number" class="input-max" value="300">
+          </div>
+        </div>
+        <div class="slider">
+          <div class="progress"></div>
+        </div>
+        <div class="range-input">
+          <input type="range" class="range-min" min="0" max="400" value="100" step="5">
+          <input type="range" class="range-max" min="0" max="400" value="300" step="5">
+        </div>
+      </div>
+      <div class="filter--body__order">
+        <p>Sifariş sayı</p>
+        <select name="order">
+          <option disabled selected value="">Seçin</option>
+          <option value="desc">Azalan</option>
+          <option value="asc">Çoxalan</option>
+        </select>
+      </div>
+      <button type="submit">Tətbiq et</button>
+    </form>
+  </div>
   <div class="quickview--modal hide">
     <div class="quickview--modal__slider">
       <div class="quickview--prevBtn">
@@ -100,33 +169,12 @@
   <div class="main">
     <div class="container">
       <div class="main--content">
-        <div class="main--content__filter">
-          <div class="main--content__filter--showing">
-            <p>Showing all <span class="count--showing">12</span> results</p>
-          </div>
-          <div class="main--content__filter--view">
-            <div class="products--decoration__list" data-val="list">
-              <button><i class="fa-solid fa-list"></i></button>
-            </div>
-            <div class="products--decoration__table" data-val="table">
-              <button><i class="fa-solid fa-table-cells-large"></i></button>
-            </div>
-          </div>
-          <div class="main--content__filter--sort">
-            <form>
-              <select name="sort" id="sort">
-                <option value="popularity">POPULYARLIQ</option>
-                <option value="priceFromCheap">
-                  QİYMƏT (UCUZDAN BAHAYA)
-                </option>
-                <option value="priceFromExpensive">
-                  QİYMƏT (BAHADAN UCUZA)
-                </option>
-              </select>
-              <button id="filter-submit">Filter</button>
-            </form>
-          </div>
+        <div class="location">
+          <p>
+            <a href="../../index.html" class="hover-underline-animation">Əsas</a> / <a href="#" class="hover-underline-animation active">Məhsullar</a>
+          </p>
         </div>
+
         <div class="products--list">
 
         </div>

@@ -31,8 +31,13 @@ prevSlide.addEventListener("click", () => {
 //! get random products for display like top sales
 function getRandomProducts() {
   let randomNums = [];
-  for (let i = 0; i < 4; i++) {
-    randomNums.push(Math.floor(Math.random() * 150));
+  for (let i = 0; i < 5; i++) {
+    let randomNum = Math.floor(Math.random() * 150);
+    if (productList[randomNum].inStock && !(randomNums.includes(randomNum))) {
+      randomNums.push(randomNum);
+    } else {
+      i--;
+    }
   }
 
   randomNums.forEach((num) => {
@@ -86,7 +91,11 @@ function getRandomProducts() {
                       </div>
                       <div class="product--content__details">
                         <p>₼<span class="amount">${obj.price}</span></p>
-                        <button id="load${obj.id}" value="${obj.id}" ${obj.inStock ? "" : "disabled"} onclick="" class="addToCart">${obj.inStock ? "Səbətə at" : "Stokda yoxdur"}</button>
+                        <button id="load${obj.id}" value="${obj.id}" ${
+      obj.inStock ? "" : "disabled"
+    } onclick="" class="addToCart">${
+      obj.inStock ? "Səbətə at" : "Stokda yoxdur"
+    }</button>
                       </div>
                     </div>
         `;
@@ -150,6 +159,48 @@ function changeSlider() {
   createInterval();
 }
 
+async function getBlogs() {
+  let blogs = [];
+  let blogList = $(".blogs--list");
+  await fetch(fethcUrl + "/blogs?id=1&id=2&id=3")
+    .then((res) => res.json())
+    .then((data) => {
+      blogs = data;
+    });
+
+  blogs.forEach((blogObj) => {
+    let blogEl = document.createElement("div");
+    blogEl.classList = "blogs--list__blog";
+    blogEl.innerHTML = `
+    
+    <div class="blogs--list__blog--img">
+    <img
+      src="${blogObj.img}"
+      alt="8 Casual Trouser Styles">
+    </div>
+    <div class="blogs--list__blog--content">
+    <h4>
+      Yazı tarixi <span class="date">${blogObj.date}</span>
+    </h4>
+    <h2 class="blog--title">
+      <a href="#">${
+        blogObj.title.length > 23
+          ? blogObj.title.slice(0, 20) + "..."
+          : blogObj.title
+      }</a>
+    </h2>
+    <div class="blog--desc">
+      It is accompanied by a case that can contain up to three different diffusers and can be used for dry …
+    </div>
+    <button>Oxumağa Davam</button>
+    </div>
+    
+    `;
+
+    blogList.appendChild(blogEl);
+  });
+}
+getBlogs();
 setLandingSwiper();
 
 window.addEventListener("load", async () => {

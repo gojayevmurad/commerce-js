@@ -72,6 +72,9 @@ body {
   z-index: 9999;
   border-bottom: 2px solid hsl(0, 0%, 93%);
 }
+.header--navigation {
+  height: 100%;
+}
 .header--navigation ul {
   display: flex;
   justify-content: center;
@@ -82,10 +85,16 @@ body {
   font-weight: 300;
   transition: 1s height;
   top: 0;
+  height: 100%;
 }
 .header--navigation ul li {
   transition: 1s;
   position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }
 .header--navigation ul li a {
   color: var(--clr-primary);
@@ -315,12 +324,12 @@ body {
 .footer {
   position: fixed;
   z-index: -1;
-  margin: 20px auto;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 200px;
-  padding: 0 15px;
+  height: 240px;
+  padding: 20px 15px;
+  background-color: #000;
 }
 @media only screen and (max-width: 575px) {
   .footer {
@@ -368,11 +377,8 @@ body {
 }
 .footer--content__logo p {
   font-size: 1.5rem;
-  color: var(--clr-primary);
+  color: #ddd;
   text-transform: capitalize;
-}
-.footer--content__logo p span {
-  color: var(--clr--gray);
 }
 @media only screen and (max-width: 767px) {
   .footer--content__logo p {
@@ -380,6 +386,7 @@ body {
   }
 }
 .footer--content__nav h3 {
+  color: #ddd;
   font-size: 1.5rem;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -396,7 +403,7 @@ body {
   }
 }
 .footer--content__nav li a {
-  color: var(--clr-primary);
+  color: #ddd;
   border-bottom: 1px solid transparent;
   position: relative;
 }
@@ -437,6 +444,7 @@ body {
   font-size: 1rem;
   border: 1px solid transparent;
   cursor: pointer;
+  transition: 0.3s;
 }
 .footer--content__subscription form button:hover {
   background-color: var(--clr-light);
@@ -556,6 +564,9 @@ html {
   position: relative;
   color: #0087ca;
 }
+.hover-underline-animation.active {
+  color: #555;
+}
 
 .hover-underline-animation::after {
   content: "";
@@ -578,6 +589,16 @@ html {
 .hover-underline-animation.active::after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+.location {
+  font-size: 16px;
+}
+.location a {
+  color: #555;
+}
+.location a.active {
+  font-weight: 400;
 }
 
 .faq--header {

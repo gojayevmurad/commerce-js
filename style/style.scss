@@ -153,7 +153,12 @@
           transition: 0.1s;
           color: var(--clr-light);
 
-          &:hover {
+          &[disabled] {
+            background-color: var(--clr-primary);
+            opacity: 0.4 !important;
+          }
+
+          &:hover:not(&[disabled]) {
             transform: scale(1.05);
             background-color: var(--clr-light);
             color: var(--clr-primary);
@@ -176,112 +181,6 @@
   }
 }
 // #endregion PRODUCTS
-
-// #region CATEGORIES
-
-.categories {
-  background-color: var(--clr-primary);
-  position: relative;
-  z-index: 99;
-  margin-bottom: 240px;
-
-  @include extra-small {
-    margin-bottom: 0;
-  }
-
-  &__header {
-    font-size: 1.1rem;
-    display: none;
-    text-align: center;
-    color: var(--clr-light);
-    user-select: none;
-    @include extra-small {
-      display: block;
-    }
-  }
-  &--list {
-    @include d-flex;
-    gap: 20px;
-    height: 500px;
-    flex-wrap: wrap;
-
-    @include mobile {
-      gap: 10px;
-      height: auto;
-      padding: 15px 0;
-    }
-
-    &__category {
-      width: calc(90% / 4);
-      background-color: var(--clr-light);
-      @include d-flex;
-      height: 400px;
-
-      @include mobile {
-        width: calc(90% / 2);
-        height: 300px;
-      }
-
-      button {
-        height: 55px;
-        width: 155px;
-        background-color: var(--clr-primary);
-        border: 2px solid transparent;
-        outline: none;
-        font-size: 14px;
-        color: var(--clr-light);
-        cursor: pointer;
-        transition: 0.3s;
-
-        &:hover {
-          transform: scale(1.1);
-          background-color: var(--clr-light);
-          color: var(--clr-primary);
-          border: 2px solid var(--clr-primary);
-          font-size: 1rem;
-        }
-      }
-
-      &.clothing {
-        background-image: url(../assets/categories--clothing.webp);
-        background-position: center;
-      }
-      &.shoes {
-        background-image: url(../assets/categories--shoes.webp);
-        background-position: center;
-      }
-
-      &.watches {
-        background-image: url(../assets/categories--watches.webp);
-        background-position: center;
-      }
-
-      &.accessories {
-        background-image: url(../assets/categories--accessories.webp);
-        background-position-y: center;
-        background-repeat: no-repeat;
-      }
-
-      &.accessories,
-      &.watches,
-      &.shoes,
-      &.clothing {
-        @include extra-small {
-          background-image: none;
-          height: auto;
-          width: auto;
-
-          button {
-            border: 1px solid #fff;
-          }
-        }
-      }
-    }
-  }
-}
-
-// #endregion CATEGORIES
-
 
 //#region SWIPER
 
@@ -559,36 +458,34 @@
       font-weight: 300;
       color: #555;
     }
-    .addtocart {
-      button {
-        cursor: pointer;
+    button {
+      cursor: pointer;
+      background-color: var(--clr-primary);
+      border: 1px solid transparent;
+      outline: none;
+      padding: 5px 10px;
+      margin-right: 5px;
+      transition: 0.1s;
+      color: var(--clr-light);
+
+      &[disabled] {
         background-color: var(--clr-primary);
-        border: 1px solid transparent;
-        outline: none;
-        padding: 5px 10px;
-        margin-right: 5px;
-        transition: 0.1s;
-        color: var(--clr-light);
+        opacity: 0.4 !important;
+      }
 
-        &[disabled] {
-          background-color: var(--clr-primary);
-          opacity: 0.4;
-        }
-
-        &:hover:not(&[disabled]) {
-          transform: scale(1.05);
-          background-color: var(--clr-light);
-          color: var(--clr-primary);
-          border: 1px solid var(--clr-primary);
-        }
-        &.increase:hover {
-          background-color: green;
-          color: #fff;
-        }
-        &.decrease:hover {
-          background-color: #e24d4c;
-          color: #fff;
-        }
+      &:hover:not(&[disabled]) {
+        transform: scale(1.05);
+        background-color: var(--clr-light);
+        color: var(--clr-primary);
+        border: 1px solid var(--clr-primary);
+      }
+      &.increase:hover {
+        background-color: green;
+        color: #fff;
+      }
+      &.decrease:hover {
+        background-color: #e24d4c;
+        color: #fff;
       }
     }
 
@@ -640,6 +537,95 @@
 }
 
 // #endregion quickview
+
+// #region blogs
+
+.blogs {
+  background-color: #fff;
+  padding: 30px 0;
+  margin-bottom: 240px;
+  border-bottom: 1px solid hsl(0, 0%, 80%);
+  &--content {
+    width: 100%;
+  }
+
+  &--header {
+    text-align: center;
+    margin-bottom: 40px;
+    h2 {
+      font-size: 2.3rem;
+      font-weight: 400;
+      margin-bottom: 10px;
+      color: #000;
+    }
+    p {
+      font-size: 14px;
+      font-weight: 300;
+      color: #000;
+    }
+  }
+
+  &--list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+
+    &__blog {
+      background-color: #fff;
+      &--img {
+        height: 250px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        &:hover img {
+          transform: scale(1.05);
+        }
+        img {
+          width: 100%;
+          transition: 0.4s;
+        }
+      }
+      &--content {
+        h4 {
+          font-weight: 200;
+          margin-bottom: 5px;
+        }
+
+        .blog--title {
+          font-weight: 400;
+          margin-bottom: 20px;
+          a {
+            color: #010103 !important;
+            transition: 0.3s;
+            &:hover {
+              color: #4a92b7 !important;
+            }
+          }
+        }
+
+        .blog--desc {
+          font-weight: 300;
+          margin-bottom: 30px;
+        }
+
+        button {
+          padding: 10px 9px;
+          border: 1px solid #2f2f2f;
+          outline: none;
+          color: #2f2f2f;
+          background-color: transparent;
+          cursor: pointer;
+          transition: 0.3s;
+          &:hover {
+            background-color: #2f2f2f;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+// #endregion blogs
 
 // #region ANIMATIONS
 @keyframes productsHeader {

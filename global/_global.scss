@@ -67,6 +67,7 @@ body {
   border-bottom: 2px solid hsl(0, 0%, 93%);
 
   &--navigation {
+    height: 100%;
     ul {
       display: flex;
       justify-content: center;
@@ -77,9 +78,12 @@ body {
       font-weight: 300;
       transition: 1s height;
       top: 0;
+      height: 100%;
       li {
         transition: 1s;
         position: relative;
+        height: 100%;
+        @include d-flex;
 
         a {
           color: var(--clr-primary);
@@ -329,12 +333,12 @@ body {
 .footer {
   position: fixed;
   z-index: -1;
-  margin: 20px auto;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 200px;
-  padding: 0 15px;
+  height: 240px;
+  padding: 20px 15px;
+  background-color: #000;
   @include extra-small {
     position: static;
     height: auto;
@@ -369,11 +373,9 @@ body {
       user-select: none;
       p {
         font-size: 1.5rem;
-        color: var(--clr-primary);
+        color: #ddd;
         text-transform: capitalize;
-        span {
-          color: var(--clr--gray);
-        }
+
         @include mobile {
           font-size: 1.2rem;
         }
@@ -382,6 +384,7 @@ body {
 
     &__nav {
       h3 {
+        color: #ddd;
         font-size: 1.5rem;
         user-select: none;
         @include mobile {
@@ -394,7 +397,7 @@ body {
 
       li {
         a {
-          color: var(--clr-primary);
+          color: #ddd;
           border-bottom: 1px solid transparent;
           position: relative;
         }
@@ -431,6 +434,7 @@ body {
           font-size: 1rem;
           border: 1px solid transparent;
           cursor: pointer;
+          transition: .3s;
 
           &:hover {
             background-color: var(--clr-light);
@@ -562,6 +566,9 @@ html {
   display: inline-block;
   position: relative;
   color: #0087ca;
+  &.active {
+    color: #555;
+  }
 }
 
 .hover-underline-animation::after {
@@ -585,4 +592,14 @@ html {
 .hover-underline-animation.active::after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+.location {
+  font-size: 16px;
+  a {
+    color: #555;
+    &.active {
+      font-weight: 400;
+    }
+  }
 }

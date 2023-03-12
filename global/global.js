@@ -9,16 +9,17 @@ let filteredArr = [];
 let viewMore = false;
 let countPr = 0;
 let overlay = $(".overlay");
+let fethcUrl = "http://localhost:3000";
 
 //! get products & cart items from json server
 async function onloadFunction() {
-  await fetch("http://localhost:3000/products")
+  await fetch(`${fethcUrl}/products`)
     .then((res) => res.json())
     .then((products) => {
       productList = products;
     });
 
-  await fetch("http://localhost:3000/cart")
+  await fetch(`${fethcUrl}/cart`)
     .then((res) => res.json())
     .then((cartItems) => {
       cartItemsList = cartItems;
@@ -28,7 +29,7 @@ async function onloadFunction() {
 //! add to cart function
 function addToCartAndThenChangeButton(id, target) {
   cartItemsList[cartItemsList.length] = { id: id, count: 1 };
-  fetch("http://localhost:3000/cart", {
+  fetch(`${fethcUrl}/cart`, {
     method: "POST",
     body: JSON.stringify({
       id: id,
@@ -106,7 +107,7 @@ function changeCount(e) {
   if (changeCountInput.value == 0) {
     deleteCartItem(e);
   } else {
-    fetch(`http://localhost:3000/cart/${e.target.id}`, {
+    fetch(`${fethcUrl}/cart/${e.target.id}`, {
       method: "PUT",
       body: JSON.stringify({
         count: +changeCountInput.value,
