@@ -1171,7 +1171,6 @@ html {
   border-radius: 5px;
   text-align: center;
   border: 1px solid #999;
-  -moz-appearance: textfield;
 }
 .filter--body__price .price-input .field input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -1210,8 +1209,6 @@ html {
   top: -5px;
   background: none;
   pointer-events: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 }
 .filter--body__price .range-input input[type=range]::-webkit-slider-thumb {
   height: 17px;

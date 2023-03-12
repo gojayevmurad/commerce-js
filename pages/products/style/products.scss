@@ -593,7 +593,6 @@
             border-radius: 5px;
             text-align: center;
             border: 1px solid #999;
-            -moz-appearance: textfield;
             &[type="number"] {
               &::-webkit-outer-spin-button {
                 -webkit-appearance: none;
@@ -635,8 +634,6 @@
           top: -5px;
           background: none;
           pointer-events: none;
-          -webkit-appearance: none;
-          -moz-appearance: none;
           &[type="range"] {
             &::-webkit-slider-thumb {
               height: 17px;
