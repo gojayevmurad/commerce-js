@@ -33,7 +33,7 @@ function getRandomProducts() {
   let randomNums = [];
   for (let i = 0; i < 5; i++) {
     let randomNum = Math.floor(Math.random() * 150);
-    if (productList[randomNum].inStock && !(randomNums.includes(randomNum))) {
+    if (productList[randomNum].inStock && !randomNums.includes(randomNum)) {
       randomNums.push(randomNum);
     } else {
       i--;
@@ -207,5 +207,6 @@ window.addEventListener("load", async () => {
   await onloadFunction();
   getRandomProducts(); //! call the  squentially functions with order when window load
   changeButtonsAfterLoad();
+  setPromotionSection();
   endLoading();
 });

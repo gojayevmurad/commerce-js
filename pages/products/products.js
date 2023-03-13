@@ -113,6 +113,10 @@ function addEventPaginationButtons(data = productList) {
 // #region display all products in list
 function displayProducts(list) {
   productListEl.innerHTML = "";
+  if (list.length == 0) {
+    productListEl.innerHTML =
+      "Axtardığınız kateqoriya üzrə məhsul təəssüf ki yoxdur";
+  }
 
   list.forEach((productObj) => {
     let product = document.createElement("div");
@@ -317,6 +321,7 @@ window.addEventListener("load", async () => {
   paginationPagesCount = Math.ceil(productList.length / paginationItemsCount);
   setPagination(paginationPagesCount, productList);
   addEventPaginationButtons();
+  setPromotionSection();
   endLoading(); //!!!!!!!!!!!!!!!!!!!!!!
 });
 

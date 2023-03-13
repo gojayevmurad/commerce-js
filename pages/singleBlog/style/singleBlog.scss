@@ -1,0 +1,172 @@
+@import "../../../global/global";
+
+.header {
+  position: absolute;
+  width: 100%;
+  background-color: transparent;
+  box-shadow: none;
+  border-bottom: none;
+  transition: 0.3s;
+  &:hover,
+  &.scroll {
+    background-color: #fff;
+    position: fixed;
+
+    a {
+      color: #000 !important;
+      &::after {
+        background-color: #000;
+      }
+    }
+  }
+  a {
+    color: #fff !important;
+    &::after {
+      background-color: #fff;
+    }
+  }
+}
+
+.blogpage--header {
+  width: 100%;
+  overflow: hidden;
+  height: 100vh;
+  position: relative;
+  img {
+    filter: grayscale(30%) contrast(60%);
+  }
+  &__title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 600;
+    width: 500px;
+  }
+  &__content {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    width: 500px;
+    p {
+      @include d-flex();
+      gap: 8px;
+    }
+  }
+
+  &__location {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff !important;
+    padding: 0 20px;
+    font-size: 16px;
+    margin-bottom: 25px;
+    * {
+      font-weight: 200 !important;
+    }
+    a {
+      color: #fff !important;
+      &::after {
+        height: 1px;
+      }
+    }
+    .active {
+      color: #fff !important;
+    }
+
+    .hover-underline-animation {
+      &::after {
+        background-color: #fff;
+      }
+    }
+  }
+
+  &__share {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    @include d-flex(center, center, column);
+    gap: 10px;
+    p {
+      color: #fff;
+      font-weight: 500;
+    }
+    a {
+      color: #fff;
+      height: 30px;
+      width: 30px;
+      @include d-flex;
+      position: relative;
+      &:hover {
+        color: #555;
+        &::after {
+          transform: scale(1);
+        }
+      }
+      &::after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #ddd;
+        border-radius: 50%;
+        transform: scale(0);
+        transform-origin: center;
+        transition: 0.3s;
+      }
+      i {
+        position: relative;
+        z-index: 1;
+      }
+    }
+  }
+}
+
+.blogtext {
+  width: 100%;
+  &--main {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+  }
+  &--content {
+    &__title {
+      display: grid;
+      grid-template-columns: 3fr 9fr;
+      .writer {
+        border: 1px solid hsl(0, 0%, 91%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        img {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+        }
+
+        span{
+          color: #000;
+        }
+        
+      }
+    }
+  }
+}
+
+img {
+  width: 100%;
+}

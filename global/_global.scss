@@ -336,9 +336,10 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 240px;
+  height: 270px;
   padding: 20px 15px;
-  background-color: #000;
+  background-color: #ddd;
+  color: #000;
   @include extra-small {
     position: static;
     height: auto;
@@ -373,7 +374,7 @@ body {
       user-select: none;
       p {
         font-size: 1.5rem;
-        color: #ddd;
+        color: #000;
         text-transform: capitalize;
 
         @include mobile {
@@ -384,9 +385,11 @@ body {
 
     &__nav {
       h3 {
-        color: #ddd;
+        color: #000;
         font-size: 1.5rem;
+        font-weight: 400;
         user-select: none;
+        margin-bottom: 15px;
         @include mobile {
           font-size: 1.1rem;
         }
@@ -396,8 +399,9 @@ body {
       }
 
       li {
+        margin-bottom: 10px;
         a {
-          color: #ddd;
+          color: #000;
           border-bottom: 1px solid transparent;
           position: relative;
         }
@@ -409,6 +413,9 @@ body {
     }
 
     &__subscription {
+      h2 {
+        font-weight: 400;
+      }
       form {
         @include d-flex(center, center, column);
         margin-top: 5px;
@@ -434,7 +441,7 @@ body {
           font-size: 1rem;
           border: 1px solid transparent;
           cursor: pointer;
-          transition: .3s;
+          transition: 0.3s;
 
           &:hover {
             background-color: var(--clr-light);
@@ -451,6 +458,69 @@ body {
         input {
           font-size: 13px !important;
         }
+      }
+    }
+  }
+  &--foot {
+    padding: 20px 0;
+    @include d-flex(space-between);
+    &__sociall {
+      @include d-flex;
+      gap: 10px;
+      a {
+        color: #555;
+        position: relative;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        overflow: hidden;
+        @include d-flex;
+        i {
+          position: relative;
+          z-index: 2;
+        }
+
+        &:hover {
+          i {
+            color: #fff;
+          }
+          &::after {
+            transform: scale(1);
+          }
+        }
+        &::after {
+          content: "";
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          background-color: #555;
+          top: 0;
+          left: 0;
+          transform: scale(0);
+          transform-origin: center;
+          transition: 0.2s;
+          border-radius: 50%;
+        }
+      }
+    }
+
+    &__copyright {
+      a {
+        color: #0087ca;
+
+        &::after {
+          background-color: #0087ca;
+        }
+      }
+    }
+
+    &__payment {
+      @include d-flex;
+      font-weight: 500;
+      color: #555;
+      gap: 10px;
+      img {
+        width: 30px;
       }
     }
   }
@@ -525,6 +595,37 @@ body {
   }
 }
 //#endregion loading
+
+// #region promotion
+
+.promotion {
+  width: 100%;
+  margin-bottom: 270px;
+  padding: 40px 0;
+  background-color: #fff;
+  &--content {
+    @include d-flex();
+    gap: 40px;
+
+    .promo--main {
+      @include d-flex;
+      gap: 10px;
+      img {
+        height: 40px;
+      }
+      p {
+        font-weight: 500;
+        color: #292930;
+      }
+      span {
+        font-weight: 300;
+        color: #777;
+      }
+    }
+  }
+}
+
+// #endregion promotion
 
 html {
   scroll-behavior: smooth;

@@ -707,7 +707,6 @@
 .pagination {
   @include d-flex;
   gap: 10px;
-  margin-bottom: 240px;
   border-bottom: 1px solid hsl(0, 0%, 93%);
   padding-bottom: 40px;
   background-color: #fff;

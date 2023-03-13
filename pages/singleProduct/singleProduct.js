@@ -63,6 +63,7 @@ function changeButton() {
 window.onload = async function () {
   await onloadFunction();
   createSingleProduct();
+  setPromotionSection();
   endLoading();
   changeButton();
 };

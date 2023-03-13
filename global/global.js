@@ -11,6 +11,64 @@ let countPr = 0;
 let overlay = $(".overlay");
 let fethcUrl = "http://localhost:3000";
 
+// document.addEventListener(
+//   "contextmenu",
+//   function (event) {
+//     event.preventDefault();
+//   },
+//   false
+// );
+
+// document.onkeydown = function (event) {
+//   if (event.keyCode == 123) {
+//     window.location.reload()
+//     return false;
+//   }
+// };
+
+//! set promotion section
+
+function setPromotionSection() {
+  let promotion = `  
+  <div class="promotion">
+  <div class="container">
+    <div class="promotion--content">
+      <div class="promo--first promo--main">
+        <img src="https://new.axilthemes.com/demo/template/etrade/assets/images/icons/service1.png" alt="delivery">
+        <div class="content">
+          <p>Sürətli & Təhlükəsiz Çatdırılma</p>
+          <span>Məlumat verin</span>
+        </div>
+      </div>
+      <div class="promo--second promo--main">
+        <img src="https://new.axilthemes.com/demo/template/etrade/assets/images/icons/service2.png" alt="money back">
+        <div class="content">
+          <p>Geri Qaytarma Zəmanəti</p>
+          <span>10 gün ərzində</span>
+        </div>
+      </div>
+      <div class="promo--third promo--main">
+        <img src="https://new.axilthemes.com/demo/template/etrade/assets/images/icons/service3.png" alt="24 hour return">
+        <div class="content">
+          <p>24 Saat Ərzində Qaytarmaq</p>
+          <span>Heç bir sual verilmir</span>
+        </div>
+      </div>
+      <div class="promo--fourth promo--main">
+        <img src="https://new.axilthemes.com/demo/template/etrade/assets/images/icons/service4.png" alt="live support">
+        <div class="content">
+          <p>Professional Dəstək</p>
+          <span>7/24 Canlı dəstək</span>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  `;
+  $(".footer").insertAdjacentHTML("beforebegin", promotion);
+}
+
+
 //! get products & cart items from json server
 async function onloadFunction() {
   await fetch(`${fethcUrl}/products`)

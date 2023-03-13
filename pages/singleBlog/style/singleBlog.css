@@ -709,108 +709,171 @@ html {
   font-weight: 400;
 }
 
-.blog--header {
-  height: 350px;
+.header {
+  position: absolute;
   width: 100%;
-  background-image: url("https://fullkit.moxcreative.com/mascoolin/wp-content/uploads/sites/6/2022/04/two-fashion-black-men.jpg");
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-color: transparent;
+  box-shadow: none;
+  border-bottom: none;
   transition: 0.3s;
-  filter: grayscale(1);
 }
-.blog--header:hover {
-  filter: grayscale(0);
+.header:hover, .header.scroll {
+  background-color: #fff;
+  position: fixed;
+}
+.header:hover a, .header.scroll a {
+  color: #000 !important;
+}
+.header:hover a::after, .header.scroll a::after {
+  background-color: #000;
+}
+.header a {
+  color: #fff !important;
+}
+.header a::after {
+  background-color: #fff;
 }
 
-.blog--list {
+.blogpage--header {
   width: 100%;
   overflow: hidden;
-  background-color: #fff;
-  margin-bottom: 240px;
-  padding: 40px 0;
-  border-bottom: 1px solid hsl(0, 0%, 90%);
-  box-shadow: 0 1.2rem 3rem #ddd;
+  height: 100vh;
+  position: relative;
 }
-.blog--list__content {
-  display: grid;
-  padding: 0 55px;
-  grid-template-columns: 2fr 2fr 2fr 1fr;
-  gap: 20px;
+.blogpage--header img {
+  filter: grayscale(30%) contrast(60%);
 }
-.blog--list__item {
-  background-color: #f5f5f5;
-}
-.blog--list__item--image {
-  overflow: hidden;
-  height: 220px;
-}
-.blog--list__item--image:hover img {
-  transform: scale(1.2);
-}
-.blog--list__item--image img {
-  transition: 0.3s;
-  width: 100%;
-}
-.blog--list__item--text {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  flex-direction: column;
-  gap: 15px;
-  padding: 10px 20px;
-}
-.blog--list__item--text__title {
+.blogpage--header__title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 2rem;
+  text-align: center;
   font-weight: 600;
+  width: 500px;
 }
-.blog--list__item--text__title a {
-  color: #666666;
-  transition: 0.3s;
-}
-.blog--list__item--text__title a:hover {
-  color: #d1a280;
-}
-.blog--list__item--text__desc {
-  color: #77778b;
-  margin-bottom: 20px;
-}
-.blog--list__item--text__foot {
-  color: #6a5a6c;
+.blogpage--header__content {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
   display: flex;
   justify-content: space-between;
+  gap: 30px;
+  width: 500px;
+}
+.blogpage--header__content p {
+  display: flex;
+  justify-content: center;
   align-items: center;
   flex-direction: row;
+  gap: 8px;
+}
+.blogpage--header__location {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff !important;
+  padding: 0 20px;
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+.blogpage--header__location * {
+  font-weight: 200 !important;
+}
+.blogpage--header__location a {
+  color: #fff !important;
+}
+.blogpage--header__location a::after {
+  height: 1px;
+}
+.blogpage--header__location .active {
+  color: #fff !important;
+}
+.blogpage--header__location .hover-underline-animation::after {
+  background-color: #fff;
+}
+.blogpage--header__share {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   gap: 10px;
 }
-.blog--list__product--content {
-  position: sticky;
+.blogpage--header__share p {
+  color: #fff;
+  font-weight: 500;
+}
+.blogpage--header__share a {
+  color: #fff;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+}
+.blogpage--header__share a:hover {
+  color: #555;
+}
+.blogpage--header__share a:hover::after {
+  transform: scale(1);
+}
+.blogpage--header__share a::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
   top: 0;
-}
-.blog--list__product--img {
-  overflow: hidden;
-  height: 240px;
-}
-.blog--list__product--img:hover img {
-  transform: scale(1.2);
-}
-.blog--list__product--img img {
+  left: 0;
+  background-color: #ddd;
+  border-radius: 50%;
+  transform: scale(0);
+  transform-origin: center;
   transition: 0.3s;
+}
+.blogpage--header__share a i {
+  position: relative;
+  z-index: 1;
+}
+
+.blogtext {
   width: 100%;
 }
-.blog--list__product--title h2 {
-  font-size: 14px;
-  font-weight: 300;
+.blogtext--main {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
 }
-.blog--list__product--title h2 a {
-  color: #77778b;
+.blogtext--content__title {
+  display: grid;
+  grid-template-columns: 3fr 9fr;
 }
-.blog--list__product--price {
-  font-size: 12px;
+.blogtext--content__title .writer {
+  border: 1px solid hsl(0, 0%, 91%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
-.blog--list__product--price .price {
-  font-size: 15px;
+.blogtext--content__title .writer img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
 }
-.blog--list__product .stars {
-  font-size: 12px;
-}/*# sourceMappingURL=blog.css.map */
+.blogtext--content__title .writer span {
+  color: #000;
+}
+
+img {
+  width: 100%;
+}/*# sourceMappingURL=singleBlog.css.map */
