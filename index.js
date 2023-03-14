@@ -162,10 +162,26 @@ function changeSlider() {
 async function getBlogs() {
   let blogs = [];
   let blogList = $(".blogs--list");
-  await fetch(fethcUrl + "/blogs?id=1&id=2&id=3")
+  let randomNums = [];
+  while (true) {
+    let random = Math.ceil(Math.random() * 6);
+    if (!randomNums.includes(random)) {
+      randomNums.push(random);
+    }
+
+    if (randomNums.length == 3) {
+      console.log(randomNums);
+      break;
+    }
+  }
+  await fetch(
+    fethcUrl +
+      `/blogs?id=${randomNums[0]}&id=${randomNums[1]}&id=${randomNums[2]}`
+  )
     .then((res) => res.json())
     .then((data) => {
       blogs = data;
+      console.log(blogs);
     });
 
   blogs.forEach((blogObj) => {
@@ -174,20 +190,22 @@ async function getBlogs() {
     blogEl.innerHTML = `
     
     <div class="blogs--list__blog--img">
-    <img
-      src="${blogObj.img}"
-      alt="8 Casual Trouser Styles">
+      <a href="./pages/singleBlog/singleBlog.html">
+        <img
+        src="${blogObj.img}"
+        alt="8 Casual Trouser Styles">
+      </a>
     </div>
     <div class="blogs--list__blog--content">
     <h4>
       Yazı tarixi <span class="date">${blogObj.date}</span>
     </h4>
     <h2 class="blog--title">
-      <a href="#">${
-        blogObj.title.length > 23
-          ? blogObj.title.slice(0, 20) + "..."
-          : blogObj.title
-      }</a>
+      <a href="./pages/singleBlog/singleBlog.html?id=${blogObj.id}">${
+      blogObj.title.length > 23
+        ? blogObj.title.slice(0, 20) + "..."
+        : blogObj.title
+    }</a>
     </h2>
     <div class="blog--desc">
       It is accompanied by a case that can contain up to three different diffusers and can be used for dry …

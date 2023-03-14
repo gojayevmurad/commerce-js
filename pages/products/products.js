@@ -8,8 +8,6 @@ let paginationPagesParent = $(".pagination--pages");
 let paginationCurrentPage = 1;
 let paginationItemsCount = 20;
 let paginationPagesCount;
-// let paginatePrevBtn = $(".pagination--prev");
-// let paginateNextBtn = $(".pagination--next");
 
 function setPagination(PagesCount, data) {
   paginationPagesParent.innerHTML = "";
@@ -22,17 +20,10 @@ function setPagination(PagesCount, data) {
     paginationEl.dataset.index = i;
   }
 
-  // paginatePrevBtn.dataset.index = paginationCurrentPage;
-  // paginatePrevBtn.classList.add("disabled");
-
   if (PagesCount == 1) {
     paginationPagesParent.style.display = "none";
-    // paginateNextBtn.style.display = "none";
-    // paginatePrevBtn.style.display = "none";
   } else {
     paginationPagesParent.style.display = "flex";
-    // paginateNextBtn.style.display = "grid";
-    // paginatePrevBtn.style.display = "grid";
   }
 
   displayProducts(
@@ -45,67 +36,15 @@ function addEventPaginationButtons(data = productList) {
 
   paginateButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      paginateButtons[paginationCurrentPage - 1].classList.remove("active"); //remove active class from prev btn
-      paginationCurrentPage = btn.dataset.index; // set current page index
-      btn.classList.add("active"); // add active class to current btn
-      // if (paginationCurrentPage == paginationPagesCount) {
-      //   paginateNextBtn.classList.add("disabled");
-      // } else {
-      //   paginateNextBtn.classList.remove("disabled");
-      //   paginateNextBtn.dataset.index = +paginationCurrentPage + 1;
-      // }
-      // if (paginationCurrentPage == 1) {
-      //   paginatePrevBtn.classList.add("disabled");
-      // } else {
-      //   paginatePrevBtn.classList.remove("disabled");
-      //   paginatePrevBtn.dataset.index = paginationCurrentPage - 1;
-      // }
+      paginateButtons[paginationCurrentPage - 1].classList.remove("active");
+      paginationCurrentPage = btn.dataset.index;
+      btn.classList.add("active");
 
       displayProducts(
         data.slice((paginationCurrentPage - 1) * 20, paginationCurrentPage * 20)
       );
     });
   });
-
-  // paginateNextBtn.addEventListener("click", () => {
-  //   let prevPageIndex = paginationCurrentPage;
-  //   paginatePrevBtn.classList.remove("disabled");
-  //   paginateButtons[paginationCurrentPage - 1].classList.remove("active"); //remove active class from prev btn
-  //   paginationCurrentPage = Number(paginateNextBtn.dataset.index);
-  //   paginateButtons[paginationCurrentPage - 1].classList.add("active");
-  //   if (paginationCurrentPage == paginationPagesCount) {
-  //     paginateNextBtn.classList.add("disabled");
-  //     paginatePrevBtn.dataset.index = paginationPagesCount - 1;
-  //   } else {
-  //     paginateNextBtn.dataset.index = +paginationCurrentPage + 1;
-  //     paginateNextBtn.classList.remove("disabled");
-  //     paginatePrevBtn.dataset.index = prevPageIndex;
-  //   }
-
-  //   displayProducts(
-  //     data.slice((paginationCurrentPage - 1) * 20, paginationCurrentPage * 20)
-  //   );
-  // });
-
-  // paginatePrevBtn.addEventListener("click", () => {
-  //   let prevPageIndex = paginationCurrentPage;
-  //   paginateNextBtn.classList.remove("disabled");
-  //   paginateButtons[paginationCurrentPage - 1].classList.remove("active"); //remove active class from prev btn
-  //   paginationCurrentPage = Number(paginatePrevBtn.dataset.index);
-  //   paginateButtons[paginationCurrentPage - 1].classList.add("active");
-  //   if (paginationCurrentPage == 1) {
-  //     paginatePrevBtn.classList.add("disabled");
-  //     paginateNextBtn.dataset.index = 2;
-  //   } else {
-  //     paginatePrevBtn.classList.remove("disabled");
-  //     paginatePrevBtn.dataset.index = paginationCurrentPage - 1;
-  //     paginateNextBtn.dataset.index = prevPageIndex;
-  //   }
-
-  //   displayProducts(
-  //     data.slice((paginationCurrentPage - 1) * 20, paginationCurrentPage * 20)
-  //   );
-  // });
 }
 
 //#endregion pagination
@@ -152,23 +91,23 @@ function displayProducts(list) {
         break;
     }
     product.innerHTML = `
-  <div class="products--list__product--quickview" data-id="${productObj.id}">
-    Cəld Baxış
-  </div>
-  <div class="product--title">
-    <p>${productObj.categoryName}</p>
-    <i class="fa-regular fa-heart" onclick="addWishList(this)"></i>
-  </div>
-  <div class="product--image">
-    <img
-    class="frontimage"
-      src="${productObj.img[0]}"
-      alt="glass"
-    />
-    <img class="backimage" src=${productObj.img[1]} alt="backimage"/>
-  </div>
+    <div class="products--list__product--quickview" data-id="${productObj.id}">
+      Cəld Baxış
+    </div>
+    <div class="product--title">
+      <p>${productObj.categoryName}</p>
+      <i class="fa-regular fa-heart" onclick="addWishList(this)"></i>
+    </div>
+    <div class="product--image">
+      <img
+      class="frontimage"
+        src="${productObj.img[0]}"
+        alt="glass"
+      />
+      <img class="backimage" src=${productObj.img[1]} alt="backimage"/>
+    </div>
 
-  <div class="product--content">
+    <div class="product--content">
     <a href="../singleProduct/singleProduct.html?id=${
       productObj.id
     }" class="product--content__name">
@@ -190,8 +129,8 @@ function displayProducts(list) {
       productObj.inStock ? "Səbətə at" : "Stokda yoxdur"
     }</button>
     </div>
-  </div>
-`;
+      </div>
+    `;
 
     productListEl.appendChild(product);
     product
@@ -200,6 +139,7 @@ function displayProducts(list) {
         displayQuickView(productObj.id);
       });
   });
+  changeButtonsAfterLoad();
   addEventToButtons();
   window.scrollTo(0, 0);
 }
@@ -316,7 +256,6 @@ function getFilterData(e) {
 
 window.addEventListener("load", async () => {
   await onloadFunction();
-  changeButtonsAfterLoad();
   quickviewModal();
   paginationPagesCount = Math.ceil(productList.length / paginationItemsCount);
   setPagination(paginationPagesCount, productList);
@@ -327,7 +266,7 @@ window.addEventListener("load", async () => {
 
 document.addEventListener("mousemove", (e) => {
   let filterItem = $(".filter");
-  if (e.clientX < 20) {
+  if (e.clientX < 20 && quickview.classList.contains("hide")) {
     filterItem.classList.remove("hide");
     overlay.classList.remove("hide");
   } else if (!filterItem.classList.contains("hide") && e.clientX > 350) {

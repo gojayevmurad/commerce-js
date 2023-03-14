@@ -13,13 +13,13 @@ function createBlogItem(obj) {
   blogItemEl.classList = "blog--list__item";
   blogItemEl.innerHTML = `
     <div class="blog--list__item--image">
-    <a href=""><img
+    <a href="../singleBlog/singleBlog.html?id=${obj.id}"><img
             src="${obj.img}"
             alt=""></a>
     </div>
     <div class="blog--list__item--text">
     <h3 class="blog--list__item--text__title">
-        <a href="#">${obj.title}</a>
+        <a href="../singleBlog/singleBlog.html?id=${obj.id}">${obj.title}</a>
     </h3>
     <p class="blog--list__item--text__desc">
         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
@@ -93,5 +93,6 @@ function blogListConfigure() {
 window.onload = async function () {
   await onloadFunction();
   await getBlogs();
+  setPromotionSection();
   blogListConfigure();
 };

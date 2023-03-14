@@ -121,7 +121,7 @@ body {
     font-weight: 400;
 
     font-size: 2rem;
-    width: 30px;
+    width: 300px;
 
     p {
       color: red;
@@ -207,7 +207,8 @@ body {
 
   &--events {
     @include d-flex;
-    width: 30px !important;
+    width: 300px !important;
+    justify-content: end;
     gap: 30px;
     font-size: 25px;
     & > div {
@@ -603,6 +604,9 @@ body {
   margin-bottom: 270px;
   padding: 40px 0;
   background-color: #fff;
+  border-bottom: 1px solid hsl(0, 0%, 80%);
+  border-top: 1px solid hsl(0, 0%, 80%);
+
   &--content {
     @include d-flex();
     gap: 40px;
@@ -703,4 +707,8 @@ html {
       font-weight: 400;
     }
   }
+}
+
+button[disabled] {
+  cursor: not-allowed !important;
 }

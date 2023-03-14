@@ -68,7 +68,6 @@ function setPromotionSection() {
   $(".footer").insertAdjacentHTML("beforebegin", promotion);
 }
 
-
 //! get products & cart items from json server
 async function onloadFunction() {
   await fetch(`${fethcUrl}/products`)
@@ -108,7 +107,7 @@ function changeToCountable(target, value = 1) {
   changeCountDisplay.classList = "product--content__details--changecount";
   changeCountDisplay.innerHTML = `
       <button  id="${target.value}" class="decrease decrease${target.value}" value="-">-</button>
-      <input class="cartItemCount" type="text" disabled value="${value}">
+      <input class="cartItemCount" id="product${target.value}" type="text" disabled value="${value}">
       <button id="${target.value}" class="increase increase${target.value}" value="+">+</button>
       `;
   target.parentNode.replaceChild(changeCountDisplay, target);
@@ -120,6 +119,7 @@ function changeToCountable(target, value = 1) {
       changeCount(e);
     });
   });
+  changeCountDisplay;
 }
 
 //! change to add to cart btn
@@ -237,7 +237,7 @@ const notifactionDetails = {
 
 const deleteNotification = (toast) => {
   toast.classList.add("hide");
-  setInterval(() => {
+  setTimeout(() => {
     toast.remove();
   }, 100);
 };
@@ -415,15 +415,39 @@ function quickViewSlider() {
   });
 }
 
+let addToCartBtn = $(".addtocart button");
+let addToCartSection = $(".addtocart");
+let quickview = $(".quickview--modal");
+let inCard = [false, null];
+let productId;
 function displayQuickView(id) {
+  addToCartBtn = $(".addtocart button");
+  cartItemsList.forEach((cartItem) => {
+    if (cartItem.id == id) {
+      return (inCard = [true, cartItem.count]);
+    }
+  });
   let item = productList[id - 1];
-  let quickview = $(".quickview--modal");
+  quickview.id = id;
   let quickviewModalSlider = $(".quickview--modal__slider");
   let quickviewProductName = $(".quickview-name");
   let quickviewPrice = $(".quickview-price");
   let quickviewStars = $(".quickview-stars");
   let popularity = Math.ceil(item.popularity);
   let stars = "";
+  addToCartBtn.value = item.id;
+
+  if (inCard[0]) {
+    changeToCountable(addToCartBtn, +inCard[1]);
+  }
+
+  if (!item.inStock) {
+    addToCartBtn.disabled = true;
+    addToCartBtn.innerHTML = "Stokda yoxdur";
+  } else {
+    addToCartBtn.innerHTML = "Səbətə at";
+    addToCartBtn.disabled = false;
+  }
 
   for (let i = 0; i < item.img.length; i++) {
     let slide = document.createElement("div");
@@ -450,24 +474,43 @@ function displayQuickView(id) {
 
   quickview.classList.remove("hide");
   overlay.classList.remove("hide");
-  overlay.addEventListener("click", () => quickviewReset());
-
-  window.addEventListener("scroll", () => quickviewReset());
-  window.addEventListener("keydown", (e) => {
-    if (e.key == "Escape") quickviewReset();
+  addToCartBtn.addEventListener("click", (e) => {
+    let item = $(`#load${e.target.value}`);
+    reRenderProductItem(item, e);
   });
+}
+overlay.addEventListener("click", () => quickviewReset());
 
-  function quickviewReset() {
-    document
-      .querySelectorAll(".quickview--modal__slider--slide")
-      .forEach((img) => {
-        img.remove();
-      });
-    overlay.classList.add("hide");
-    quickview.classList.add("hide");
+// window.addEventListener("scroll", () => quickviewReset());
+window.addEventListener("keydown", (e) => {
+  if (e.key == "Escape") quickviewReset();
+});
+
+function quickviewReset() {
+  addToCartSection.innerHTML = "<button>Səbətə at</button>";
+  document
+    .querySelectorAll(".quickview--modal__slider--slide")
+    .forEach((img) => {
+      img.remove();
+    });
+
+  if (inCard[0]) {
+    let countEl;
+    cartItemsList.forEach((item) => {
+      if (item.id == quickview.id) {
+        countEl = item.count;
+      }
+    });
+    $(`#product${quickview.id}`).value = countEl;
   }
+
+  overlay.classList.add("hide");
+  quickview.classList.add("hide");
+  inCard = [false, null];
 }
 
-window.addEventListener("error", () => {
-  document.body.innerHTML = "error";
-});
+function reRenderProductItem(item, e) {
+  addToCartAndThenChangeButton(+e.target.value, e.target);
+  changeToCountable(item);
+  inCard = [true, 1];
+}

@@ -126,7 +126,7 @@ body {
 .actions--logo {
   font-weight: 400;
   font-size: 2rem;
-  width: 30px;
+  width: 300px;
 }
 .actions--logo p {
   color: red;
@@ -210,7 +210,8 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  width: 30px !important;
+  width: 300px !important;
+  justify-content: end;
   gap: 30px;
   font-size: 25px;
 }
@@ -605,6 +606,8 @@ body {
   margin-bottom: 270px;
   padding: 40px 0;
   background-color: #fff;
+  border-bottom: 1px solid hsl(0, 0%, 80%);
+  border-top: 1px solid hsl(0, 0%, 80%);
 }
 .promotion--content {
   display: flex;
@@ -707,6 +710,10 @@ html {
 }
 .location a.active {
   font-weight: 400;
+}
+
+button[disabled] {
+  cursor: not-allowed !important;
 }
 
 body {
