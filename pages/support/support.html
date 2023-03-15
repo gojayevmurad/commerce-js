@@ -15,6 +15,27 @@
 </head>
 
 <body>
+  <div class="shopping--cart hide">
+    <div class="shopping--cart__head">
+      <h3>Səbətim</h3>
+      <i class="fa-solid fa-x shopping--cart__close"></i>
+    </div>
+    <img src="/assets/empty-cart.webp" class="emptycart" alt="empty cart">
+    <h2 class="emptycart">Kartınız hal hazırda boşdur.</h2>
+    <p class="emptycart">Mağazada mövcud olan bütün məhsulları yoxlaya və bəzilərini ala bilərsiz.</p>
+    <button class="backshop emptycart">Mağazaya qayıt</button>
+    <div class="shopping--cart__list">
+      <h4 class="shopping--cart__list--header">Səbətdəki Məhsullarınız</h4>
+    </div>
+    <div class="shopping--cart__actions">
+      <div class="subtotal">
+        <p>Ümumi Qiymət</p>
+        <span class="suptotal--price">₼50</span>
+      </div>
+      <button class="checkout">Ödəniş</button>
+      <a href="#" class="gotocartpage">Səbət səhifəsinə get</a>
+    </div>
+  </div>
   <ul class="notifications"></ul>
   <header class="header">
     <nav class="header--navigation">
@@ -213,7 +234,9 @@
     </div>
   </footer>
 
-  <script src="../../global.js"></script>
+  <script src="../../global/global.js"></script>
+  <script src="../../global/shoppingCart.js"></script>
+  <script src="support.js"></script>
 </body>
 
 </html>

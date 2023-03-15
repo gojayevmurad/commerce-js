@@ -7,8 +7,8 @@ body {
   min-height: 100vh;
 }
 
-.header{
-  box-shadow: none!important;
+.header {
+  box-shadow: none !important;
 }
 
 .cart {
@@ -33,13 +33,13 @@ body {
 
       .arrow {
         @include d-flex;
-        position: absolute;
+        position: fixed;
         height: 50px;
         width: 50px;
         border: 1px solid var(--clr--gray);
         border-radius: 50%;
-        right: 5px;
-        bottom: 5px;
+        right: 500px;
+        bottom: 50px;
         cursor: pointer;
         backdrop-filter: blur(10px);
         background-color: var(--clr-primary);
@@ -223,4 +223,8 @@ body {
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+.continue{
+  color: #3498db;
 }

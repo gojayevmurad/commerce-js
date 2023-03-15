@@ -216,6 +216,13 @@ async function getBlogs() {
     `;
 
     blogList.appendChild(blogEl);
+    blogEl
+      .querySelector(".blogs--list__blog--content button")
+      .addEventListener("click", () => {
+        window.location =
+          window.location.origin +
+          `/pages/singleBlog/singleBlog.html?id=${blogObj.id}`;
+      });
   });
 }
 getBlogs();
@@ -226,5 +233,6 @@ window.addEventListener("load", async () => {
   getRandomProducts(); //! call the  squentially functions with order when window load
   changeButtonsAfterLoad();
   setPromotionSection();
+  showAndSetShoppingCart();
   endLoading();
 });

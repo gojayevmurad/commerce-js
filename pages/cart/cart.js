@@ -1,4 +1,6 @@
 const table = document.querySelector("table");
+let totalPriceCartItems = 0;
+let methodPrice = 0;
 
 function createCartItemsTable() {
   if (cartItemsList.length == 0) {
@@ -10,9 +12,11 @@ function createCartItemsTable() {
         el.remove();
       }
     });
+    totalPriceCartItems = 0;
     cartItemsList.forEach((cartItem) => {
       productList.forEach((product) => {
         if (cartItem.id == product.id) {
+          totalPriceCartItems += cartItem.count * product.price;
           const listItem = document.createElement("tr");
           listItem.innerHTML = `
           <td class="product--details">
@@ -32,13 +36,15 @@ function createCartItemsTable() {
                       </td>
                       <td class="product--count">
                         <div class="product--count__content">
-                          <button id="${cartItem.id}" class="decrease decrease${cartItem.id}" value="-">-</button>
+                          <button id="${cartItem.id}" class="decrease decrease${
+            cartItem.id
+          }" value="-">-</button>
                           <input class="cartItemCount" type="text"  value="${
                             cartItem.count
                           }" disabled />
-                          <button id="${
-                            cartItem.id
-                          }" class="increase increase${cartItem.id}" value="+">+</button>
+                          <button id="${cartItem.id}" class="increase increase${
+            cartItem.id
+          }" value="+">+</button>
                         </div>
                       </td>
                       <td class="product--price">
@@ -52,7 +58,6 @@ function createCartItemsTable() {
                         ).toFixed(2)}</span></p>
                       </td>
 `;
-
           table.appendChild(listItem);
           let buttons = [`decrease${cartItem.id}`, `increase${cartItem.id}`];
 
@@ -62,6 +67,7 @@ function createCartItemsTable() {
               .addEventListener("click", (e) => {
                 changeCount(e);
                 createCartItemsTable();
+                setCartPageDetails();
               });
           });
         }
@@ -73,18 +79,27 @@ function createCartItemsTable() {
         cartItemsList = cartItemsList.filter((el) => el.id != e.target.id);
         deleteCartItem(e);
         createCartItemsTable();
+        setCartPageDetails();
       });
     });
   }
   endLoading();
 }
 
-function addEventsToButtons() {
-  document.querySelectorAll();
+//* set cart page details
+
+function setCartPageDetails() {
+  $(".product--count span").innerHTML = cartItemsList.length;
+  $(".cart--content__order--count__pricee").innerHTML =
+    totalPriceCartItems.toFixed(2);
+  $(".cart--content__checkout--price").innerHTML = (
+    methodPrice + totalPriceCartItems
+  ).toFixed(2);
 }
 
 window.addEventListener("load", async () => {
   await onloadFunction();
   createCartItemsTable();
+  setCartPageDetails();
   endLoading();
 });

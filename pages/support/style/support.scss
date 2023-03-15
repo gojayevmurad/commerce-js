@@ -1,6 +1,7 @@
 @import "../../../global/global";
 
 .faq {
+  background-color: #fff;
   &--header {
     @include d-flex(center, center, column);
     p {
@@ -55,6 +56,6 @@
         }
       }
     }
-    margin-bottom: 40px;
+    padding-bottom: 40px;
   }
 }
