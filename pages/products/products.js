@@ -261,6 +261,7 @@ window.addEventListener("load", async () => {
   setPagination(paginationPagesCount, productList);
   addEventPaginationButtons();
   setPromotionSection();
+  showAndSetShoppingCart();
   endLoading(); //!!!!!!!!!!!!!!!!!!!!!!
 });
 

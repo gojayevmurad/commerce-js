@@ -98,6 +98,7 @@ function addToCartAndThenChangeButton(id, target) {
   }).finally((data) => {
     createNotification("success", "Səbətə əlavə olundu");
     changeToCountable(target);
+    showAndSetShoppingCart();
   });
 }
 
@@ -176,6 +177,7 @@ function changeCount(e) {
       },
     }).catch((data) => console.log(data));
   }
+  showAndSetShoppingCart();
 }
 
 function changeButtonsAfterLoad() {
