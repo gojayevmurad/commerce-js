@@ -16,6 +16,16 @@
 </head>
 
 <body>
+  <div class="shopping--cart">
+    <div class="shopping--cart__head">
+      <h3>Səbətim</h3>
+      <i class="fa-solid fa-x"></i>
+    </div>
+    <img src="/assets/empty-cart.webp" class="emptycart" alt="empty cart">
+    <h2 class="emptycart">Kartınız hal hazırda boşdur.</h2>
+    <p class="emptycart">Mağazada mövcud olan bütün məhsulları yoxlaya və bəzilərini ala bilərsiz.</p>
+    <button class="backshop">Mağazaya qayıt</button>
+  </div>
   <div class="preloader">
     <div class="b-ico-preloader"></div>
     <div class="spinner"></div>
@@ -57,7 +67,7 @@
     </div>
   </div>
 
-  <div class="overlay hide"></div>
+  <div class="overlay"></div>
   <ul class="notifications"></ul>
   <header class="header">
     <div class="hamburger--menu"></div>
@@ -80,9 +90,7 @@
         </div>
         <div class="actions--search hide">
           <input class="actions--search__input" type="text" placeholder="Enter your product name...">
-          <div class="actions--search__products ">
-
-          </div>
+          <div class="actions--search__products "></div>
         </div>
         <div class="actions--events">
           <div class="actions--person">

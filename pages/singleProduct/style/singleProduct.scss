@@ -34,6 +34,7 @@ header {
       }
 
       &--slide {
+        margin-left: 10px;
         display: flex;
         justify-content: start;
         align-items: center;
@@ -85,7 +86,45 @@ header {
         flex-direction: column;
         gap: 10px;
 
-        button {
+        .product--content__details--changecount {
+          display: flex;
+          align-items: center;
+          justify-content: start;
+          gap: 5px;
+          button {
+            cursor: pointer;
+            background-color: var(--clr-primary);
+            border: 1px solid transparent;
+            outline: none;
+            height: 60px;
+            transition: 0.1s;
+            color: var(--clr-light);
+            width: 50px;
+            &:hover {
+              transform: scale(1.05);
+              background-color: var(--clr-light);
+              color: var(--clr-primary);
+              border: 1px solid var(--clr-primary);
+            }
+            &.increase:hover {
+              background-color: green;
+              color: #fff;
+            }
+            &.decrease:hover {
+              background-color: #e24d4c;
+              color: #fff;
+            }
+          }
+          input {
+            height: 60px;
+            width: 85px;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 0.7;
+          }
+        }
+
+        button:not(.increase, .decrease) {
           cursor: pointer;
           background-color: var(--clr-primary);
           border: 1px solid transparent;
