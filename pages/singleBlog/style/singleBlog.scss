@@ -200,6 +200,8 @@
       }
     }
     .comments--content {
+      display: flex;
+      flex-direction: column;
       margin-bottom: 30px;
       & > p {
         margin-bottom: 20px;
@@ -308,6 +310,9 @@
           }
         }
       }
+      .loadmore {
+        margin: 0 auto;
+      }
     }
     .comments--form {
       form {
@@ -336,7 +341,7 @@
 
               & ~ label {
                 opacity: 0;
-                transition: .7s;
+                transition: 0.7s;
               }
               transition: 0.4s;
               overflow: hidden;

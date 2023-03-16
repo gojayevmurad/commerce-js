@@ -1208,6 +1208,8 @@ button[disabled] {
   line-height: 1.7;
 }
 .blogtext--content .comments--content {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 30px;
 }
 .blogtext--content .comments--content > p {
@@ -1322,6 +1324,9 @@ button[disabled] {
 }
 .blogtext--content .comments--content .comment--list__item--children__comment--content .comment--data {
   padding-right: 10px;
+}
+.blogtext--content .comments--content .loadmore {
+  margin: 0 auto;
 }
 .blogtext--content .comments--form form h4 {
   font-size: 1.2rem;

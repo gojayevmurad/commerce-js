@@ -40,7 +40,7 @@ let commentsList = $(".comments--list");
 
 function createBlogTextComment(comment, nth) {
   let commentEl = document.createElement("li");
-  commentEl.classList = "comment-list__item";
+  commentEl.classList = `comment--list__item `;
   let commentParent = document.createElement("div");
   commentParent.id = `comment${nth}`;
   commentParent.classList = "comment--list__item--parent";
@@ -99,9 +99,10 @@ function createBlogTextComment(comment, nth) {
 }
 
 function setBlogTextComment() {
+  let commentCounter = 1;
   commentsList.innerHTML = "";
   blogs[id - 1].comments.forEach((comment, index) => {
-    let element = createBlogTextComment(comment, index + 1);
+    let element = createBlogTextComment(comment, index + 1, commentCounter);
     commentsList.appendChild(element);
   });
 
@@ -116,7 +117,7 @@ function showOwnerComm() {
       $(`${el.getAttribute("href")}`).style.backgroundColor = "#6CB4EE";
       setTimeout(() => {
         $(`${el.getAttribute("href")}`).style.backgroundColor = "#fff";
-      }, 350);
+      }, 250);
     });
   });
 }
@@ -126,17 +127,20 @@ function showOwnerComm() {
 function setBlogs() {
   let asideBlogList = $(".aside--bloglist");
   let randomNums = [];
-
-  for (let i = 0; i < 3; i++) {
-    let random = Math.floor(Math.random() * 6);
-    if (randomNums.includes(random)) {
-      i--;
-      continue;
+  let random;
+  for (let j = 0; j < 3; j++) {
+    random = Math.floor(Math.random() * 5);
+    if (randomNums.includes(random) || random == Number(id)) {
+      j--;
+    } else {
+      randomNums.push(random);
     }
-    randomNums.push(random);
+  }
+  console.log(randomNums);
+  for (let i = 0; i < 3; i++) {
     let asideBlogItem = document.createElement("div");
     asideBlogItem.classList = "aside--blog";
-    let randomBlogItem = blogs[random];
+    let randomBlogItem = blogs[randomNums[i] + 1];
 
     asideBlogItem.innerHTML = `
       <div class="img">
@@ -210,7 +214,9 @@ window.onload = async function () {
   await onloadFunction();
   setPromotionSection();
   await getBlog();
-  createBlogTextComment(blogs[id - 1].comments[0]);
+  if (blogs[id - 1].comments.length > 0) {
+    createBlogTextComment(blogs[id - 1].comments[0]);
+  }
   setBlogPageHeader();
   setBlogTextContentTitle();
   setBlogTextComment();

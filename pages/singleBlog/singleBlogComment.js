@@ -61,11 +61,10 @@ async function setCommentSettings(parentIndex, childIndex) {
 
 reviewCommentCloseBtn.addEventListener("click", () => {
   reviewComment.classList.add("hide");
-  isReply = false;
-  replyTo = null;
+  resetCommentForm();
 });
 
-$(".form--comment").addEventListener("submit", (e) => {
+$(".form--comment").addEventListener("submit", async (e) => {
   e.preventDefault();
   let name = e.target.name.value;
   let email = e.target.email.value;
@@ -97,7 +96,7 @@ $(".form--comment").addEventListener("submit", (e) => {
     });
   }
 
-  fetch(fethcUrl + `/blogs/${id}`, {
+  await fetch(fethcUrl + `/blogs/${id}`, {
     method: "PUT",
     body: JSON.stringify({
       ...currentBlog[0],
@@ -119,6 +118,7 @@ function resetCommentForm() {
   form.reply.value = "";
   isReply = false;
   replyTo = null;
+  reviewComment.classList.add("hide");
 }
 
 async function reRenderComments() {
