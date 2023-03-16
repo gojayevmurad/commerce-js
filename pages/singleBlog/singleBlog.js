@@ -71,7 +71,7 @@ function createBlogTextComment(comment, nth) {
       childEl.id = `comment${nth}child${index + 1}`;
       childEl.innerHTML = `
       <a class="position--a" href="${
-        childComment.for
+        childComment.for >= 0
           ? `#comment${nth}child${childComment.for}`
           : `#comment${nth}`
       }"><i class="fa-solid fa-reply-all whichcomment" ></i></a>
@@ -83,7 +83,7 @@ function createBlogTextComment(comment, nth) {
           <h3 class="name">${childComment.name}</h3>
           <p><span class="date">${
             childComment.date
-          }</span> <a data-parent="${nth}" data-child="${index+1}" href="#"
+          }</span> <a data-parent="${nth}" data-child="${index + 1}" href="#"
                   class="reply">Reply</a>
           </p>
           <span class="comment--data">
@@ -99,6 +99,7 @@ function createBlogTextComment(comment, nth) {
 }
 
 function setBlogTextComment() {
+  commentsList.innerHTML = "";
   blogs[id - 1].comments.forEach((comment, index) => {
     let element = createBlogTextComment(comment, index + 1);
     commentsList.appendChild(element);
@@ -216,5 +217,6 @@ window.onload = async function () {
   setBlogs();
   setRecentViews();
   getItemsForNewComment();
+  await getCurrenBlog();
   addEventReplyBtns();
 };

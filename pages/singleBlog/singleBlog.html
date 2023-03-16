@@ -14,7 +14,7 @@
 </head>
 
 <body>
-
+    <ul class="notifications"></ul>
     <header class="header">
         <nav class="header--navigation">
             <ul>
@@ -26,6 +26,7 @@
             </ul>
         </nav>
     </header>
+
 
     <div class="blogpage--header">
         <img src="https://fullkit.moxcreative.com/mascoolin/wp-content/uploads/sites/6/2022/04/handsome-young-man-buying-trousers-in-fashion-store-1536x1024.jpg"
@@ -110,7 +111,7 @@
                         <ul class="comments--list"></ul>
                     </div>
                     <div class="comments--form">
-                        <form>
+                        <form class="form--comment">
                             <h4>Bir Cavab Buraxın</h4>
                             <p class="comments-mail">Sizin emailiniz paylaşılmayacaq.</p>
                             <div class="form--section">
@@ -124,17 +125,17 @@
                                         <i class="fa-regular fa-circle-xmark"></i>
                                     </div>
                                     <label for="reply">Mesajınız</label>
-                                    <textarea name="reply" id="reply" cols="30" rows="10"
+                                    <textarea required name="reply" id="reply" cols="30" rows="10"
                                         placeholder="Cavabınız"></textarea>
                                 </div>
                                 <div class="form--bottom">
                                     <div class="form--name">
                                         <label for="name">Adınız</label>
-                                        <input type="text" placeholder="Adınız" id="name">
+                                        <input required name="name" type="text" placeholder="Adınız" id="name">
                                     </div>
                                     <div class="form--email">
                                         <label for="email">Emailiniz</label>
-                                        <input type="email" placeholder="Emailiniz" id="email">
+                                        <input required name="email" type="email" placeholder="Emailiniz" id="email">
                                     </div>
                                 </div>
                             </div>
