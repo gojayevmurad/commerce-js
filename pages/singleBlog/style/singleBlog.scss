@@ -328,6 +328,15 @@
             .replied--message {
               &.hide {
                 height: 0;
+
+                & ~ label {
+                  opacity: 1;
+                }
+              }
+
+              & ~ label {
+                opacity: 0;
+                transition: .7s;
               }
               transition: 0.4s;
               overflow: hidden;

@@ -24,7 +24,6 @@ async function getBlog() {
 function setBlogPageHeader() {
   $(".blogpage--header > img").src = blogs[id - 1].img;
   $(".blogpage--header__title").innerText = blogs[id - 1].title;
-  // $(".blogpage--header__content .comments").innerText = ;
   $(".blogpage--header__content .date").innerText = blogs[id - 1].date;
 }
 
@@ -52,7 +51,9 @@ function createBlogTextComment(comment, nth) {
   </div>
   <div class="comment--list__item--parent__content">
     <h3 class="name">${comment.name}</h3>
-    <p><span class="date">${comment.date}</span><a href="#" class="reply">Reply</a>
+    <p><span class="date">${
+      comment.date
+    }</span><a href="#" class="reply" data-parent="${nth}" data-child="${-1}">Reply</a>
     </p>
     <span class="comment--data">
         ${comment.comment}
@@ -65,7 +66,6 @@ function createBlogTextComment(comment, nth) {
     let parentElChildsComments = document.createElement("ul");
     parentElChildsComments.classList = "comment--list__item--children";
     comment.replies.forEach((childComment, index) => {
-      console.log(childComment.for);
       let childEl = document.createElement("li");
       childEl.classList = "comment--list__item--children__comment";
       childEl.id = `comment${nth}child${index + 1}`;
@@ -81,7 +81,9 @@ function createBlogTextComment(comment, nth) {
       </div>
       <div class="comment--list__item--children__comment--content">
           <h3 class="name">${childComment.name}</h3>
-          <p><span class="date">${childComment.date}</span> <a class="" href="#"
+          <p><span class="date">${
+            childComment.date
+          }</span> <a data-parent="${nth}" data-child="${index+1}" href="#"
                   class="reply">Reply</a>
           </p>
           <span class="comment--data">
@@ -213,4 +215,6 @@ window.onload = async function () {
   setBlogTextComment();
   setBlogs();
   setRecentViews();
+  getItemsForNewComment();
+  addEventReplyBtns();
 };

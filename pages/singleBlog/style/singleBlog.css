@@ -1361,6 +1361,13 @@ button[disabled] {
 .blogtext--content .comments--form form .form--section .form--reply .replied--message.hide {
   height: 0;
 }
+.blogtext--content .comments--form form .form--section .form--reply .replied--message.hide ~ label {
+  opacity: 1;
+}
+.blogtext--content .comments--form form .form--section .form--reply .replied--message ~ label {
+  opacity: 0;
+  transition: 0.7s;
+}
 .blogtext--content .comments--form form .form--section .form--reply .replied--message__content span {
   color: #ea1a1a;
   font-weight: 500;
