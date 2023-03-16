@@ -39,10 +39,11 @@ function setBlogTextContentTitle() {
 
 let commentsList = $(".comments--list");
 
-function createBlogTextComment(comment) {
+function createBlogTextComment(comment, nth) {
   let commentEl = document.createElement("li");
   commentEl.classList = "comment-list__item";
   let commentParent = document.createElement("div");
+  commentParent.id = `comment${nth}`;
   commentParent.classList = "comment--list__item--parent";
   commentParent.innerHTML = `
   <div class="img">
@@ -63,17 +64,24 @@ function createBlogTextComment(comment) {
   if (comment.replies.length) {
     let parentElChildsComments = document.createElement("ul");
     parentElChildsComments.classList = "comment--list__item--children";
-    comment.replies.forEach((childComment) => {
+    comment.replies.forEach((childComment, index) => {
+      console.log(childComment.for);
       let childEl = document.createElement("li");
       childEl.classList = "comment--list__item--children__comment";
+      childEl.id = `comment${nth}child${index + 1}`;
       childEl.innerHTML = `
+      <a class="position--a" href="${
+        childComment.for
+          ? `#comment${nth}child${childComment.for}`
+          : `#comment${nth}`
+      }"><i class="fa-solid fa-reply-all whichcomment" ></i></a>
       <div class="img">
           <img src="${childComment.userImg}"
               alt="pp" class="userlogo">
       </div>
       <div class="comment--list__item--children__comment--content">
           <h3 class="name">${childComment.name}</h3>
-          <p><span class="date">${childComment.date}</span> <a href="#"
+          <p><span class="date">${childComment.date}</span> <a class="" href="#"
                   class="reply">Reply</a>
           </p>
           <span class="comment--data">
@@ -89,8 +97,24 @@ function createBlogTextComment(comment) {
 }
 
 function setBlogTextComment() {
-  blogs[id - 1].comments.forEach((comment) => {
-    commentsList.appendChild(createBlogTextComment(comment));
+  blogs[id - 1].comments.forEach((comment, index) => {
+    let element = createBlogTextComment(comment, index + 1);
+    commentsList.appendChild(element);
+  });
+
+  showOwnerComm();
+}
+
+function showOwnerComm() {
+  document.querySelectorAll(".position--a").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      $(`${el.getAttribute("href")}`).style.backgroundColor = "#6CB4EE";
+      setTimeout(() => {
+        $(`${el.getAttribute("href")}`).style.backgroundColor = "#fff";
+      }, 350);
+    });
   });
 }
 
@@ -136,7 +160,51 @@ function setBlogs() {
   }
 }
 
+//* add product to local storage like recent view
+
+function getRecentViews() {
+  let recentviewed = JSON.parse(localStorage.getItem("recentviewed"));
+  return recentviewed;
+}
+
+function setRecentViews() {
+  let recentViewedEl = $(".aside--recentviewed");
+  let arr = getRecentViews();
+  if (!arr) {
+    recentViewedEl.style.display = "none";
+    return;
+  }
+  recentViewedEl.innerHTML =
+    '<h3 class="box--header">Son Baxılan Məhsullar</h3>';
+
+  arr.forEach((item) => {
+    let recViewEl = document.createElement("div");
+    recViewEl.classList = "aside--recentviewed__product";
+    recViewEl.innerHTML = `
+        <div class="gotopage">
+          <a href="../singleProduct/singleProduct.html?id=${item}">Məhsul Səhifəsinə Keç</a>
+        </div>
+        <div class="product--image">
+            <img src="${productList[item - 1].img[0]}"
+                alt="first">
+        </div>
+        <div class="product--text">
+            <p class="product--name">
+                ${productList[item - 1].title}
+            </p>
+            <p>
+                ₼<span class="product--price">${
+                  productList[item - 1].price
+                }</span>
+            </p>
+        </div>
+        `;
+    recentViewedEl.appendChild(recViewEl);
+  });
+}
+
 window.onload = async function () {
+  await onloadFunction();
   setPromotionSection();
   await getBlog();
   createBlogTextComment(blogs[id - 1].comments[0]);
@@ -144,4 +212,5 @@ window.onload = async function () {
   setBlogTextContentTitle();
   setBlogTextComment();
   setBlogs();
+  setRecentViews();
 };

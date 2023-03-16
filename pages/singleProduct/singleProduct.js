@@ -60,10 +60,32 @@ function changeButton() {
   });
 }
 
+function setProductToLocalStorage() {
+  let items = JSON.parse(localStorage.getItem("recentviewed"));
+  let productId = Number(id);
+  if (items) {
+    if (items.includes(productId)) {
+      return;
+    } else if (items.length == 3) {
+      items.unshift(productId);
+      items.pop();
+      localStorage.setItem("recentviewed", JSON.stringify([...items]));
+    } else {
+      localStorage.setItem(
+        "recentviewed",
+        JSON.stringify([productId, ...items])
+      );
+    }
+  } else {
+    localStorage.setItem("recentviewed", JSON.stringify([productId]));
+  }
+}
+
 window.onload = async function () {
   await onloadFunction();
   createSingleProduct();
   setPromotionSection();
   endLoading();
   changeButton();
+  setProductToLocalStorage();
 };

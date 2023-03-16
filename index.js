@@ -190,7 +190,7 @@ async function getBlogs() {
     blogEl.innerHTML = `
     
     <div class="blogs--list__blog--img">
-      <a href="./pages/singleBlog/singleBlog.html">
+      <a href="./pages/singleBlog/singleBlog.html?id=${blogObj.id}">
         <img
         src="${blogObj.img}"
         alt="8 Casual Trouser Styles">

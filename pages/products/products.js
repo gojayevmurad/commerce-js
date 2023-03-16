@@ -1,6 +1,10 @@
 const productListEl = document.querySelector(".products--list");
 const productCount = document.querySelector(".count--showing");
 
+// when cart items modal is open value will be true
+
+let isShoppingCartOpen = false;
+
 //#region pagination
 
 //* pagination elements
@@ -256,7 +260,6 @@ function getFilterData(e) {
 
 window.addEventListener("load", async () => {
   await onloadFunction();
-  quickviewModal();
   paginationPagesCount = Math.ceil(productList.length / paginationItemsCount);
   setPagination(paginationPagesCount, productList);
   addEventPaginationButtons();
@@ -267,11 +270,17 @@ window.addEventListener("load", async () => {
 
 document.addEventListener("mousemove", (e) => {
   let filterItem = $(".filter");
-  if (e.clientX < 20 && quickview.classList.contains("hide")) {
+  if (
+    e.clientX < 20 &&
+    quickview.classList.contains("hide") &&
+    !isShoppingCartOpen
+  ) {
     filterItem.classList.remove("hide");
     overlay.classList.remove("hide");
+    document.body.style.overflow = "hidden";
   } else if (!filterItem.classList.contains("hide") && e.clientX > 350) {
     filterItem.classList.add("hide");
     overlay.classList.add("hide");
+    document.body.style.overflow = "unset";
   }
 });

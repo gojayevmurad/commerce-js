@@ -3,8 +3,19 @@ let shoppingCartCloseBtn = $(".shopping--cart__close");
 let shoppingCartList = $(".shopping--cart__list");
 let shoppingCartTotalPrice = $(".suptotal--price");
 let shoppingCartOpenBtn = $(".actions--cart");
+let reRender = false;
 
 function renderShoppingCart() {
+  if (reRender) {
+    $(".middle").classList.remove("hide");
+  }
+
+  if (cartItemsList.length == 0) {
+    shoppingCart.classList.add("empty");
+  } else {
+    shoppingCart.classList.remove("empty");
+  }
+
   shoppingCartList.innerHTML =
     '<h4 class="shopping--cart__list--header">Səbətdəki Məhsullarınız</h4>';
   cartItemsList.forEach((item) => {
@@ -33,10 +44,14 @@ function renderShoppingCart() {
   });
   document.querySelectorAll(".shoppingcart__buttons button").forEach((item) => {
     item.addEventListener("click", (e) => {
+      reRender = true;
       changeCount(e);
-      
+      reRenderRelatedProduct(e);
     });
   });
+  setTimeout(() => {
+    $(".middle").classList.add("hide");
+  }, 900);
 }
 
 function showAndSetShoppingCart() {
@@ -53,15 +68,37 @@ function showAndSetShoppingCart() {
   }
 }
 
+function reRenderRelatedProduct(e) {
+  let productItem = $(`#product${e.target.id}`);
+
+  if (productItem) {
+    if (e.target.value == "+") {
+      productItem.value = Number(productItem.value) + 1;
+    } else {
+      if (productItem.value == 1) {
+        changeToBtn(productItem.parentNode.querySelector(".decrease"));
+      } else {
+        productItem.value = Number(productItem.value) - 1;
+      }
+    }
+  }
+}
+
 shoppingCartOpenBtn.addEventListener("click", () => {
   shoppingCart.classList.remove("hide");
   overlay.classList.remove("hide");
+  isShoppingCartOpen = true;
+  document.body.style.overflow = "hidden";
 });
 shoppingCartCloseBtn.addEventListener("click", () => {
   shoppingCart.classList.add("hide");
   overlay.classList.add("hide");
+  isShoppingCartOpen = false;
+  document.body.style.overflow = "unset";
 });
 
 overlay.addEventListener("click", () => {
   shoppingCart.classList.add("hide");
+  isShoppingCartOpen = false;
+  document.body.style.overflow = "unset";
 });

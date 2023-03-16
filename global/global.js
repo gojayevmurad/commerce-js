@@ -126,7 +126,6 @@ function changeToCountable(target, value = 1) {
 //! change to add to cart btn
 function changeToBtn(target) {
   let addToCartBtn = document.createElement("button");
-  addToCartBtn.value = target.value;
   addToCartBtn.setAttribute("value", target.id);
   addToCartBtn.setAttribute("class", "addToCart");
   addToCartBtn.setAttribute("id", `load${target.id}`);
@@ -177,7 +176,9 @@ function changeCount(e) {
       },
     }).catch((data) => console.log(data));
   }
-  showAndSetShoppingCart();
+  if ($(".shopping--cart")) {
+    showAndSetShoppingCart();
+  }
 }
 
 function changeButtonsAfterLoad() {
@@ -195,14 +196,6 @@ function changeButtonsAfterLoad() {
   } else {
     return;
   }
-}
-
-//! add modal to quickview
-
-function quickviewModal() {
-  let quickviewItems = document.querySelectorAll(
-    ".products--list__product--quickview"
-  );
 }
 
 //! add event to buttons
@@ -267,86 +260,90 @@ const createNotification = (id, msg) => {
   }, 5000);
 };
 
-searchInput.addEventListener("input", (e) => {
-  filteredArr = [];
-  productList.forEach((product) => {
-    if (
-      e.target.value.trim() != "" &&
-      product.title.toLowerCase().includes(e.target.value.toLowerCase().trim())
-    ) {
-      filteredArr.push(product);
+if (searchInput) {
+  searchInput.addEventListener("input", (e) => {
+    filteredArr = [];
+    productList.forEach((product) => {
+      if (
+        e.target.value.trim() != "" &&
+        product.title
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase().trim())
+      ) {
+        filteredArr.push(product);
+      }
+    });
+
+    if (e.target.value.trim() == "") {
+      $(".actions--search").classList.add("hide");
+      overlay.classList.add("hide");
+      searchInput.value = "";
+      searchList.innerHTML = "";
+      return;
+    }
+
+    if (filteredArr.length >= 5) {
+      countPr = 5;
+      viewMore = true;
+    } else {
+      countPr = filteredArr.length;
+    }
+
+    searchList.innerHTML = "";
+    $(".actions--search").classList.remove("hide");
+    overlay.classList.remove("hide");
+    overlay.addEventListener("click", (e) => {
+      $(".actions--search").classList.add("hide");
+      overlay.classList.add("hide");
+      searchInput.value = "";
+    });
+
+    window.addEventListener("scroll", () => {
+      $(".actions--search").classList.add("hide");
+      overlay.classList.add("hide");
+      searchInput.value = "";
+    });
+
+    for (let i = 0; i < countPr; i++) {
+      let el = filteredArr[i];
+      let searchItem = document.createElement("div");
+      searchItem.classList = "actions--search__products--item";
+      let popularity = Math.ceil(el.popularity);
+      let stars = "";
+      (() => {
+        for (let i = 0; i <= 5; i++) {
+          if (i <= popularity) {
+            stars += '<span class="fa fa-star checked"></span>';
+          } else {
+            stars += '<span class="fa fa-star unchecked"></span>';
+          }
+        }
+      })();
+      searchItem.innerHTML = `
+        <img src="${el.img[0]}" alt="item">
+    
+        <div class="content">
+          <div class="content__top">
+            <p>${el.categoryName}</p>
+            <div class="stars">
+              ${stars}
+            </div>
+          </div>
+    
+          <p class="content__name">
+            ${el.title}
+          </p>
+        </div>
+        `;
+      let line = document.createElement("div");
+      line.classList = "line";
+      searchList.append(searchItem, line);
+      searchItem.addEventListener("click", (e) => {
+        window.location.href = `/pages/singleProduct/singleProduct.html?id=${el.id}`;
+      });
     }
   });
-
-  if (e.target.value.trim() == "") {
-    $(".actions--search").classList.add("hide");
-    overlay.classList.add("hide");
-    searchInput.value = "";
-    searchList.innerHTML = "";
-    return;
-  }
-
-  if (filteredArr.length >= 5) {
-    countPr = 5;
-    viewMore = true;
-  } else {
-    countPr = filteredArr.length;
-  }
-
-  searchList.innerHTML = "";
-  $(".actions--search").classList.remove("hide");
-  overlay.classList.remove("hide");
-  overlay.addEventListener("click", (e) => {
-    $(".actions--search").classList.add("hide");
-    overlay.classList.add("hide");
-    searchInput.value = "";
-  });
-
-  window.addEventListener("scroll", () => {
-    $(".actions--search").classList.add("hide");
-    overlay.classList.add("hide");
-    searchInput.value = "";
-  });
-
-  for (let i = 0; i < countPr; i++) {
-    let el = filteredArr[i];
-    let searchItem = document.createElement("div");
-    searchItem.classList = "actions--search__products--item";
-    let popularity = Math.ceil(el.popularity);
-    let stars = "";
-    (() => {
-      for (let i = 0; i <= 5; i++) {
-        if (i <= popularity) {
-          stars += '<span class="fa fa-star checked"></span>';
-        } else {
-          stars += '<span class="fa fa-star unchecked"></span>';
-        }
-      }
-    })();
-    searchItem.innerHTML = `
-      <img src="${el.img[0]}" alt="item">
-  
-      <div class="content">
-        <div class="content__top">
-          <p>${el.categoryName}</p>
-          <div class="stars">
-            ${stars}
-          </div>
-        </div>
-  
-        <p class="content__name">
-          ${el.title}
-        </p>
-      </div>
-      `;
-    let line = document.createElement("div");
-    line.classList = "line";
-    searchList.append(searchItem, line);
-    searchItem.addEventListener("click", (e) => {
-      window.location.href = `/pages/singleProduct/singleProduct.html?id=${el.id}`;
-    });
-  }
-});
+}
 
 //! delete cart item
 
@@ -476,16 +473,18 @@ function displayQuickView(id) {
 
   quickview.classList.remove("hide");
   overlay.classList.remove("hide");
+  document.body.style.overflow = "hidden";
   addToCartBtn.addEventListener("click", (e) => {
     let item = $(`#load${e.target.value}`);
     reRenderProductItem(item, e);
   });
 }
-overlay.addEventListener("click", () => quickviewReset());
 
-// window.addEventListener("scroll", () => quickviewReset());
+overlay && overlay.addEventListener("click", () => quickviewReset());
+
 window.addEventListener("keydown", (e) => {
   if (e.key == "Escape") quickviewReset();
+  document.body.style.overflow = "unset";
 });
 
 function quickviewReset() {
