@@ -13,8 +13,8 @@
   font-family: "Golos Text", sans-serif;
   font-family: "Montserrat", sans-serif;
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 body {
@@ -217,7 +217,8 @@ body {
   width: 40px;
   text-align: center;
 }
-.shopping--cart__list .item--content__bottom .cart--actions input::-webkit-inner-spin-button, .shopping--cart__list .item--content__bottom .cart--actions input::-webkit-outer-spin-button {
+.shopping--cart__list .item--content__bottom .cart--actions input::-webkit-inner-spin-button,
+.shopping--cart__list .item--content__bottom .cart--actions input::-webkit-outer-spin-button {
   display: none;
 }
 .shopping--cart__list .item--content__bottom a {
@@ -402,7 +403,7 @@ body {
   height: 90px;
   width: 90px;
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 .actions--search__products--item .content {
   width: 100%;
@@ -457,8 +458,8 @@ body {
   font-size: 20px;
   font-weight: 400;
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  user-select: none;
   background-color: #fff;
   padding: 8px 10px 8px 16px;
   border-radius: 5px;
@@ -576,19 +577,23 @@ body {
   }
 }
 @media only screen and (max-width: 767px) {
-  .footer--content_logo, .footer--content__nav, .footer--content__subscription {
+  .footer--content_logo,
+  .footer--content__nav,
+  .footer--content__subscription {
     width: 33.3333333333%;
   }
 }
 @media only screen and (max-width: 400px) {
-  .footer--content_logo, .footer--content__nav, .footer--content__subscription {
+  .footer--content_logo,
+  .footer--content__nav,
+  .footer--content__subscription {
     width: 100%;
   }
 }
 .footer--content__logo {
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 .footer--content__logo p {
   font-size: 1.5rem;
@@ -605,8 +610,8 @@ body {
   font-size: 1.5rem;
   font-weight: 400;
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  user-select: none;
   margin-bottom: 15px;
 }
 @media only screen and (max-width: 767px) {
@@ -1015,15 +1020,18 @@ button[disabled] {
   border-bottom: none;
   transition: 0.3s;
 }
-.header:hover, .header.scroll {
+.header:hover,
+.header.scroll {
   background-color: #fff;
   position: fixed;
   border-bottom: 1px solid hsl(0, 0%, 91%);
 }
-.header:hover a, .header.scroll a {
+.header:hover a,
+.header.scroll a {
   color: #000 !important;
 }
-.header:hover a::after, .header.scroll a::after {
+.header:hover a::after,
+.header.scroll a::after {
   background-color: #000;
 }
 .header a {
@@ -1176,7 +1184,7 @@ button[disabled] {
   height: 60px;
   border-radius: 50%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .blogtext--content__text .blogtext--content__title .writer .name {
   color: #000;
@@ -1238,7 +1246,7 @@ button[disabled] {
   height: 60px;
   border-radius: 50%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .blogtext--content .comments--content .comment--list__item--parent__content {
   display: none;
@@ -1290,7 +1298,7 @@ button[disabled] {
   height: 60px;
   border-radius: 50%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .blogtext--content .comments--content .comment--list__item--children__comment--content {
   display: flex;
@@ -1353,7 +1361,7 @@ button[disabled] {
   height: 50px;
   background-color: rgba(102, 101, 101, 0.3);
   -webkit-backdrop-filter: blur(3px);
-          backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   z-index: 9;
@@ -1485,7 +1493,7 @@ button[disabled] {
   width: 120px;
   height: 80px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 8px;
   transition: 0.3s;
 }
@@ -1573,4 +1581,4 @@ button[disabled] {
 .box--header {
   font-weight: 500;
   margin-bottom: 10px;
-}/*# sourceMappingURL=singleBlog.css.map */
+} /*# sourceMappingURL=singleBlog.css.map */

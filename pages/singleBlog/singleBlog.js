@@ -7,6 +7,7 @@ document.addEventListener("scroll", (e) => {
 });
 
 let blogs = [];
+let countComments = 0;
 
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
@@ -17,6 +18,18 @@ async function getBlog() {
     .then((data) => {
       blogs = data;
     });
+  let mainCommentsCount = blogs[id - 1].comments.length;
+  let childCommentsCount = 0;
+  blogs[id - 1].comments.forEach((comment) => {
+    childCommentsCount += comment.replies.length;
+  });
+  countComments = mainCommentsCount + childCommentsCount;
+}
+
+function setCommentsCount() {
+  $(".blogpage--header__content .comments ").innerHTML = countComments;
+  $(".writer--desc .comments").innerHTML = countComments;
+  $(".comments--count").innerHTML = countComments;
 }
 
 //! Set blog Page Intro
@@ -32,6 +45,7 @@ function setBlogPageHeader() {
 function setBlogTextContentTitle() {
   $(".writer > img").src = blogs[id - 1].author.photo;
   $(".writer .name").innerText = blogs[id - 1].author.name;
+  $(".writer  .date").innerHTML = blogs[id - 1].date;
 }
 
 //! Set Comments
@@ -224,4 +238,6 @@ window.onload = async function () {
   getItemsForNewComment();
   await getCurrenBlog();
   addEventReplyBtns();
+  setCommentsCount();
+  endLoading();
 };

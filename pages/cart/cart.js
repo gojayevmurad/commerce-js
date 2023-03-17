@@ -95,7 +95,20 @@ function setCartPageDetails() {
   $(".cart--content__checkout--price").innerHTML = (
     methodPrice + totalPriceCartItems
   ).toFixed(2);
+
+  let totalProducts = 0;
+  cartItemsList.forEach((item) => {
+    totalProducts += item.count;
+  });
+
+  $(".cart--content__order--count p:nth-child(1) span").innerHTML =
+    totalProducts;
 }
+
+$("#shipping").addEventListener("input", (e) => {
+  methodPrice = +e.target.value;
+  setCartPageDetails();
+});
 
 window.addEventListener("load", async () => {
   await onloadFunction();

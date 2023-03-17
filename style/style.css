@@ -1427,6 +1427,17 @@ button[disabled] {
   font-weight: 300;
   color: #555;
 }
+.quickview--modal__content input {
+  background-color: var(--clr-light);
+  text-align: center;
+  border: 1px solid var(--clr-primary);
+  outline: none;
+  padding: 5px 10px;
+  margin-right: 5px;
+  width: 50px;
+  transition: 0.1s;
+  color: var(--clr-primary);
+}
 .quickview--modal__content button {
   cursor: pointer;
   background-color: var(--clr-primary);

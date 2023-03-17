@@ -102,4 +102,5 @@ window.onload = async function () {
   await getBlogs();
   setPromotionSection();
   blogListConfigure();
+  endLoading();
 };

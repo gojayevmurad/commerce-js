@@ -36,7 +36,6 @@ function renderShoppingCart() {
             }" disabled>
             <button id="${item.id}" value="+">+</button>
         </div>
-        <a href="#">Sil</a>
         </div>
     </div>
     `;

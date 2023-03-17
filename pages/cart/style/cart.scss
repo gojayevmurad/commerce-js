@@ -152,6 +152,11 @@ body {
           cursor: pointer;
           width: 100%;
           height: 30px;
+          option {
+            p {
+              margin-right: 15px;
+            }
+          }
         }
       }
 
@@ -210,6 +215,7 @@ body {
 // #region empty cart
 
 .empty--cart {
+  // button:nth-child()
   &.hide {
     display: none;
   }
@@ -217,6 +223,31 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: #fff;
+  width: 100%;
+  @include d-flex(center, center, column);
+  gap: 20px;
+  height: 100%;
+  img {
+    width: 200px;
+  }
+  button {
+    border: none;
+    outline: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: 0.4s linear;
+    a {
+      color: #000;
+      transition: 0.4s linear;
+    }
+    &:hover {
+      background-color: #000;
+      a {
+        color: #f0f0f0;
+      }
+    }
+  }
 }
 
 // #endregion empty cart
@@ -225,6 +256,6 @@ body {
   display: none;
 }
 
-.continue{
+.continue {
   color: #3498db;
 }

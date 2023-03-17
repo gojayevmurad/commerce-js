@@ -64,11 +64,15 @@ reviewCommentCloseBtn.addEventListener("click", () => {
   resetCommentForm();
 });
 
+
+
 $(".form--comment").addEventListener("submit", async (e) => {
   e.preventDefault();
   let name = e.target.name.value;
   let email = e.target.email.value;
   let textarea = e.target.reply.value;
+
+  
 
   // currentBlog.comments[replyTo.parentIndex - 1].replies[replyTo.childIndex - 1];
 
@@ -126,4 +130,5 @@ async function reRenderComments() {
   setBlogTextComment();
   getItemsForNewComment();
   addEventReplyBtns();
+  setCommentsCount();
 }

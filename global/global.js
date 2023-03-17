@@ -480,7 +480,8 @@ function displayQuickView(id) {
   });
 }
 
-overlay && overlay.addEventListener("click", () => quickviewReset());
+if (overlay && quickViewSlider)
+  overlay.addEventListener("click", () => quickviewReset());
 
 window.addEventListener("keydown", (e) => {
   if (e.key == "Escape") quickviewReset();
@@ -528,62 +529,51 @@ var templateParams = {
 
 let alreadySub = false;
 
-$(".footer--content__subscription form").addEventListener(
-  "submit",
-  async (e) => {
-    e.preventDefault();
-    await fetch(fethcUrl + "/subscribed")
-      .then((res) => res.json())
-      .then((data) => {
-        subscribedUsersList = data;
-      });
-    templateParams.to_email = e.target.email.value;
-    templateParams.to_name = e.target.name.value;
+$(".footer--content__subscription form") &&
+  $(".footer--content__subscription form").addEventListener(
+    "submit",
+    async (e) => {
+      e.preventDefault();
+      await fetch(fethcUrl + "/subscribed")
+        .then((res) => res.json())
+        .then((data) => {
+          subscribedUsersList = data;
+        });
+      templateParams.to_email = e.target.email.value;
+      templateParams.to_name = e.target.name.value;
 
-    if (subscribedUsersList.length > 0) {
-      subscribedUsersList.forEach((el) => {
-        if (el.email.trim() == templateParams.to_email.trim()) {
-          createNotification("error", "Sizin artıq abunəliyiniz var");
-          alreadySub = true;
-        }
-      });
+      if (subscribedUsersList.length > 0) {
+        subscribedUsersList.forEach((el) => {
+          if (el.email.trim() == templateParams.to_email.trim()) {
+            createNotification("error", "Sizin artıq abunəliyiniz var");
+            alreadySub = true;
+          }
+        });
+      }
+
+      if (!alreadySub) {
+        emailjs.send("key_1", "key_2", templateParams).then(
+          function (response) {
+            console.log("SUCCESS!", response.status, response.text);
+            fetch(fethcUrl + "/subscribed", {
+              method: "POST",
+              body: JSON.stringify({
+                email: templateParams.to_email,
+              }),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            }).finally((data) => {
+              createNotification("success", "Abunə oldunuz)");
+            });
+          },
+          function (error) {
+            console.log("FAILED...", error);
+          }
+        );
+      }
+
+      alreadySub = false;
+      e.target.reset();
     }
-
-    if (!alreadySub) {
-      emailjs.send("key1", "key2", templateParams).then(
-        function (response) {
-          console.log("SUCCESS!", response.status, response.text);
-          fetch(fethcUrl + "/subscribed", {
-            method: "POST",
-            body: JSON.stringify({
-              email: templateParams.to_email,
-            }),
-            headers: {
-              "Content-type": "application/json; charset=UTF-8",
-            },
-          }).finally((data) => {
-            createNotification("success", "Abunə oldunuz)");
-          });
-        },
-        function (error) {
-          console.log("FAILED...", error);
-        }
-      );
-    }
-
-    alreadySub = false;
-    e.target.reset();
-  }
-);
-
-// fetch(fethcUrl + `/subscribed`, {
-//   method: "POST",
-//   body: JSON.stringify({
-//     email: templateParams.to_email,
-//   }),
-//   headers: {
-//     "Content-type": "application/json; charset=UTF-8",
-//   },
-// }).finally((data) => {
-//   createNotification("success", "Abunə oldunuz)");
-// });
+  );
