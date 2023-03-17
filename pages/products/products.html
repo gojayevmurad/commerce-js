@@ -15,6 +15,20 @@
 
 <body>
 
+  <div class="wishlist--quick">
+    <div style="display:none" class="animation hide">
+      <div class="bar bar1"></div>
+      <div class="bar bar2"></div>
+      <div class="bar bar3"></div>
+      <div class="bar bar4"></div>
+      <div class="bar bar5"></div>
+      <div class="bar bar6"></div>
+      <div class="bar bar7"></div>
+      <div class="bar bar8"></div>
+    </div>
+
+  </div>
+
   <div class="shopping--cart hide">
     <div class="middle hide">
       <div class="bar bar1"></div>
@@ -58,7 +72,7 @@
   <div class="filter hide">
     <div class="filter--head">
       <h2>Məhsul Filtri</h2>
-      <button>Clear</button>
+      <button class="clear">Clear</button>
     </div>
     <form class="filter--body">
       <div class="filter--body__category">
@@ -297,6 +311,13 @@
     </div>
   </footer>
 
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+  </script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init("xoDl-Ynn4F0g0luPT");
+    })();
+  </script>
   <script src="../../global/global.js"></script>
   <script src="../../global/shoppingCart.js"></script>
   <script src="./products.js"></script>

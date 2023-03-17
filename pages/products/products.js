@@ -284,3 +284,13 @@ document.addEventListener("mousemove", (e) => {
     document.body.style.overflow = "unset";
   }
 });
+
+$(".clear").addEventListener("click", () => {
+  paginationPagesCount = Math.ceil(productList.length / paginationItemsCount);
+  setPagination(paginationPagesCount, productList);
+  addEventPaginationButtons();
+
+  filterForm.reset();
+  $(".slider .progress").style.left = "25%";
+  $(".slider .progress").style.right = "25%";
+});

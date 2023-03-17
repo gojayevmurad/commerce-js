@@ -1358,8 +1358,8 @@ button[disabled] {
 .quickview--modal__slider--slide img {
   height: 100%;
   width: 400px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .quickview--modal__slider .quickview--prevBtn,
 .quickview--modal__slider .quickview--nextBtn {

@@ -170,7 +170,6 @@ async function getBlogs() {
     }
 
     if (randomNums.length == 3) {
-      console.log(randomNums);
       break;
     }
   }
@@ -181,7 +180,6 @@ async function getBlogs() {
     .then((res) => res.json())
     .then((data) => {
       blogs = data;
-      console.log(blogs);
     });
 
   blogs.forEach((blogObj) => {

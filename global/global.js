@@ -174,7 +174,7 @@ function changeCount(e) {
         Accept: "application/json",
         "Content-type": "application/json; charset=UTF-8",
       },
-    }).catch((data) => console.log(data));
+    }).catch((err) => console.log("error: ", err));
   }
   if ($(".shopping--cart")) {
     showAndSetShoppingCart();
@@ -355,7 +355,7 @@ function deleteCartItem(e) {
       "Content-type": "application/json; charset=UTF-8",
     },
   })
-    .catch((data) => console.log(data))
+    .catch((err) => console.log("error: ", err))
     .finally((data) => {
       createNotification("error", "Səbətdən silindi");
     });
@@ -515,3 +515,75 @@ function reRenderProductItem(item, e) {
   changeToCountable(item);
   inCard = [true, 1];
 }
+
+// subscribe to news
+
+let subscribedUsersList;
+
+var templateParams = {
+  from_name: "DNP",
+  to_name: "",
+  to_email: "adsfasdf",
+};
+
+let alreadySub = false;
+
+$(".footer--content__subscription form").addEventListener(
+  "submit",
+  async (e) => {
+    e.preventDefault();
+    await fetch(fethcUrl + "/subscribed")
+      .then((res) => res.json())
+      .then((data) => {
+        subscribedUsersList = data;
+      });
+    templateParams.to_email = e.target.email.value;
+    templateParams.to_name = e.target.name.value;
+
+    if (subscribedUsersList.length > 0) {
+      subscribedUsersList.forEach((el) => {
+        if (el.email.trim() == templateParams.to_email.trim()) {
+          createNotification("error", "Sizin artıq abunəliyiniz var");
+          alreadySub = true;
+        }
+      });
+    }
+
+    if (!alreadySub) {
+      emailjs.send("key1", "key2", templateParams).then(
+        function (response) {
+          console.log("SUCCESS!", response.status, response.text);
+          fetch(fethcUrl + "/subscribed", {
+            method: "POST",
+            body: JSON.stringify({
+              email: templateParams.to_email,
+            }),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+          }).finally((data) => {
+            createNotification("success", "Abunə oldunuz)");
+          });
+        },
+        function (error) {
+          console.log("FAILED...", error);
+        }
+      );
+    }
+
+    alreadySub = false;
+    e.target.reset();
+  }
+);
+
+// fetch(fethcUrl + `/subscribed`, {
+//   method: "POST",
+//   body: JSON.stringify({
+//     email: templateParams.to_email,
+//   }),
+//   headers: {
+//     "Content-type": "application/json; charset=UTF-8",
+//   },
+// }).finally((data) => {
+//   createNotification("success", "Abunə oldunuz)");
+// });

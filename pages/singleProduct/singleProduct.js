@@ -54,7 +54,6 @@ function createSingleProduct() {
 function changeButton() {
   cartItemsList.forEach((cartItem) => {
     if (cartItem.id == productList[id - 1].id) {
-      console.log(cartItem);
       changeToCountable(addToCartBtnSingle, +cartItem.count);
     }
   });

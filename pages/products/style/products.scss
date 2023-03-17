@@ -356,7 +356,7 @@
       img {
         height: 100%;
         width: 400px;
-        object-fit: cover;
+        object-fit: contain;
       }
     }
     .quickview--prevBtn,

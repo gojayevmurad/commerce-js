@@ -4,7 +4,6 @@ async function getBlogs() {
     .then((res) => res.json())
     .then((data) => {
       blogList = data;
-      console.log(blogList);
     });
 }
 
@@ -38,15 +37,23 @@ function createBlogItem(obj) {
 function createBlogProduct() {
   let blogProductParentEl = document.createElement("div");
   blogProductParentEl.classList = "blog--list__product";
+  let randomNums = [];
   let random;
-  for (let i = 0; i < 2; i++) {
-    while (true) {
-      random = Math.floor(Math.random() * 150);
-      if (!productList[random].inStock) {
-        break;
-      }
+
+  while (true) {
+    random = Math.floor(Math.random() * 150);
+    if (!productList[random].inStock || randomNums.includes(random)) {
+      continue;
+    } else {
+      randomNums.push(random);
     }
-    let obj = productList[random];
+
+    if (randomNums.length == 2) {
+      break;
+    }
+  }
+  for (let i = 0; i < 2; i++) {
+    let obj = productList[randomNums[i]];
     let blogProductChildEl = document.createElement("div");
     blogProductChildEl.classList = "blog--list__product--content";
     blogProductChildEl.innerHTML = `

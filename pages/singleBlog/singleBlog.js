@@ -136,7 +136,6 @@ function setBlogs() {
       randomNums.push(random);
     }
   }
-  console.log(randomNums);
   for (let i = 0; i < 3; i++) {
     let asideBlogItem = document.createElement("div");
     asideBlogItem.classList = "aside--blog";
